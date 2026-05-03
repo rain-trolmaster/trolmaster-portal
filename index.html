@@ -6,12 +6,10 @@
   <meta name="description" content="TrolMaster Asia — Product Search Portal" />
   <title>TrolMaster Product Search</title>
 
-  <!-- Inline CSS -->
+  <!-- Inline CSS: shell + pages -->
   <style>
 /* ===================================
-   TrolMaster Product Portal
-   Professional Dark-Blue Design System
-   (Based on original working version)
+   TrolMaster Portal — SHELL CSS (shared across all pages)
    =================================== */
 
 /* ---- CSS Variables ---- */
@@ -185,7 +183,7 @@ a:hover { text-decoration: underline; }
 .lang-opt:hover { background: var(--color-bg); }
 .lang-opt.active { background: var(--color-primary-bg); font-weight: 600; color: var(--color-primary); }
 
-/* ---- Sidebar Overlay ---- */
+/* ---- Overlay ---- */
 .overlay {
   display: none;
   position: fixed;
@@ -195,7 +193,7 @@ a:hover { text-decoration: underline; }
   z-index: 90;
 }
 
-.overlay.show { display: block; opacity: 1; }
+.overlay.show { display: block; }
 
 /* ---- Sidebar ---- */
 .sidebar {
@@ -306,9 +304,56 @@ a:hover { text-decoration: underline; }
   line-height: 1.5;
 }
 
-/* ---- Page Sections ---- */
+/* ---- Page Base ---- */
 .page { display: none; }
 .page.active { display: block; }
+
+/* ---- Footer ---- */
+.footer {
+  text-align: center;
+  padding: 24px 20px;
+  color: var(--color-text-faint);
+  font-size: 11px;
+  border-top: 1px solid var(--color-border);
+  margin-top: 16px;
+}
+
+.footer-disclaimer {
+  margin-top: 8px;
+  font-size: 10px;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* ---- Stock Status Badge (shared) ---- */
+.stock-status {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stock-status.ok { color: var(--color-success); background: var(--color-success-bg); }
+.stock-status.err { color: var(--color-danger); background: var(--color-danger-bg); }
+.stock-status.loading { color: var(--color-text-faint); background: var(--color-bg); }
+.stock-status.fallback { color: var(--color-warning); background: var(--color-warning-bg); }
+
+/* ---- Responsive: Shared ---- */
+@media (max-width: 600px) {
+  .logo-img { height: 28px; }
+  .h-text h1 { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+  .header-sub { display: none; }
+}
+
+
+/* ---- Page: product-search ---- */
+
+
+/* ===================================
+   TrolMaster Portal — PRODUCT SEARCH Page CSS
+   =================================== */
 
 /* ---- Hero / Search ---- */
 .hero {
@@ -510,14 +555,8 @@ a:hover { text-decoration: underline; }
   line-height: 1.6;
 }
 
-.pi-short {
-  display: inline;
-}
-
-.pi-full {
-  display: inline;
-  line-height: 1.6;
-}
+.pi-short { display: inline; }
+.pi-full { display: inline; line-height: 1.6; }
 
 .pi-toggle {
   background: none;
@@ -630,7 +669,7 @@ a:hover { text-decoration: underline; }
 }
 
 /* ---- No Results ---- */
-.noresult {
+.no-result {
   text-align: center;
   padding: 40px 20px;
   color: var(--color-text-faint);
@@ -653,47 +692,14 @@ a:hover { text-decoration: underline; }
   border-radius: var(--radius-sm);
   position: relative;
 }
-.category-header:first-child {
-  margin-top: 0;
-}
+.category-header:first-child { margin-top: 0; }
+
 .cat-icon {
   font-size: 10px;
   opacity: 0.7;
 }
 
-/* ---- Footer ---- */
-.footer {
-  text-align: center;
-  padding: 24px 20px;
-  color: var(--color-text-faint);
-  font-size: 11px;
-  border-top: 1px solid var(--color-border);
-  margin-top: 16px;
-}
-
-.footer-disclaimer {
-  margin-top: 8px;
-  font-size: 10px;
-  color: var(--color-text-muted);
-  line-height: 1.4;
-}
-
-/* ---- Stock Status Badge ---- */
-.stock-status {
-  font-size: 11px;
-  padding: 3px 10px;
-  border-radius: var(--radius-pill);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.stock-status.ok { color: var(--color-success); background: var(--color-success-bg); }
-.stock-status.err { color: var(--color-danger); background: var(--color-danger-bg); }
-.stock-status.loading { color: var(--color-text-faint); background: var(--color-bg); }
-.stock-status.fallback { color: var(--color-warning); background: var(--color-warning-bg); }
-
-/* ---- Order Estimation ---- */
+/* ---- Order Estimation Styles (part of product-search bundle) ---- */
 .oe-wrap {
   max-width: 960px;
   margin: 24px auto;
@@ -733,10 +739,7 @@ a:hover { text-decoration: underline; }
   gap: 10px;
 }
 
-.oe-card-head h3 {
-  font-size: 15px;
-  font-weight: 600;
-}
+.oe-card-head h3 { font-size: 15px; font-weight: 600; }
 
 .oe-price-type {
   display: flex;
@@ -757,7 +760,6 @@ a:hover { text-decoration: underline; }
 }
 
 .oe-price-type label:hover { background: rgba(255,255,255,0.1); }
-
 .oe-price-type input { accent-color: #e53e3e; }
 .oe-price-type input:checked + span {
   color: #fff;
@@ -812,7 +814,6 @@ a:hover { text-decoration: underline; }
   outline: none;
   transition: border-color 0.2s;
 }
-
 .oe-table input[type="number"]:focus { border-color: var(--color-primary); }
 
 .oe-table input[type="text"] {
@@ -825,7 +826,6 @@ a:hover { text-decoration: underline; }
   outline: none;
   transition: border-color 0.2s;
 }
-
 .oe-table input[type="text"]:focus { border-color: var(--color-primary); }
 
 .oe-del-btn {
@@ -839,7 +839,6 @@ a:hover { text-decoration: underline; }
   opacity: 0.5;
   transition: opacity 0.2s;
 }
-
 .oe-del-btn:hover { opacity: 1; background: var(--color-danger-bg); }
 
 /* Product Search Dropdown */
@@ -909,7 +908,6 @@ a:hover { text-decoration: underline; }
   color: #fff;
   padding: 14px 18px;
 }
-
 .oe-summary-head h3 { font-size: 15px; font-weight: 600; }
 
 .oe-summary-body { padding: 16px 18px; }
@@ -947,12 +945,10 @@ a:hover { text-decoration: underline; }
   background: var(--color-primary);
   border-color: var(--color-primary);
 }
-
 .oe-sum-item.sum-total .sum-label { color: rgba(255,255,255,0.7); }
 .oe-sum-item.sum-total .sum-value { color: #fff; font-size: 24px; }
 
 .oe-sum-item.sum-ship .sum-value { font-size: 16px; }
-
 .oe-sum-item.sum-ship input {
   width: 120px;
   padding: 6px 10px;
@@ -972,7 +968,6 @@ a:hover { text-decoration: underline; }
   padding: 60px 20px;
   color: var(--color-text-faint);
 }
-
 .oe-empty .empty-icon { font-size: 48px; margin-bottom: 12px; }
 .oe-empty p { font-size: 14px; }
 
@@ -992,7 +987,6 @@ a:hover { text-decoration: underline; }
   font-family: inherit;
   transition: background 0.2s;
 }
-
 .oe-add-row:hover { background: var(--color-border-light); }
 
 /* ---- Coming Soon Page ---- */
@@ -1036,11 +1030,8 @@ a:hover { text-decoration: underline; }
   margin: 0 auto;
 }
 
-/* ---- Responsive ---- */
+/* ---- Responsive: Page-specific ---- */
 @media (max-width: 600px) {
-  .logo-img { height: 28px; }
-  .h-text h1 { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
-  .header-sub { display: none; }
   .hero { margin-top: 20px; }
   .hero-title { font-size: 18px; }
   .s-wrap { flex-direction: column; }
@@ -1069,26 +1060,7 @@ a:hover { text-decoration: underline; }
     <button class="sb-close" onclick="closeMenu()">&times;</button>
   </div>
   <div class="sb-nav">
-    <button class="sb-item active" data-page="product-search" onclick="navTo('product-search')">
-      <span class="sb-icon">&#128269;</span>
-      <span data-i18n="nav_product_search">Product Price and Stock</span>
-    </button>
-    <button class="sb-item disabled" data-page="tech-sheet">
-      <span class="sb-icon">&#128196;</span>
-      <span data-i18n="nav_tech_sheet">Tech sheet download</span>
-      <span class="coming-soon" data-i18n="coming_soon">Coming Soon</span>
-    </button>
-    <button class="sb-item disabled" data-page="model-one">
-      <span class="sb-icon">&#128290;</span>
-      <span data-i18n="nav_cable_calculator">Model-One Calculator</span>
-      <span class="coming-soon" data-i18n="coming_soon">Coming Soon</span>
-    </button>
-    <div class="sb-divider"></div>
-    <button class="sb-item disabled" data-page="order-est">
-      <span class="sb-icon">&#128178;</span>
-      <span data-i18n="nav_orders_estimation">Order Estimation</span>
-      <span class="coming-soon" data-i18n="coming_soon">Coming Soon</span>
-    </button>
+    <!-- Dynamic sidebar items injected by shell.js buildSidebar() -->
   </div>
   <div class="sb-footer">
     <p>&copy; 2026 Green Environmental Control</p>
@@ -1124,6 +1096,9 @@ a:hover { text-decoration: underline; }
 </header>
 
 <!-- ══════════════════════════════════════════
+     PAGES (injected by build_app.py)
+═════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════
      PAGE: PRODUCT SEARCH
 ═════════════════════════════════════════ -->
 <div class="page active" id="page-product-search">
@@ -1148,7 +1123,7 @@ a:hover { text-decoration: underline; }
 </div>
 
 <!-- ══════════════════════════════════════════
-     PAGE: ORDER ESTIMATION
+     PAGE: ORDER ESTIMATION (Coming Soon)
 ═════════════════════════════════════════ -->
 <div class="page" id="page-order-est">
   <div class="coming-soon-page">
@@ -1158,6 +1133,7 @@ a:hover { text-decoration: underline; }
     <div class="cs-desc" data-i18n="cs_order_est_desc">We're working on this feature. Stay tuned for order estimation tools!</div>
   </div>
 </div>
+
 
 <!-- ══════════════════════════════════════════
      FOOTER
@@ -1174,7 +1150,7 @@ a:hover { text-decoration: underline; }
 ═════════════════════════════════════════ -->
 <script>
 // Config injected by build_app.py
-window.__TM_CONFIG__ = {"gviz_product": "https://docs.google.com/spreadsheets/d/1SJKY8cDn5_mGmaCw3zraOrAVpK95kPZ5/gviz/tq?tqx=out:json&gid=1191522392", "gviz_inventory": "https://docs.google.com/spreadsheets/d/1GVRc_dSaDGesEdh_7pnU4bzhm5lyBLvm-XCC4gQWr8w/gviz/tq?tqx=out:json&gid=817864539", "product_columns": {"model": 0, "short_desc": 1, "msrp": 2, "wholesale_plus5": 3, "wholesale": 4, "compatibility": 5, "dimensions_mm": 6, "dimensions_inch": 7, "weight_kg": 8, "weight_lb": 9, "qty_per_case": 10, "case_dimensions_mm": 11, "case_dimensions_inch": 12, "case_weight_kg": 13, "case_weight_lb": 14, "upc_sku": 15, "image_link": 16, "full_description": 17, "features": 18, "package_content": 19, "specifications": 20, "materials_link": 21}, "inventory_columns": {"model": 0, "description": 1, "stock_can_sale": 2, "stock_level": 3}, "popular_models": ["WCS-9", "NFS-2", "ECW-1", "ECS-7", "GCS-1", "HCS-2", "WN-9", "Model-V", "V-6", "V-10"], "fallback_rates": {"USD": 1, "HKD": 7.8, "THB": 35.5}, "lang_currency_map": {"en": "USD", "zh-Hant": "HKD", "th": "THB"}};
+window.__TM_CONFIG__ = {"gviz_product": "https://docs.google.com/spreadsheets/d/1SJKY8cDn5_mGmaCw3zraOrAVpK95kPZ5/gviz/tq?tqx=out:json&gid=1191522392", "gviz_inventory": "https://docs.google.com/spreadsheets/d/1GVRc_dSaDGesEdh_7pnU4bzhm5lyBLvm-XCC4gQWr8w/gviz/tq?tqx=out:json&gid=817864539", "product_columns": {"model": 0, "short_desc": 1, "msrp": 2, "wholesale_plus5": 3, "wholesale": 4, "compatibility": 5, "dimensions_mm": 6, "dimensions_inch": 7, "weight_kg": 8, "weight_lb": 9, "qty_per_case": 10, "case_dimensions_mm": 11, "case_dimensions_inch": 12, "case_weight_kg": 13, "case_weight_lb": 14, "upc_sku": 15, "image_link": 16, "full_description": 17, "features": 18, "package_content": 19, "specifications": 20, "materials_link": 21}, "inventory_columns": {"model": 0, "description": 1, "stock_can_sale": 2, "stock_level": 3}, "popular_models": ["WCS-9", "NFS-2", "ECW-1", "ECS-7", "GCS-1", "HCS-2", "WN-9", "Model-V", "V-6", "V-10"], "fallback_rates": {"USD": 1, "HKD": 7.8, "THB": 35.5}, "lang_currency_map": {"en": "USD", "zh-Hant": "HKD", "th": "THB"}, "pages": [{"id": "product-search", "icon": "&#128269;", "i18n_key": "nav_product_search", "label": "Product Price and Stock", "disabled": false}, {"id": "tech-sheet", "icon": "&#128196;", "i18n_key": "nav_tech_sheet", "label": "Tech sheet download", "disabled": true}, {"id": "model-one", "icon": "&#128290;", "i18n_key": "nav_cable_calculator", "label": "Model-One Calculator", "disabled": true}, {"id": "order-est", "icon": "&#128178;", "i18n_key": "nav_orders_estimation", "label": "Order Estimation", "disabled": true}]};
 
 // i18n bundles
 window.__TM_I18N__ = {"en": {"app_name": "TrolMaster Product Portal", "company_name": "TrolMaster Asia Company Ltd", "nav_product_search": "Product Search", "nav_orders_estimation": "Orders Estimation", "nav_cable_calculator": "Model-One Cable Calculator", "coming_soon": "Coming Soon", "search_placeholder": "Search model number (e.g. WCS-9, V-6...)", "search_button": "Search", "clear_button": "Clear", "popular_models": "Popular Models", "currency_label": "Currency", "language_label": "Language", "hero_title": "Product Price and Stock", "hero_sub": "Search by model number, keyword, or description to view pricing and stock availability", "result_title": "Search Results", "no_results": "No products found for '{q}'. Please check and try again.", "loading": "Loading...", "error_network": "Network error. Please check your connection.", "error_data": "Failed to load product data.", "col_model": "Model", "col_msrp": "MSRP", "col_wholesale_plus5": "Wholesale +5%", "col_wholesale": "Wholesale", "col_stock": "Stock", "col_stock_level": "Stock Level", "col_image": "Image", "col_materials": "Materials", "col_description": "Description", "col_features": "Features", "col_package_content": "Package Content", "col_specifications": "Specifications", "col_compatibility": "Compatibility", "stock_in": "In Stock", "stock_low": "Low Stock", "stock_out": "Out of Stock", "in_stock": "In Stock", "low_stock": "Low Stock", "out_of_stock": "Out of Stock", "unknown": "N/A", "view_image": "View Image", "view_materials": "Materials Link", "expand_details": "Show Details", "collapse_details": "Hide Details", "more": "more...", "less": "less", "footer_data_source": "Data sourced from Google Sheets · Prices subject to change", "rate_updated": "Exchange rate updated", "rate_fallback": "Using fallback exchange rate", "tab_overview": "Overview", "tab_details": "Details", "tab_specs": "Specifications", "product_information": "Product Information", "cs_order_est_desc": "We're working on this feature. Stay tuned for order estimation tools!", "cat_controllers": "Controllers", "disclaimer": "Prices shown are for reference only. Final pricing is subject to confirmation by TrolMaster."}, "zh-Hant": {"app_name": "TrolMaster 產品查詢系統", "company_name": "TrolMaster Asia Company Ltd", "nav_product_search": "產品搜索", "nav_orders_estimation": "訂單估算", "nav_cable_calculator": "Model-One 線材計算器", "coming_soon": "即將推出", "search_placeholder": "輸入型號搜索（例如 WCS-9、V-6...）", "search_button": "搜索", "clear_button": "清除", "popular_models": "熱門型號", "currency_label": "貨幣", "language_label": "語言", "hero_title": "產品價格及庫存", "hero_sub": "輸入型號、關鍵字或描述，查詢定價及庫存狀況", "result_title": "搜索結果", "no_results": "找不到「{q}」相關產品，請確認後重試。", "loading": "載入中...", "error_network": "網絡錯誤，請檢查連線。", "error_data": "無法載入產品數據。", "col_model": "型號", "col_msrp": "建議零售價", "col_wholesale_plus5": "批發價 +5%", "col_wholesale": "批發價", "col_stock": "庫存", "col_stock_level": "庫存等級", "col_image": "圖片", "col_materials": "材料資料", "col_description": "產品描述", "col_features": "主要功能", "col_package_content": "包裝內容", "col_specifications": "規格參數", "col_compatibility": "兼容性", "stock_in": "有貨", "stock_low": "庫存偏低", "stock_out": "缺貨", "in_stock": "有貨", "low_stock": "庫存偏低", "out_of_stock": "缺貨", "unknown": "未確認", "view_image": "查看圖片", "view_materials": "材料連結", "expand_details": "顯示詳情", "collapse_details": "收起詳情", "more": "更多...", "less": "收起", "footer_data_source": "數據來源：Google Sheets · 價格以最終確認為準", "rate_updated": "匯率已更新", "rate_fallback": "使用預設匯率", "tab_overview": "概覽", "tab_details": "詳情", "tab_specs": "規格", "product_information": "產品資訊", "cs_order_est_desc": "我們正在開發此功能，敬請期待訂單估算工具！", "cat_controllers": "控制器", "disclaimer": "本平台所示價格僅供參考，實際價格以 TrolMaster 最終確認為準。"}, "th": {"app_name": "ระบบค้นหาสินค้า TrolMaster", "company_name": "TrolMaster Asia Company Ltd", "nav_product_search": "ค้นหาสินค้า", "nav_orders_estimation": "ประมาณการสั่งซื้อ", "nav_cable_calculator": "เครื่องคำนวณสาย Model-One", "coming_soon": "เร็วๆ นี้", "search_placeholder": "ค้นหารุ่นสินค้า (เช่น WCS-9, V-6...)", "search_button": "ค้นหา", "clear_button": "ล้าง", "popular_models": "รุ่นยอดนิยม", "currency_label": "สกุลเงิน", "language_label": "ภาษา", "hero_title": "ราคาและสต็อกสินค้า", "hero_sub": "ค้นหาด้วยรุ่น คำค้นหา หรือคำอธิบาย เพื่อดูราคาและสถานะสต็อก", "result_title": "ผลการค้นหา", "no_results": "ไม่พบสินค้า กรุณาตรวจสอบรหัสรุ่นและลองอีกครั้ง", "loading": "กำลังโหลด...", "error_network": "เกิดข้อผิดพลาดด้านเครือข่าย กรุณาตรวจสอบการเชื่อมต่อ", "error_data": "ไม่สามารถโหลดข้อมูลสินค้าได้", "col_model": "รุ่น", "col_msrp": "ราคาแนะนำ", "col_wholesale_plus5": "ราคาส่ง +5%", "col_wholesale": "ราคาส่ง", "col_stock": "สต็อก", "col_stock_level": "ระดับสต็อก", "col_image": "รูปภาพ", "col_materials": "ข้อมูลวัสดุ", "col_description": "คำอธิบายสินค้า", "col_features": "คุณสมบัติหลัก", "col_package_content": "สิ่งที่มาในกล่อง", "col_specifications": "ข้อมูลจำเพาะ", "col_compatibility": "ความเข้ากันได้", "stock_in": "มีสินค้า", "stock_low": "สินค้าใกล้หมด", "stock_out": "สินค้าหมด", "in_stock": "มีสินค้า", "low_stock": "สินค้าใกล้หมด", "out_of_stock": "สินค้าหมด", "unknown": "ไม่ทราบ", "view_image": "ดูรูปภาพ", "view_materials": "ลิงก์วัสดุ", "expand_details": "แสดงรายละเอียด", "collapse_details": "ซ่อนรายละเอียด", "more": "เพิ่มเติม...", "less": "ย่อ", "footer_data_source": "ข้อมูลจาก Google Sheets · ราคาอาจเปลี่ยนแปลงได้", "rate_updated": "อัปเดตอัตราแลกเปลี่ยนแล้ว", "rate_fallback": "ใช้อัตราแลกเปลี่ยนสำรอง", "tab_overview": "ภาพรวม", "tab_details": "รายละเอียด", "tab_specs": "ข้อมูลจำเพาะ", "product_information": "ข้อมูลสินค้า", "cs_order_est_desc": "เรากำลังพัฒนาฟีเจอร์นี้ โปรดติดตามเครื่องมือประมาณการสั่งซื้อ!", "cat_controllers": "ตัวควบคุม", "disclaimer": "ราคาที่แสดงเป็นเพียงข้อมูลอ้างอิง เท่านั้น ราคาสุดท้ายอยู่ที่การยืนยันจาก TrolMaster"}};
@@ -1187,17 +1163,17 @@ window.__TM_PRODUCTS__  = [{"model": "HCS-1", "short_desc": "Hydro-X Controller 
 window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", "stock_can_sale": "", "stock_level": ""}, {"model": "4RS-1", "description": "Expander Station 4:4 outlet expander station with trigger cable for mutiple devices control", "stock_can_sale": "8.0", "stock_level": "8.0"}, {"model": "4RS-2", "description": "Device Station Kit with 4 control outlets including 1x DST, 1x DSH and 2x DSP", "stock_can_sale": "16.0", "stock_level": "16.0"}, {"model": "AMC-1", "description": "Single/Three Phase Curtain Motor Controller (100-277V)", "stock_can_sale": "10.0", "stock_level": "10.0"}, {"model": "AMP-2", "description": "Sensor Board to connect sensors to NFS-1 controller", "stock_can_sale": "29.0", "stock_level": "29.0"}, {"model": "AMP-3", "description": "Sensor Board to connect sensors to NFS-2 controller with LCD display, for Aqua-X Pro and Tent-X main controller", "stock_can_sale": "17.0", "stock_level": "17.0"}, {"model": "ARS-1", "description": "AC Remote Station, Universal Remote Control for any remote controlled AC such as Mini-Split AC system", "stock_can_sale": "11.0", "stock_level": "12.0"}, {"model": "ARS-2", "description": "AC Remote Station, Universal Remote Control for any remote controlled Heat & Cool AC such as Mini-Split AC system", "stock_can_sale": "44.0", "stock_level": "44.0"}, {"model": "AS-1", "description": "CO2 Alarm Station (audio/visual) with cable set", "stock_can_sale": "44.0", "stock_level": "44.0"}, {"model": "AS-2", "description": "CO2 Alarm Station (audio/visual) plus LED display indicator with cable set", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "AS-3", "description": "CO2 Alarm Station (amber light)", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "AS-4", "description": "CO2 Alarm Station (blue light)", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "AS-5", "description": "Alarm Station", "stock_can_sale": "4.0", "stock_level": "4.0"}, {"model": "Beta-1", "description": "Digital Day/Night Remote controller (For remote controled AC such as Mini Split)", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "Beta-2", "description": "Digital Day/Night Fans Speed controller", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "Beta-4", "description": "Digital Day/Night Temperature Controller", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "Beta-6", "description": "Digital Day/Night Humidity 110V Controller", "stock_can_sale": "1.0", "stock_level": "1.0"}, {"model": "Beta-8", "description": "Digital CO2 PPM controller, for Regulator & Generator", "stock_can_sale": "23.0", "stock_level": "23.0"}, {"model": "BM-1", "description": "Wheatherproof Box for TS-1, TS-2, HS-1 and ARS-1", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "CDA-1", "description": "Carbon-X Controller with cable set, Free SmartPhone App", "stock_can_sale": "19.0", "stock_level": "19.0"}, {"model": "CM-1", "description": "Hawkeye 3-in-1 Monitor & Logger, 3-in-1 (Temp/Humid/CO2) Sensor, Ethernet Adapter; Free Smartphone App", "stock_can_sale": "18.0", "stock_level": "18.0"}, {"model": "DCA-10", "description": "5' 30A AWG#10 Daisy Chain Power Cord", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "DCA-12", "description": "5' 20A AWG#12 Daisy Chain Power Cord", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "DCA-14", "description": "5' 15A AWG#14 Daisy Chain Power Cord", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "DCC-1", "description": "Dual Condition Adapter for Hydro-X system", "stock_can_sale": "13.0", "stock_level": "13.0"}, {"model": "DEA-10", "description": "3' 30A AWG#10 Extension Power Cord", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "DEA-10L", "description": "10' 30A AWG#10 Extension Power Cord", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "DEA-12", "description": "3' 20A AWG#12 Extension Power Cord", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "DEA-14", "description": "3' 15A AWG#14 Extension Power Cord", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "Delta-1", "description": "3PH 460V/5HP/3.7KW VFD, Basic Compact Driver for AC motors speed controls", "stock_can_sale": "2.0", "stock_level": "2.0"}, {"model": "DFM-1", "description": "1“ Digital Flow Meter", "stock_can_sale": "18.0", "stock_level": "19.0"}, {"model": "DFM-2", "description": "1.25\" Digital Flow Meter", "stock_can_sale": "27.0", "stock_level": "27.0"}, {"model": "DFM-3", "description": "1.5“ Digital Flow Meter", "stock_can_sale": "25.0", "stock_level": "25.0"}, {"model": "DMC-1", "description": "24V DC Motor Controller", "stock_can_sale": "18.0", "stock_level": "18.0"}, {"model": "DSC-1", "description": "CO2 Device Station CO2 Control Relay Single Pack with cable set", "stock_can_sale": "23.0", "stock_level": "29.0"}, {"model": "DSD-1", "description": "Dry Contact Station Single Pack with cable set.", "stock_can_sale": "28.0", "stock_level": "28.0"}, {"model": "DSD-3", "description": "Dry Contact Control Station", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "DSE-1", "description": "Emergency Stop Station with cable set", "stock_can_sale": "93.0", "stock_level": "93.0"}, {"model": "DSH-1", "description": "240V Humidity Device Station 240V Humidity Control Relay Single Pack with cable set", "stock_can_sale": "40.0", "stock_level": "40.0"}, {"model": "DSP-1", "description": "240V Program Device Station", "stock_can_sale": "36.0", "stock_level": "36.0"}, {"model": "DSR-1", "description": "25Amps Relay Device Station (100-277V)", "stock_can_sale": "24.0", "stock_level": "24.0"}, {"model": "DST-1", "description": "240V Temperature Device Station 240V Temperature Control Relay Single Pack with cable set", "stock_can_sale": "28.0", "stock_level": "28.0"}, {"model": "DSV-1", "description": "TrolMaster Low-Volt Station", "stock_can_sale": "59.0", "stock_level": "59.0"}, {"model": "EC-12", "description": "ThinkGrow 12' power Extension Cord", "stock_can_sale": "15.0", "stock_level": "15.0"}, {"model": "ECS-1", "description": "RJ12 Extension Cable Set: 1x 16' RJ12 Cable; 1x 4' RJ12 Cable; 1x RJ12 T-Spliter", "stock_can_sale": "10.0", "stock_level": "10.0"}, {"model": "ECS-10", "description": "RJ12 25' Coiled Communication Cable", "stock_can_sale": "93.0", "stock_level": "93.0"}, {"model": "ECS-2", "description": "RJ12 to Pigtail Connection Cable Set: 1x 4' RJ12 to Pigtail Connection Cable;1x RJ12 T-Spliter; 1x 16' RJ12 Cable;", "stock_can_sale": "33.0", "stock_level": "33.0"}, {"model": "ECS-3", "description": "RJ12 to Threaded Waterproof Connector Converter Cable", "stock_can_sale": "41.0", "stock_level": "41.0"}, {"model": "ECS-4", "description": "16ft Extension Cable for Sensor Board AMP-2", "stock_can_sale": "35.0", "stock_level": "35.0"}, {"model": "ECS-5", "description": "RJ12 to M16 PushLock Waterproof connecter converter Cable Set for Fluence new models", "stock_can_sale": "41.0", "stock_level": "41.0"}, {"model": "ECS-500", "description": "500ft RJ12 Cable Roll", "stock_can_sale": "14.0", "stock_level": "16.0"}, {"model": "ECS-6", "description": "16ft 4Pins Waterproof Extension Cable", "stock_can_sale": "15.0", "stock_level": "15.0"}, {"model": "ECS-7", "description": "ThinkGrow 12’ data cable for daisy chain fixtures. It comes with each fixtures", "stock_can_sale": "182.0", "stock_level": "182.0"}, {"model": "ECS-8", "description": "ThinkGrow 12’ data cable for daisy chain fixtures. It comes with each fixtures", "stock_can_sale": "17.0", "stock_level": "17.0"}, {"model": "ECS-9", "description": "12ft RJ12 to 4-pin IP65 connecter cable for LMA-T and ThinkGrow LEDs", "stock_can_sale": "6.0", "stock_level": "8.0"}, {"model": "ECW-1", "description": "RJ12 Waterproof Straight-Through Inline Coupler", "stock_can_sale": "23.0", "stock_level": "23.0"}, {"model": "EFC-1", "description": "EC Fan Control Adaptor, for control EC Fan in PWM or 0-10V variable speed", "stock_can_sale": "14.0", "stock_level": "14.0"}, {"model": "GCS-1", "description": "Green-X Greenhouse Control System", "stock_can_sale": "17.0", "stock_level": "18.0"}, {"model": "HCS-1", "description": "Hydro-X Controller with 3-in-1 Sensor (Temp / Humid / Light ) and Cable set, Free Phone App", "stock_can_sale": "13.0", "stock_level": "18.0"}, {"model": "HCS-2", "description": "Hydro-X Pro Controller with 4-in-1 Sensor (Temp / Humid / CO2/ Light ) and Cable set, Free Phone App", "stock_can_sale": "21.0", "stock_level": "21.0"}, {"model": "HCS-3", "description": "Hydro-X Plus Controller with 4-in-1 Sensor (Temp / Humid / CO2/ Light ) and Cable set, Free Phone App", "stock_can_sale": "18.0", "stock_level": "18.0"}, {"model": "HS-1", "description": "Humidistat Station, for Dehumidifier with 24V terminal", "stock_can_sale": "20.0", "stock_level": "20.0"}, {"model": "LLT-1", "description": "ThinkGrow Smart Light Lifter (Discontinued)", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "LLT-2", "description": "ThinkGrow Smart Light Lifter", "stock_can_sale": "8.0", "stock_level": "8.0"}, {"model": "LLT-3", "description": "ThinkGrow Smart Mini-Lifter System", "stock_can_sale": "20.0", "stock_level": "20.0"}, {"model": "LMA-11", "description": "Lighting Control Adapter P, for Controlling Phantom Ballast", "stock_can_sale": "27.0", "stock_level": "27.0"}, {"model": "LMA-12", "description": "Lighting Control Adapter D, for Controlling Dimlux Ballast", "stock_can_sale": "33.0", "stock_level": "33.0"}, {"model": "LMA-13", "description": "Lighting Control Adapter S, for Controlling Sun System Ballast", "stock_can_sale": "35.0", "stock_level": "35.0"}, {"model": "LMA-14", "description": "Lighting Control Adapter F for Controlling Fluence or any light using 0~10V protocal", "stock_can_sale": "24.0", "stock_level": "24.0"}, {"model": "LMA-15", "description": "Lighting Control Adapter DLI for Hydro-X Control System", "stock_can_sale": "22.0", "stock_level": "22.0"}, {"model": "LMA-24", "description": "Lantern Schedule Lighting Adapter Compatible with any light controled by 0~10V code", "stock_can_sale": "19.0", "stock_level": "19.0"}, {"model": "LMA-G", "description": "Group Control Lighting Adaptor, for Grouping ThinkGrow Model-I LEDs", "stock_can_sale": "18.0", "stock_level": "18.0"}, {"model": "LMA-14G", "description": "Group Control Lighting Adapter, for 0-10V protocol", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "LMA-G4P", "description": "Group Control Lighting Adaptor, for Grouping ThinkGrow Model-I LEDs", "stock_can_sale": "11.0", "stock_level": "11.0"}, {"model": "LMA-T", "description": "Lighting Control Adapter T, for Controlling ThinkGrow LED", "stock_can_sale": "149.0", "stock_level": "150.0"}, {"model": "LRC-1", "description": "Smart Lifter Remote", "stock_can_sale": "12.0", "stock_level": "12.0"}, {"model": "MBS-GH", "description": "Green House 4-in-1 Sensor (Temp / Humid / CO2 / Light ) For Green-X Greenhouse Control System", "stock_can_sale": "21.0", "stock_level": "21.0"}, {"model": "MBS-K30", "description": "CO2 sensor for Carbon-X with cable set", "stock_can_sale": "20.0", "stock_level": "20.0"}, {"model": "MBS-PAR", "description": "Full Spectrum Quantum Sensor", "stock_can_sale": "22.0", "stock_level": "22.0"}, {"model": "MBS-PRO", "description": "Temp/Humid/CO2/Light 4-in-1 Sensor for Hydro-X Pro and Hydro-X Plus", "stock_can_sale": "26.0", "stock_level": "26.0"}, {"model": "MBS-S8", "description": "CO2 Sensor for Hydro-X with cable set", "stock_can_sale": "12.0", "stock_level": "18.0"}, {"model": "MBS-SD", "description": "Smoke Detector for Hydro-X with cable set", "stock_can_sale": "20.0", "stock_level": "20.0"}, {"model": "MBS-TH", "description": "Replacement and Backup Temp / Humidity / Light Sensor for Hydro-X", "stock_can_sale": "16.0", "stock_level": "16.0"}, {"model": "MBS-WS", "description": "Weather Station Sensor (MBS-WS)", "stock_can_sale": "11.0", "stock_level": "11.0"}, {"model": "MC-1", "description": "Multifunction Crimper", "stock_can_sale": "8.0", "stock_level": "8.0"}, {"model": "Model-H", "description": "ThinkGrow Model-H 630W Horticulture LED Grow Lightwith spectrum adjustability", "stock_can_sale": "42.0", "stock_level": "42.0"}, {"model": "Model-H Plus", "description": "ThinkGrow Model-H 720W Multiple Bars LED Grow Light with ultimate spectrum adjustability ( UV, White, Deep Red & Far Red)", "stock_can_sale": "40.0", "stock_level": "40.0"}, {"model": "Model-I", "description": "ThinkGrow Model-I 720W Horticulture LED Grow Light with full spectrum and separate Far-red channel", "stock_can_sale": "15.0", "stock_level": "15.0"}, {"model": "Model-I Plus", "description": "ThinkGrow Model-I Plus 720W Horticulture LED Grow Light with ultimate spectrum adjustabilty ( UV, White, Deep Red & Far Red)", "stock_can_sale": "42.0", "stock_level": "42.0"}, {"model": "Model-V", "description": "ThinkGrow Model-V 350W Horticulture LED Grow Light with full spectrum and separate Far-red channel (Discontinued)", "stock_can_sale": "16.0", "stock_level": "16.0"}, {"model": "Model-W", "description": "ThinkGrow Model-W 630W Horticulture LED Grow Light with full spectrum and separate Far-red channel (Discontinued)", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "New Model-H", "description": "ThinkGrow New Model-H", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "NFS-1", "description": "Aqua-X Controller with Water Detector set, Free SmartPhone App", "stock_can_sale": "15.0", "stock_level": "16.0"}, {"model": "NFS-2", "description": "Aqua-X Pro Controller with AMP-3 Sensor Board, Free SmartPhone App", "stock_can_sale": "9.0", "stock_level": "9.0"}, {"model": "NFS-3", "description": "Aqua-X Plus Controller with AMP-3 Sensor Board, Free Phone App", "stock_can_sale": "18.0", "stock_level": "18.0"}, {"model": "OA6-110", "description": "110V Control Board, 6 inividual 110V controlled output (1.5A per outlet) for pump control", "stock_can_sale": "6.0", "stock_level": "6.0"}, {"model": "OA6-24", "description": "24V Control Board, 6 inividual 24V controlled output for solenoid valve control", "stock_can_sale": "13.0", "stock_level": "14.0"}, {"model": "OAT-24", "description": "12 Outputs 24V Control Board", "stock_can_sale": "13.0", "stock_level": "13.0"}, {"model": "OM-8", "description": "Dry Contact Board for HCS-2/NFS-2, 8 individual electrical contacts,each contact up to 12 Amps", "stock_can_sale": "28.0", "stock_level": "28.0"}, {"model": "PA-1", "description": "ThinkGrow 240V to 120V Plug Adapter for US", "stock_can_sale": "214.0", "stock_level": "214.0"}, {"model": "OPA-1", "description": "100-277V Smart Junction Box New (Discontinued)", "stock_can_sale": "4.0", "stock_level": "4.0"}, {"model": "PCT-1", "description": "2-in-1 EC + Temp Sensor for Reservoir", "stock_can_sale": "22.0", "stock_level": "22.0"}, {"model": "PCT-2", "description": "Inline EC+Temp Sensor, Heavy Duty (Discontinued)", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "PCT-3", "description": "Heavy Duty Nutrient EC+Temp Sensor, drop-in/in-line compatible", "stock_can_sale": "20.0", "stock_level": "20.0"}, {"model": "PPH-1", "description": "pH Sensor for Reservoir", "stock_can_sale": "20.0", "stock_level": "20.0"}, {"model": "PPH-2", "description": "Inline pH Sensor, Heavy Duty (Discontinued)", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "PPH-3", "description": "Heavy Duty Nutrient pH Sensor, drop-in/in-line compatible", "stock_can_sale": "18.0", "stock_level": "18.0"}, {"model": "RC-1", "description": "Lifter Rigging Cable Kit", "stock_can_sale": "9.0", "stock_level": "9.0"}, {"model": "SCC-1", "description": "25“ Standard Controller Cabinet for Hydro-X Pro / Aqua-X Pro", "stock_can_sale": "4.0", "stock_level": "4.0"}, {"model": "SCC-2", "description": "35” Large Controller Cabinet for Hydro-X Pro / Aqua-X Pro", "stock_can_sale": "12.0", "stock_level": "12.0"}, {"model": "SCC-3", "description": "25“ Standard Controller Cabinet for Hydro-X Plus", "stock_can_sale": "5.0", "stock_level": "5.0"}, {"model": "SCC-D", "description": "Controller Cabinet Door without pre-cut window", "stock_can_sale": "5.0", "stock_level": "5.0"}, {"model": "SCC-4", "description": "Mini Controller Cabinet (100-277V)", "stock_can_sale": "4.0", "stock_level": "5.0"}, {"model": "SPH-1", "description": "RJ12 Splitter Hub with cable set", "stock_can_sale": "6.0", "stock_level": "12.0"}, {"model": "TC-1", "description": "TrolMaster Grow Camera (Discontinued)", "stock_can_sale": "15.0", "stock_level": "15.0"}, {"model": "TC-2", "description": "TrolMaster Grow Camera", "stock_can_sale": "7.0", "stock_level": "7.0"}, {"model": "TCS-1", "description": "Tent-X Main Controller with 3-in-1 Sensor (Temp / Humid / Light ) and Cable set, Free Phone App", "stock_can_sale": "44.0", "stock_level": "45.0"}, {"model": "TPS-1", "description": "TrolMaster Position Switch", "stock_can_sale": "2.0", "stock_level": "2.0"}, {"model": "TS-1", "description": "Thermostat Station, for Cool only conventinal HVAC", "stock_can_sale": "42.0", "stock_level": "42.0"}, {"model": "TS-2", "description": "Thermostat Station 2, for all type of HVAC (Heatpump and Conventionals)", "stock_can_sale": "40.0", "stock_level": "40.0"}, {"model": "TSB-1", "description": "TrolMaster Sensor Bracket (2 Packs)", "stock_can_sale": "16.0", "stock_level": "16.0"}, {"model": "TSH-1", "description": "TrolMaster Temp/ Humidity Station with 0-10V protocol", "stock_can_sale": "29.0", "stock_level": "29.0"}, {"model": "TSS-1", "description": "Touch Spot + T Split Extension Cable", "stock_can_sale": "131.0", "stock_level": "131.0"}, {"model": "TSS-2", "description": "Touch Spot 16' Extension Cable", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "UH-1", "description": "Unit-Strut Hanger for Modle-H/W/V with quick release", "stock_can_sale": "14.0", "stock_level": "14.0"}, {"model": "UH-2", "description": "Unit-Strut Hanger for Model-I & Plus with quick release", "stock_can_sale": "18.0", "stock_level": "18.0"}, {"model": "UV-1", "description": "ThinkGrow UV Light Bar for Model-H/W", "stock_can_sale": "10.0", "stock_level": "10.0"}, {"model": "VFD-1", "description": "Variable Frequency Drive Station for VFD fan speed control in the Hydro-X Pro system", "stock_can_sale": "5.0", "stock_level": "5.0"}, {"model": "WCS-1", "description": "Water Content Sensor with Cable Set (Discontinued)", "stock_can_sale": "30.0", "stock_level": "30.0"}, {"model": "WCS-2", "description": "Soil Moisture, Temp and EC 3-in-1 Sensor with cable set", "stock_can_sale": "12.0", "stock_level": "12.0"}, {"model": "WCS-3", "description": "Water Content Sensor 3 with splitter cable set", "stock_can_sale": "49.0", "stock_level": "49.0"}, {"model": "WCS-9", "description": "Substrate Moisture, Temp and EC 3-1 Sensor with cable set", "stock_can_sale": "-1.0", "stock_level": "0.0"}, {"model": "WN-9", "description": "Sensor Node for WCS-9 Substrate Sensor with daisy chain cable", "stock_can_sale": "-2.0", "stock_level": "0.0"}, {"model": "WD-1", "description": "Water Detector + Touch Spot for watering confirmation", "stock_can_sale": "16.0", "stock_level": "16.0"}, {"model": "TLD-2", "description": "(TLD-4)90 watt ThinkGrow Model One LED Driver with Four Spectrum Control Channels", "stock_can_sale": "81.0", "stock_level": "86.0"}, {"model": "TLD-4", "description": "(TLD-2)90 watt ThinkGrow Model One LED Driver with Two Spectrum Control Channels", "stock_can_sale": "38.0", "stock_level": "38.0"}, {"model": "TLD-2 (New)", "description": "(TLD-2 (New)) 90 watt ThinkGrow Model One LED Driver with Two Spectrum Control Channels (New Quick Release Lock)", "stock_can_sale": "20.0", "stock_level": "20.0"}, {"model": "TLD-4 (New)", "description": "(TLD-4 (New)) 90 watt ThinkGrow Model One LED Driver with Four Spectrum Control Channels (New Quick Release Lock)", "stock_can_sale": "13.0", "stock_level": "13.0"}, {"model": "DR-1", "description": "(DR-1)4' LED bar with 2x Spectrum channels (Full Spectrum + Deep Red) for Model One system", "stock_can_sale": "2.0", "stock_level": "2.0"}, {"model": "FR-1", "description": "(FR-1)4' LED bar with 2x Spectrum channels (Full Spectrum+ Far Red) for Model One LED system", "stock_can_sale": "36.0", "stock_level": "36.0"}, {"model": "TLB-1", "description": "(TLB-1)4' LED bar with 4x Spectrum channels (White+ Deep Red+ Far Red+ UV) for Model One LED system", "stock_can_sale": "22.0", "stock_level": "22.0"}, {"model": "TLB-2", "description": "(TLB-2)5' LED bar with 4x Spectrum channels (White+ Deep Red+ Far Red+ UV) for Model One LED system", "stock_can_sale": "15.0", "stock_level": "15.0"}, {"model": "ICL-300", "description": "(ICL-300)4' Inner Canopy LED bar with built-in 120 watt driver", "stock_can_sale": "88.0", "stock_level": "88.0"}, {"model": "ICL-150", "description": "(ICL-150) 120watt LED Grow Light with 150 light angle and 4 Specturm channels for multiple purpose (Top, Side, Under Canopy)", "stock_can_sale": "17.0", "stock_level": "19.0"}, {"model": "ICL-120", "description": "(ICL-120) 120watt Under Canopy LED with 120 light angle and single Specturm channel (4 Per Pack)", "stock_can_sale": "4.0", "stock_level": "4.0"}, {"model": "TDC-1", "description": "(TDC-1)Splitter Power Cord for Model One LED system AWG #18", "stock_can_sale": "93.0", "stock_level": "93.0"}, {"model": "TDC-2", "description": "(TDC-2)1ft AWG #18 Daisy Chain Cord for Model One LED system", "stock_can_sale": "203.0", "stock_level": "208.0"}, {"model": "TDC-3", "description": "(TDC-3)2ft AWG #18 Daisy Chain Cord for Model One LED system", "stock_can_sale": "123.0", "stock_level": "123.0"}, {"model": "TDC-4", "description": "(TDC-4)5ft AWG #18 Daisy Chain Cord for Model One LED system", "stock_can_sale": "13.0", "stock_level": "13.0"}, {"model": "TDC-120", "description": "(TDC-120)5ft Splitter Power Cord for Model One LED system AWG #18 with NEMA 5-15 plug", "stock_can_sale": "145.0", "stock_level": "147.0"}, {"model": "TSD-1", "description": "(TSD-1)Inner Canopy Light Stand ", "stock_can_sale": "53.0", "stock_level": "53.0"}, {"model": "TSD-3", "description": "(TSD-3) ThinkGrow TSD-3 LED Stand for 150/120 (2 per pack)", "stock_can_sale": "38.0", "stock_level": "38.0"}, {"model": "MB-4", "description": "(MB-4) Quick Release Mounting Bar for 4 Drivers (360watt)", "stock_can_sale": "10.0", "stock_level": "10.0"}, {"model": "MB-7", "description": "(MB-7) Quick Release Mounting Bar for 7 Drivers (630watt)", "stock_can_sale": "9.0", "stock_level": "9.0"}, {"model": "MB-8", "description": "(MB-8) Quick Release Mounting Bar for 8 Drivers (720watt)", "stock_can_sale": "10.0", "stock_level": "10.0"}, {"model": "MB-9", "description": "(MB-9) Quick Release Mounting Bar for 9 Drivers (810watt)", "stock_can_sale": "10.0", "stock_level": "10.0"}, {"model": "V-6", "description": "(V-6) 6 Inch Inline Duct Ventilation Fan", "stock_can_sale": "16.0", "stock_level": "16.0"}, {"model": "V-8", "description": "(V-8) 8 Inch Inline Duct Ventilation Fan", "stock_can_sale": "11.0", "stock_level": "11.0"}, {"model": "V-10", "description": "(V-10) 10 Inch Inline Duct Ventilation Fan", "stock_can_sale": "10.0", "stock_level": "10.0"}, {"model": "V-10M", "description": "(V-10M) 10 Inch Inline Duct Ventilation Fan Pro Model", "stock_can_sale": "10.0", "stock_level": "10.0"}, {"model": "V-12", "description": "(V-12) 12 Inch Inline Duct Ventilation Fan", "stock_can_sale": "11.0", "stock_level": "11.0"}, {"model": "V-12M", "description": "(V-12M) 12 Inch Metal Inline Duct Ventilation Fan Pro Model", "stock_can_sale": "10.0", "stock_level": "10.0"}, {"model": "HE-20", "description": "(HE-20) 20 Inch High Velocity Fan", "stock_can_sale": "-1.0", "stock_level": "0.0"}, {"model": "HE-20M", "description": "(HE-20M) 20 Inch High Velocity Fan Pro Model", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "FRC-1", "description": "(FRC-1) Smart Fan Remote with built-in photocell for day/night setting", "stock_can_sale": "15.0", "stock_level": "15.0"}, {"model": "FRC-2", "description": "(FRC-2) Simple Fan Speed Dimmer", "stock_can_sale": "12.0", "stock_level": "12.0"}, {"model": "AB-6", "description": "Aero-Fan Air Booster (4\" (10.1cm) Reducer for V-6, 2 per pack)", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "AB-8", "description": "Aero-Fan Air Booster (6\" (15.24cm) Reducer for V-8, 2 per pack)", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "PS-4", "description": "4\" (10.1cm) Poly Air Sock", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "PS-6", "description": "6\" (15.2cm) Poly Air Sock", "stock_can_sale": "0.0", "stock_level": "0.0"}, {"model": "Light Bar box", "description": "Light Bar box", "stock_can_sale": "0.0", "stock_level": "0.0"}];
 </script>
 
-<!-- Inline App JS -->
+<!-- Shell JS (shared across all pages) -->
 <script>
-/* ===== app.js — TrolMaster Product Portal ===== */
+/* ===== shell.js — TrolMaster Portal SHELL (shared across all pages) ===== */
 (function () {
   'use strict';
 
-  // ─── Config (injected by build_app.py) ─────────────────────────────────────
+  // ─── Config (injected by build_app.py) ─────────────────────────────────
   const CONFIG = window.__TM_CONFIG__ || {};
   const GVIZ_PRODUCT   = CONFIG.gviz_product   || '';
   const GVIZ_INVENTORY = CONFIG.gviz_inventory  || '';
-  const FALLBACK_PRODUCTS  = window.__TM_PRODUCTS__  || [];
+  const FALLBACK_PRODUCTS = window.__TM_PRODUCTS__  || [];
   const FALLBACK_INVENTORY = window.__TM_INVENTORY__ || [];
   const POPULAR_MODELS = CONFIG.popular_models || [];
   const ER_API_URL = 'https://open.er-api.com/v6/latest/USD';
@@ -1205,24 +1181,23 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
   const ER_CACHE_TS  = 'tm_exchange_rates_ts';
   const ER_CACHE_HOURS = 24;
 
-  // ─── Product Translations (injected by build_app.py) ────────────────────────
+  // ─── Product Translations (injected by build_app.py) ─────────────────────
   const PRODUCT_TRANSLATIONS = window.__TM_PRODUCT_TRANSLATIONS__ || {};
 
-  // ─── State ─────────────────────────────────────────────────────────────────
-  let currentLang = localStorage.getItem('tm_lang') || 'en';
+  // ─── Shared State ────────────────────────────────────────────────────────
+  let currentLang    = localStorage.getItem('tm_lang') || 'en';
   let currentCurrency = localStorage.getItem('tm_currency') || 'USD';
-  let exchangeRates = { USD: 1, HKD: 7.8, THB: 35.5 };
-  let i18n = {};
-  let productData   = [];
-  let inventoryData = {};
-  let dataLoaded = false;
-  let oeItems = [];  // Order Estimation items
+  let exchangeRates   = { USD: 1, HKD: 7.8, THB: 35.5 };
+  let i18n           = {};
+  let productData     = [];
+  let inventoryData   = {};
+  let dataLoaded     = false;
 
   // Map language → default currency
-  const LANG_CURRENCY = { en: 'USD', 'zh-Hant': 'HKD', th: 'THB' };
+  const LANG_CURRENCY  = { en: 'USD', 'zh-Hant': 'HKD', th: 'THB' };
   const CURRENCY_SYMBOL = { USD: '$', HKD: 'HK$', THB: '฿' };
 
-  // ─── i18n ──────────────────────────────────────────────────────────────────
+  // ─── i18n ─────────────────────────────────────────────────────────────────
   const I18N_BUNDLE = window.__TM_I18N__ || {};
 
   function t(key) {
@@ -1260,20 +1235,16 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     if (LANG_CURRENCY[lang]) {
       switchCurrency(LANG_CURRENCY[lang]);
     }
-    if (dataLoaded) {
-      renderResults();
-      rerenderOETable();
-    }
+    // Notify pages that language/currency changed
+    if (typeof window.onPageLangChange === 'function') window.onPageLangChange();
   }
 
-  // ─── Currency ──────────────────────────────────────────────────────────────
+  // ─── Currency ───────────────────────────────────────────────────────────
   function switchCurrency(currency) {
     currentCurrency = currency;
     localStorage.setItem('tm_currency', currency);
-    if (dataLoaded) {
-      renderResults();
-      rerenderOETable();
-    }
+    // Notify pages that currency changed
+    if (typeof window.onPageLangChange === 'function') window.onPageLangChange();
   }
 
   function formatPrice(usdValue) {
@@ -1297,7 +1268,6 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
         const age = (Date.now() - parseInt(ts, 10)) / 3600000;
         if (age < ER_CACHE_HOURS) {
           exchangeRates = JSON.parse(cached);
-          setRateStatus('cached');
           return;
         }
       }
@@ -1307,40 +1277,21 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
         exchangeRates = { USD: 1, HKD: data.rates.HKD || 7.8, THB: data.rates.THB || 35.5 };
         localStorage.setItem(ER_CACHE_KEY, JSON.stringify(exchangeRates));
         localStorage.setItem(ER_CACHE_TS, Date.now().toString());
-        setRateStatus('live');
       }
     } catch (e) {
-      setRateStatus('fallback');
+      // Use fallback rates
     }
   }
 
-  function setRateStatus(type) {
-    const els = document.querySelectorAll('#stockStatus, #stockStatusBottom');
-    els.forEach(el => {
-      if (!el) return;
-      if (type === 'live') {
-        el.className = 'stock-status ok';
-        el.innerHTML = '✓ ' + t('rate_updated');
-      } else if (type === 'fallback') {
-        el.className = 'stock-status fallback';
-        el.innerHTML = '⚠ ' + t('rate_fallback');
-      } else if (type === 'loading') {
-        el.className = 'stock-status loading';
-        el.innerHTML = '⏳ Loading stock...';
-      }
-    });
-  }
-
-  // ─── Data Loading ──────────────────────────────────────────────────────────
+  // ─── Data Loading ────────────────────────────────────────────────────────
   function parseGvizResponse(text) {
     const jsonStr = text.replace(/^\/\*[\s\S]*?\*\/\s*/, '')
-                        .replace(/^google\.visualization\.Query\.setResponse\(/, '')
-                        .replace(/\);?\s*$/, '');
+                         .replace(/^google\.visualization\.Query\.setResponse\(/, '')
+                         .replace(/\);?\s*$/, '');
     return JSON.parse(jsonStr);
   }
 
   async function loadProductData() {
-    setRateStatus('loading');
     try {
       if (GVIZ_PRODUCT) {
         const resp = await fetch(GVIZ_PRODUCT + '&nocache=' + Date.now(), {
@@ -1353,7 +1304,7 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
         productData = FALLBACK_PRODUCTS;
       }
     } catch (e) {
-      console.warn('Product fetch failed, using fallback:', e);
+      console.warn('[Shell] Product fetch failed, using fallback:', e);
       productData = FALLBACK_PRODUCTS;
     }
 
@@ -1369,38 +1320,34 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
         rows.forEach(row => {
           if (row.model) inventoryData[String(row.model).trim().toUpperCase()] = row;
         });
-        console.log('[TM] Inventory loaded from gviz:', Object.keys(inventoryData).length, 'items');
       } else {
-        // Use fallback inventory data
         inventoryData = {};
         FALLBACK_INVENTORY.forEach(row => {
           if (row.model) inventoryData[String(row.model).trim().toUpperCase()] = row;
         });
       }
     } catch (e) {
-      console.warn('Inventory fetch failed, using fallback:', e);
-      // Fallback to embedded inventory data
+      console.warn('[Shell] Inventory fetch failed, using fallback:', e);
       inventoryData = {};
       FALLBACK_INVENTORY.forEach(row => {
         if (row.model) inventoryData[String(row.model).trim().toUpperCase()] = row;
       });
-      console.log('[TM] Inventory loaded from fallback:', Object.keys(inventoryData).length, 'items');
     }
 
     dataLoaded = true;
-    setRateStatus('live');
-    renderPopularTags();
+    onDataReady();
   }
 
+  /**
+   * gvizRowsToObjects — shared between shell and pages.
+   * Defined here so it's available globally.
+   */
   function gvizRowsToObjects(gviz, type) {
-    const cols = CONFIG.columns || {};
-    const prodCols  = CONFIG.product_columns  || {};
+    const prodCols = CONFIG.product_columns || {};
     const invCols  = CONFIG.inventory_columns || {};
-    const colMap = type === 'product' ? prodCols : invCols;
+    const colMap   = type === 'product' ? prodCols : invCols;
 
     const rows = (gviz.table && gviz.table.rows) ? gviz.table.rows : [];
-    // Note: gviz API's table.rows does NOT include header rows (those are in table.cols),
-    // so we do NOT skip the first row.
 
     let currentCategory = '';
 
@@ -1414,14 +1361,13 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
       };
 
       if (type === 'product') {
-        const model = getValue(colMap.model).trim();
-        const shortDesc = getValue(colMap.short_desc).trim();
-        const msrp = getValue(colMap.msrp).trim();
+        const model      = getValue(colMap.model).trim();
+        const shortDesc  = getValue(colMap.short_desc).trim();
+        const msrp       = getValue(colMap.msrp).trim();
 
-        // Detect category rows: model has value, but short_desc and msrp are empty
         if (model && !shortDesc && !msrp) {
           currentCategory = model;
-          return null;  // Skip category row
+          return null;
         }
 
         return {
@@ -1441,12 +1387,12 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
           case_weight_kg:   getValue(colMap.case_weight_kg),
           case_weight_lb:   getValue(colMap.case_weight_lb),
           upc_sku:          getValue(colMap.upc_sku),
-          image_link:       getValue(colMap.image_link),
-          full_description: getValue(colMap.full_description),
+          image_link:        getValue(colMap.image_link),
+          full_description:  getValue(colMap.full_description),
           features:         getValue(colMap.features),
-          package_content:  getValue(colMap.package_content),
-          specifications:   getValue(colMap.specifications),
-          materials_link:   getValue(colMap.materials_link),
+          package_content:   getValue(colMap.package_content),
+          specifications:    getValue(colMap.specifications),
+          materials_link:    getValue(colMap.materials_link),
           category:         currentCategory,
         };
       } else {
@@ -1460,7 +1406,7 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     }).filter(row => row !== null && row.model && row.model.trim() !== '');
   }
 
-  // ─── Sidebar Navigation ────────────────────────────────────────────────────
+  // ─── Sidebar Navigation ─────────────────────────────────────────────────
   window.openMenu = function () {
     document.getElementById('sidebar').classList.add('open');
     document.getElementById('overlay').classList.add('show');
@@ -1484,37 +1430,127 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     closeMenu();
   };
 
-  // ─── Popular Tags ──────────────────────────────────────────────────────────
-  function renderPopularTags() {
-    const tagsEl = document.getElementById('tags');
-    if (!tagsEl) return;
-    tagsEl.innerHTML = POPULAR_MODELS.map(m => {
-      const safe = escHtml(m);
-      return '<span class="tag" onclick="document.getElementById(\'q\').value=\'' + safe + '\';doSearch()">' + safe + '</span>';
-    }).join('');
+  // Pages register their onDataReady handler here
+  let _pageDataReady = null;
+  window.registerPageDataReady = function (fn) { _pageDataReady = fn; };
+  function onDataReady() {
+    if (typeof window.onPageDataReady === 'function') {
+      window.onPageDataReady();
+    }
+    if (typeof _pageDataReady === 'function') _pageDataReady();
   }
 
-  // ─── Search ────────────────────────────────────────────────────────────────
+  // ─── Escape HTML ────────────────────────────────────────────────────────
+  function escHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  // ─── Expose shared state & functions to window (for page modules) ───────
+  // Use getters so pages always see the latest values
+  Object.defineProperty(window, 'TM_CurrentLang',     { get: () => currentLang,     configurable: true });
+  Object.defineProperty(window, 'TM_CurrentCurrency',  { get: () => currentCurrency, configurable: true });
+  Object.defineProperty(window, 'TM_ProductData',      { get: () => productData,     configurable: true });
+  Object.defineProperty(window, 'TM_InventoryData',    { get: () => inventoryData,   configurable: true });
+  Object.defineProperty(window, 'TM_DataLoaded',       { get: () => dataLoaded,      configurable: true });
+  Object.defineProperty(window, 'TM_PopularModels',    { get: () => POPULAR_MODELS,  configurable: true });
+  Object.defineProperty(window, 'TM_ExchangeRates',    { get: () => exchangeRates,   configurable: true });
+
+  window.t            = t;
+  window.formatPrice  = formatPrice;
+  window.escHtml      = escHtml;
+  window.CURRENCY_SYMBOL = CURRENCY_SYMBOL;
+
+  // ─── Sidebar dynamic generation ─────────────────────────────────────────
+  function buildSidebar() {
+    const sbNav = document.querySelector('.sb-nav');
+    if (!sbNav || !CONFIG.pages) return;
+
+    CONFIG.pages.forEach(p => {
+      const btn = document.createElement('button');
+      btn.className = 'sb-item' + (p.disabled ? ' disabled' : '');
+      btn.setAttribute('data-page', p.id);
+      btn.setAttribute('onclick', p.disabled ? '' : 'navTo(\'' + p.id + '\')');
+      btn.innerHTML = '<span class="sb-icon">' + (p.icon || '📄') + '</span>'
+                    + '<span data-i18n="' + (p.i18n_key || '') + '">' + (p.label || p.id) + '</span>'
+                    + (p.disabled ? '<span class="coming-soon" data-i18n="coming_soon">Coming Soon</span>' : '');
+      sbNav.appendChild(btn);
+    });
+  }
+
+  // ─── Init ───────────────────────────────────────────────────────────────
+  function initShell() {
+    applyLang(currentLang);
+
+    // Language dropdown
+    const langBtn = document.getElementById('langBtn');
+    const langDD  = document.getElementById('langDD');
+    if (langBtn) {
+      langBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langDD.classList.toggle('show');
+      });
+    }
+    document.querySelectorAll('.lang-opt').forEach(opt => {
+      opt.addEventListener('click', () => switchLang(opt.dataset.lang));
+    });
+    document.addEventListener('click', () => {
+      if (langDD) langDD.classList.remove('show');
+    });
+
+    // Build sidebar from config
+    buildSidebar();
+
+    // Default page
+    const defaultPage = (CONFIG.pages && CONFIG.pages.length > 0) ? CONFIG.pages[0].id : 'product-search';
+    navTo(defaultPage);
+
+    // Load data
+    loadProductData();
+    fetchExchangeRates();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initShell);
+  } else {
+    initShell();
+  }
+
+})();
+
+</script>
+
+<!-- Page JS (each page injected in order) -->
+<script>
+/* ===== Page: product-search ===== */
+
+
+/* ===== product-search/page.js — Product Search & Order Est. ===== */
+(function () {
+  'use strict';
+
+  // ─── State ────────────────────────────────────────────────────────
+  let oeItems = [];  // Order Estimation items
+
+  // ─── Search ───────────────────────────────────────────────────────
   let lastQuery = '';
 
   // Build a word-boundary-aware regex from a search query.
-  // e.g. "V-6" → /(?<![a-zA-Z0-9])v[\s\-_]*6(?![a-zA-Z0-9])/i
-  //       → matches "V-6", "V 6" but NOT "CV6001"
-  // e.g. "Hydro" → /(?<![a-zA-Z0-9])hydro/i  (loose mode, allows prefix match)
-  //       → matches "Hydro-X", "hydroponic"
   function buildSearchRegex(query, strict) {
     const segments = query.match(/[a-zA-Z0-9]+/g);
     if (!segments || segments.length === 0) return null;
     const pattern = segments
-      .map(seg => seg.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))  // escape regex chars
-      .join('[\\s\\-_]*');  // allow optional separators between segments
+      .map(seg => seg.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+      .join('[\\s\\-_]*');
     let fullPattern;
     if (strict) {
-      // Strict: both word boundaries — match must be a standalone token
-      // Used for model name matching to prevent "V-6" matching "CV6001"
       fullPattern = '(?<![a-zA-Z0-9])' + pattern + '(?![a-zA-Z0-9])';
     } else {
-      // Loose: only left word boundary — allows prefix matches like 'Hydro' → 'hydroponic'
       fullPattern = '(?<![a-zA-Z0-9])' + pattern;
     }
     try {
@@ -1524,54 +1560,46 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     }
   }
 
-  // Test if a text field contains the query as a word-boundary-aware match.
   function fieldContainsQuery(text, regex) {
     if (!text || !regex) return false;
     return regex.test(text);
   }
 
-  // Calculate relevance score for a product against a query.
-  // Higher score = more relevant. 0 = no match (filtered out).
   function productRelevanceScore(p, q) {
     if (!p.model) return 0;
     const strictRegex = buildSearchRegex(q, true);
     const looseRegex  = buildSearchRegex(q, false);
     if (!strictRegex && !looseRegex) return 0;
 
-    // Also build a normalized version for exact model comparison
     const qNorm = q.replace(/[-_\s]/g, '').toLowerCase();
     const modelNorm = (p.model || '').replace(/[-_\s]/g, '').toLowerCase();
     let score = 0;
 
-    // 1) Model name match (highest priority, use strict boundary)
     if (modelNorm === qNorm) {
-      score += 2000;  // exact model match
+      score += 2000;
     } else if (modelNorm.startsWith(qNorm)) {
-      score += 1000;  // model starts with query (e.g. "hydro" → "hydro-x pro")
+      score += 1000;
     } else if (strictRegex && strictRegex.test(p.model)) {
-      score += 500;   // model contains query (strict word boundary)
+      score += 500;
     }
 
-    // 2) Short description match (high priority, use loose boundary)
     if (looseRegex && p.short_desc) {
       if (p.short_desc.toLowerCase().startsWith(q.toLowerCase())) {
-        score += 300;  // short_desc starts with query — very relevant
+        score += 300;
       } else if (looseRegex.test(p.short_desc)) {
-        score += 200;  // short_desc contains query
+        score += 200;
       }
     }
 
-    // 3) Full description match (medium priority, use loose boundary)
     if (looseRegex && p.full_description && looseRegex.test(p.full_description)) {
       score += 50;
     }
 
-    // 4) Other fields (low priority, use loose boundary)
     const lowFields = [p.features, p.specifications, p.compatibility, p.package_content];
     for (const field of lowFields) {
       if (looseRegex && field && looseRegex.test(field)) {
         score += 20;
-        break;  // only count once even if multiple low-priority fields match
+        break;
       }
     }
 
@@ -1585,14 +1613,12 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
       document.getElementById('res').innerHTML = '';
       return;
     }
-    if (!dataLoaded) return;
+    if (!window.TM_DataLoaded) return;
 
-    // Score all products and keep those with score > 0
-    const scored = productData
+    const scored = window.TM_ProductData
       .map(p => ({ product: p, score: productRelevanceScore(p, q) }))
       .filter(item => item.score > 0);
 
-    // Sort by relevance score (descending), then by model name for tie-breaking
     scored.sort((a, b) => {
       if (b.score !== a.score) return b.score - a.score;
       return (a.product.model || '').localeCompare(b.product.model || '');
@@ -1602,16 +1628,25 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     renderResults(results);
   };
 
+  function renderPopularTags() {
+    const tagsEl = document.getElementById('tags');
+    if (!tagsEl) return;
+    const models = window.TM_PopularModels || [];
+    tagsEl.innerHTML = models.map(m => {
+      const safe = window.escHtml(m);
+      return '<span class="tag" onclick="document.getElementById(\'q\').value=\'' + safe + '\';doSearch()">' + safe + '</span>';
+    }).join('');
+  }
+
   function renderResults(results) {
     const area = document.getElementById('res');
     if (!area) return;
 
     if (!results || results.length === 0) {
-      area.innerHTML = '<div class="noresult">' + t('no_results').replace('{q}', escHtml(lastQuery)) + '</div>';
+      area.innerHTML = '<div class="no-result">' + t('no_results').replace('{q}', escHtml(lastQuery)) + '</div>';
       return;
     }
 
-    // Group by category and insert category headers
     let html = '';
     let lastCategory = '__NONE__';
 
@@ -1628,21 +1663,19 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
   }
 
   function buildCategoryHeader(category) {
-    // First group (no category) gets "Controllers" label
     const label = category || t('cat_controllers');
-    return `<div class="category-header"><span class="cat-icon">◆</span> ${escHtml(label)}</div>`;
+    return '<div class="category-header"><span class="cat-icon">◆</span> ' + escHtml(label) + '</div>';
   }
 
+  // ─── Stock Info ─────────────────────────────────────────────────
   function getStockInfo(model) {
     const key = (model || '').trim().toUpperCase();
-    const inv = inventoryData[key];
+    const inv = window.TM_InventoryData ? window.TM_InventoryData[key] : null;
     if (!inv) return { level: '', qty: '', badgeClass: 'unknown', badgeKey: 'unknown' };
 
-    // stock_can_sale and stock_level are numeric values from the sheet
-    const canSale = parseFloat(String(inv.stock_can_sale || '0').replace(/[^0-9.\-]/g, '')) || 0;
-    const stockLevel = parseFloat(String(inv.stock_level || '0').replace(/[^0-9.\-]/g, '')) || 0;
+    const canSale     = parseFloat(String(inv.stock_can_sale || '0').replace(/[^0-9.\-]/g, '')) || 0;
+    const stockLevel = parseFloat(String(inv.stock_level    || '0').replace(/[^0-9.\-]/g, '')) || 0;
 
-    // Determine stock status based on can_sale quantity
     let badgeClass = 'in-stock';
     let badgeKey   = 'in_stock';
     if (canSale <= 0) {
@@ -1654,30 +1687,27 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     return { level: stockLevel, qty: canSale, badgeClass, badgeKey };
   }
 
-  // Max characters for description before truncation
+  // ─── Product Card ───────────────────────────────────────────────
   const DESC_MAX_CHARS = 80;
 
   function buildProductCard(p, idx) {
-    // Get translated product info if available
-    // Rule: "冇就收埋，有就要顯示" — only override with non-empty translation, fallback to English
     let product = p;
-    if (currentLang !== 'en' && p.model) {
+    if (window.TM_CurrentLang && window.TM_CurrentLang !== 'en' && p.model) {
       const model = p.model.trim();
-      const langTranslations = PRODUCT_TRANSLATIONS[currentLang];
+      const langTranslations = (window.__TM_PRODUCT_TRANSLATIONS__ || {})[window.TM_CurrentLang];
       if (langTranslations && langTranslations[model]) {
         const trans = langTranslations[model];
         product = Object.assign({}, p);
-        // Only override if translation is non-empty; otherwise keep original English
-        if (trans.short_desc && trans.short_desc.trim()) product.short_desc = trans.short_desc;
-        if (trans.full_description && trans.full_description.trim()) product.full_description = trans.full_description;
-        if (trans.features && trans.features.trim()) product.features = trans.features;
-        if (trans.package_content && trans.package_content.trim()) product.package_content = trans.package_content;
-        if (trans.specifications && trans.specifications.trim()) product.specifications = trans.specifications;
+        if (trans.short_desc       && trans.short_desc.trim())       product.short_desc       = trans.short_desc;
+        if (trans.full_description  && trans.full_description.trim())  product.full_description  = trans.full_description;
+        if (trans.features         && trans.features.trim())         product.features         = trans.features;
+        if (trans.package_content  && trans.package_content.trim())  product.package_content  = trans.package_content;
+        if (trans.specifications   && trans.specifications.trim())   product.specifications   = trans.specifications;
       }
     }
-    
-    const stock = getStockInfo(product.model);
-    const stockBadge = stock.badgeKey && stock.badgeKey !== 'unknown'
+
+    const stock     = getStockInfo(product.model);
+    const stockBadge = (stock.badgeKey && stock.badgeKey !== 'unknown')
       ? '<span class="oe-stock-badge ' + stock.badgeClass + '">' + t(stock.badgeKey) + (stock.qty ? ' (' + stock.qty + ')' : '') + '</span>'
       : '';
 
@@ -1693,13 +1723,10 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
       ? '<div class="irow"><div class="ilabel" data-i18n="col_compatibility">' + t('col_compatibility') + '</div><div class="ivalue">' + escHtml(product.compatibility) + '</div></div>'
       : '';
 
-    // Description for Product Information section (below image, with truncation)
-    const fullDesc = product.full_description || product.short_desc || '';
+    const fullDesc    = product.full_description || product.short_desc || '';
     const needsTruncation = fullDesc.length > DESC_MAX_CHARS;
-    const shortDesc = needsTruncation ? fullDesc.substring(0, DESC_MAX_CHARS) + '...' : fullDesc;
-
-    // Title uses short description only (not full description)
-    const titleDesc = product.short_desc || product.model;
+    const shortDesc   = needsTruncation ? fullDesc.substring(0, DESC_MAX_CHARS) + '...' : fullDesc;
+    const titleDesc   = product.short_desc || product.model;
 
     return `
 <div class="card" id="card-${idx}">
@@ -1711,7 +1738,7 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     ${stockBadge}
   </div>
   <div class="c-body">
-    <!-- Price Section (moved to top as this is the primary info users want) -->
+    <!-- Price Section -->
     <table class="ptable">
       <thead>
         <tr>
@@ -1728,7 +1755,7 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
         </tr>
       </tbody>
     </table>
-    <div class="price-note">* ${t('prices_in')} ${CURRENCY_SYMBOL[currentCurrency] || currentCurrency}</div>
+    <div class="price-note">* ${t('prices_in')} ${CURRENCY_SYMBOL[window.TM_CurrentCurrency] || window.TM_CurrentCurrency}</div>
 
     <!-- Product Information Section -->
     <div class="product-info-section">
@@ -1738,7 +1765,6 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
         ${needsTruncation ? '<div class="pi-full" style="display:none">' + escHtml(fullDesc) + '</div>' : ''}
       </div>
       ${needsTruncation ? '<button class="pi-toggle" onclick="toggleProductInfo(' + idx + ')" data-expanded="false">' + t('more') + '</button>' : ''}
-
       ${imgRow}
       ${matRow}
       ${compatRow}
@@ -1761,14 +1787,14 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
 </div>`;
   }
 
-  // ─── Description Toggle ────────────────────────────────────────────────────
+  // ─── Description Toggle ──────────────────────────────────────────
   window.toggleProductInfo = function (idx) {
     const content = document.getElementById('pi-content-' + idx);
     const btn = content ? content.nextElementSibling : null;
     if (!content || !btn) return;
 
     const shortEl = content.querySelector('.pi-short');
-    const fullEl = content.querySelector('.pi-full');
+    const fullEl  = content.querySelector('.pi-full');
     const isExpanded = btn.getAttribute('data-expanded') === 'true';
 
     if (isExpanded) {
@@ -1784,7 +1810,7 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     }
   };
 
-  // ─── Order Estimation ──────────────────────────────────────────────────────
+  // ─── Order Estimation ───────────────────────────────────────────
   window.addOEItem = function () {
     oeItems.push({ model: '', qty: 1 });
     rerenderOETable();
@@ -1799,8 +1825,9 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     if (!oeItems[idx]) return;
     oeItems[idx][field] = value;
     if (field === 'model') {
-      // Find product info
-      const found = productData.find(p => p.model.toUpperCase() === value.trim().toUpperCase());
+      const found = window.TM_ProductData
+        ? window.TM_ProductData.find(p => p.model.toUpperCase() === value.trim().toUpperCase())
+        : null;
       if (found) {
         oeItems[idx]._product = found;
       } else {
@@ -1820,28 +1847,30 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
   }
 
   function rerenderOETable() {
-    const tbody = document.getElementById('oeItemsBody');
+    const tbody   = document.getElementById('oeItemsBody');
     const summary = document.getElementById('oeSummary');
     if (!tbody) return;
 
     if (oeItems.length === 0) {
       tbody.innerHTML = '<tr><td colspan="7" class="oe-dd-empty" data-i18n="oe_empty">' + t('oe_empty_msg') + '</td></tr>';
-      summary.style.display = 'none';
+      if (summary) summary.style.display = 'none';
       return;
     }
 
-    const priceType = getOEPriceType();
-    let totalItems = 0, totalQty = 0, subtotal = 0;
+    const priceType   = getOEPriceType();
+    let totalItems   = 0;
+    let totalQty     = 0;
+    let subtotal     = 0;
 
     tbody.innerHTML = oeItems.map((item, idx) => {
       const p = item._product;
       const priceField = priceType === 'msrp' ? 'msrp' : priceType === 'ws5' ? 'wholesale_plus5' : 'wholesale';
       const unitPrice = p ? parseFloat(String(p[priceField] || '0').replace(/[^0-9.]/g, '')) : 0;
-      const qty = parseInt(item.qty) || 0;
+      const qty       = parseInt(item.qty) || 0;
       const lineTotal = unitPrice * qty;
       if (p) { totalItems++; totalQty += qty; subtotal += lineTotal; }
 
-      const stock = p ? getStockInfo(p.model) : null;
+      const stock     = p ? getStockInfo(p.model) : null;
       const stockBadge = stock
         ? '<span class="oe-stock-badge ' + stock.badgeClass + '">' + t(stock.badgeKey) + '</span>'
         : '';
@@ -1864,19 +1893,18 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
       </tr>`;
     }).join('');
 
-    // Update summary
-    if (totalItems > 0) {
+    if (summary && totalItems > 0) {
       summary.style.display = 'block';
-      const vat = subtotal * 0.07;
-      const shipping = parseFloat(document.getElementById('oeShipInput').value) || 0;
+      const vat        = subtotal * 0.07;
+      const shipping   = parseFloat(document.getElementById('oeShipInput').value) || 0;
       const grandTotal = subtotal + vat + shipping;
 
-      document.getElementById('oeSumItemsVal').textContent = totalItems;
-      document.getElementById('oeSumQtyVal').textContent = totalQty;
+      document.getElementById('oeSumItemsVal').textContent   = totalItems;
+      document.getElementById('oeSumQtyVal').textContent     = totalQty;
       document.getElementById('oeSumSubtotalVal').textContent = formatPrice(subtotal);
-      document.getElementById('oeSumVatVal').textContent = formatPrice(vat);
-      document.getElementById('oeSumGrandVal').textContent = formatPrice(grandTotal);
-    } else {
+      document.getElementById('oeSumVatVal').textContent     = formatPrice(vat);
+      document.getElementById('oeSumGrandVal').textContent   = formatPrice(grandTotal);
+    } else if (summary) {
       summary.style.display = 'none';
     }
   }
@@ -1888,23 +1916,24 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
   window.searchOEProduct = function (idx, val) {
     const dd = document.getElementById('oedd-' + idx);
     if (!dd) return;
-
     if (!val.trim()) { dd.classList.remove('show'); return; }
 
     const q = val.toLowerCase();
-    const matches = productData
-      .map(p => ({ product: p, score: productRelevanceScore(p, val) }))
-      .filter(item => item.score > 0)
-      .sort((a, b) => b.score - a.score || (a.product.model || '').localeCompare(b.product.model || ''))
-      .slice(0, 10)
-      .map(item => item.product);
+    const matches = window.TM_ProductData
+      ? window.TM_ProductData
+        .map(p => ({ product: p, score: productRelevanceScore(p, val) }))
+        .filter(item => item.score > 0)
+        .sort((a, b) => b.score - a.score || (a.product.model || '').localeCompare(b.product.model || ''))
+        .slice(0, 10)
+        .map(item => item.product)
+      : [];
 
     if (matches.length === 0) {
       dd.innerHTML = '<div class="oe-dd-empty">No matches</div>';
     } else {
+      const priceType = getOEPriceType();
+      const priceField = priceType === 'msrp' ? 'msrp' : priceType === 'ws5' ? 'wholesale_plus5' : 'wholesale';
       dd.innerHTML = matches.map(p => {
-        const priceType = getOEPriceType();
-        const priceField = priceType === 'msrp' ? 'msrp' : priceType === 'ws5' ? 'wholesale_plus5' : 'wholesale';
         return `<div class="oe-dd-item" onclick="selectOEProduct(${idx},'${escHtml(p.model)}')">
           <div class="dd-model">${escHtml(p.model)}</div>
           <div class="dd-desc">${escHtml(p.short_desc || '')}</div>
@@ -1921,44 +1950,20 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     if (dd) dd.classList.remove('show');
   };
 
-  // ─── Escape HTML ───────────────────────────────────────────────────────────
-  function escHtml(str) {
-    if (!str) return '';
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
-  }
+  // ─── Helpers (from shell.js via window) ─────────────────────────
+  const formatPrice  = window.formatPrice  || function () { return '—'; };
+  const t            = window.t            || function (k) { return k; };
+  const escHtml      = window.escHtml      || function (s) { return s || ''; };
 
-  // ─── Init ──────────────────────────────────────────────────────────────────
-  function init() {
-    applyLang(currentLang);
-
-    // Language dropdown
-    const langBtn = document.getElementById('langBtn');
-    const langDD  = document.getElementById('langDD');
-    if (langBtn) {
-      langBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        langDD.classList.toggle('show');
-      });
-    }
-    document.querySelectorAll('.lang-opt').forEach(opt => {
-      opt.addEventListener('click', () => switchLang(opt.dataset.lang));
-    });
-    document.addEventListener('click', () => {
-      if (langDD) langDD.classList.remove('show');
-    });
-
+  // ─── Page Init ─────────────────────────────────────────────────
+  function initProductSearchPage() {
     // Search
     const searchBtn = document.getElementById('searchBtn');
     const qInput    = document.getElementById('q');
-    if (searchBtn) searchBtn.addEventListener('click', doSearch);
+    if (searchBtn) searchBtn.addEventListener('click', window.doSearch);
     if (qInput) {
       qInput.addEventListener('keydown', e => {
-        if (e.key === 'Enter') doSearch();
+        if (e.key === 'Enter') window.doSearch();
       });
     }
 
@@ -1967,20 +1972,32 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
       radio.addEventListener('change', () => { if (oeItems.length > 0) rerenderOETable(); });
     });
 
-    // Default page
-    navTo('product-search');
-
-    // Load data
-    loadProductData();
-    fetchExchangeRates();
+    renderPopularTags();
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  // ─── Data Ready Hook ──────────────────────────────────────────
+  // Called by shell.js when product+inventory data is loaded
+  window.onPageDataReady = function () {
+    renderPopularTags();
+    initProductSearchPage();
+  };
+
+  // ─── Lang Change Hook ─────────────────────────────────────────
+  // Called by shell.js when language/currency is switched
+  window.onPageLangChange = function () {
+    // Re-render search results if data loaded and there's a query
+    if (window.TM_DataLoaded && lastQuery) {
+      window.doSearch();
+    }
+    // Re-render OE table if there are items
+    if (oeItems.length > 0) {
+      rerenderOETable();
+    }
+  };
+
 })();
+
+
 
 </script>
 
