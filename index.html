@@ -1042,6 +1042,363 @@ a:hover { text-decoration: underline; }
   .oe-card-head { flex-direction: column; align-items: flex-start; }
 }
 
+
+/* ---- Page: order-est ---- */
+
+
+/* ===== order-est/page.css — Order Estimation Page Styles ===== */
+
+/* Page Layout */
+.oe-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.oe-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.oe-header h1 {
+  font-size: 28px;
+  color: #0d1b3e;
+  margin-bottom: 8px;
+}
+
+.oe-subtitle {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Price Type Selector */
+.oe-price-type {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+  padding: 15px 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+.oe-price-type > label:first-child {
+  font-weight: 600;
+  color: #0d1b3e;
+  margin-right: 10px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}
+
+.radio-label input[type="radio"] {
+  cursor: pointer;
+}
+
+/* Table */
+.oe-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 30px;
+}
+
+.oe-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.oe-table thead {
+  background: #0d1b3e;
+  color: white;
+}
+
+.oe-table th {
+  padding: 12px 10px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.oe-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.oe-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+/* Column Widths */
+.num-col { width: 40px; text-align: center; }
+.model-col { min-width: 180px; }
+.desc-col { min-width: 200px; }
+.qty-col { width: 80px; }
+.price-col { width: 100px; text-align: right; }
+.total-col { width: 120px; text-align: right; font-weight: 600; }
+.stock-col { width: 120px; text-align: center; }
+.action-col { width: 40px; text-align: center; }
+
+/* Model Search */
+.oe-search-wrap {
+  position: relative;
+}
+
+.oe-search-input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.oe-search-input:focus {
+  border-color: #0d1b3e;
+  outline: none;
+}
+
+.oe-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.oe-dropdown.show {
+  display: block;
+}
+
+.oe-dd-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.oe-dd-item:hover {
+  background: #f0f4ff;
+}
+
+.oe-dd-item:last-child {
+  border-bottom: none;
+}
+
+.dd-model {
+  font-weight: 600;
+  color: #0d1b3e;
+  font-size: 13px;
+}
+
+.dd-desc {
+  color: #666;
+  font-size: 12px;
+  flex: 1;
+  margin: 0 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dd-price {
+  color: #28a745;
+  font-weight: 600;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.oe-dd-empty {
+  padding: 15px;
+  text-align: center;
+  color: #999;
+  font-size: 13px;
+}
+
+/* Qty Input */
+.qty-col input[type="number"] {
+  width: 60px;
+  padding: 4px 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* Stock Badge */
+.oe-stock-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.oe-stock-badge.in-stock {
+  background: #d4edda;
+  color: #155724;
+}
+
+.oe-stock-badge.low-stock {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.oe-stock-badge.no-stock {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.oe-stock-badge.unknown {
+  background: #e2e3e5;
+  color: #383d41;
+}
+
+/* Delete Button */
+.oe-del-btn {
+  background: none;
+  border: none;
+  color: #dc3545;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.oe-del-btn:hover {
+  background: #f8d7da;
+}
+
+/* Add Item Button */
+.oe-add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #0d1b3e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.oe-add-btn:hover {
+  background: #1a2d5e;
+}
+
+/* Summary */
+.oe-summary {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.oe-summary h3 {
+  margin: 0 0 20px 0;
+  color: #0d1b3e;
+  font-size: 18px;
+}
+
+.oe-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.oe-sum-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+.oe-sum-label {
+  color: #666;
+  font-size: 14px;
+}
+
+.oe-sum-value {
+  font-weight: 600;
+  color: #0d1b3e;
+  font-size: 14px;
+}
+
+.oe-grand-total {
+  background: #0d1b3e !important;
+}
+
+.oe-grand-total .oe-sum-label,
+.oe-grand-total .oe-sum-value {
+  color: white !important;
+  font-size: 16px !important;
+}
+
+#oeShipInput {
+  width: 80px;
+  padding: 4px 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  display: inline-block;
+}
+
+/* Coming Soon (if needed) */
+.coming-soon-page {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.cs-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.cs-title {
+  font-size: 32px;
+  color: #0d1b3e;
+  margin-bottom: 10px;
+}
+
+.cs-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: #ffc107;
+  color: #333;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.cs-desc {
+  color: #666;
+  font-size: 16px;
+}
+
   </style>
 </head>
 <body>
@@ -1098,9 +1455,9 @@ a:hover { text-decoration: underline; }
 <!-- ══════════════════════════════════════════
      PAGES (injected by build_app.py)
 ═════════════════════════════════════════ -->
-<!-- ══════════════════════════════════════════
+<!-- ═══════════════════════════════════════
      PAGE: PRODUCT SEARCH
-═════════════════════════════════════════ -->
+═══════════════════════════════════════ -->
 <div class="page active" id="page-product-search">
   <div class="hero">
     <div class="hero-title" data-i18n="hero_title">TrolMaster Product Search</div>
@@ -1122,15 +1479,92 @@ a:hover { text-decoration: underline; }
   <div class="res" id="res"></div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     PAGE: ORDER ESTIMATION (Coming Soon)
+
+<!-- ═════════════════════════════════════════
+     PAGE: ORDER ESTIMATION
 ═════════════════════════════════════════ -->
 <div class="page" id="page-order-est">
-  <div class="coming-soon-page">
-    <div class="cs-icon">&#128178;</div>
-    <div class="cs-title" data-i18n="nav_orders_estimation">Order Estimation</div>
-    <div class="cs-badge" data-i18n="coming_soon">Coming Soon</div>
-    <div class="cs-desc" data-i18n="cs_order_est_desc">We're working on this feature. Stay tuned for order estimation tools!</div>
+  <div class="oe-page">
+    <div class="oe-header">
+      <h1 data-i18n="nav_orders_estimation">Order Estimation</h1>
+      <p class="oe-subtitle" data-i18n="oe_subtitle">Estimate your order total with real-time pricing and stock info</p>
+    </div>
+
+    <!-- Price Type Selector -->
+    <div class="oe-price-type">
+      <label data-i18n="oe_price_type">Price Type:</label>
+      <label class="radio-label">
+        <input type="radio" name="oePriceType" value="msrp" checked onchange="onOEPriceTypeChange()">
+        <span data-i18n="col_msrp">MSRP</span>
+      </label>
+      <label class="radio-label">
+        <input type="radio" name="oePriceType" value="ws5" onchange="onOEPriceTypeChange()">
+        <span data-i18n="col_wholesale_plus5">Wholesale +5%</span>
+      </label>
+      <label class="radio-label">
+        <input type="radio" name="oePriceType" value="ws" onchange="onOEPriceTypeChange()">
+        <span data-i18n="col_wholesale">Wholesale</span>
+      </label>
+    </div>
+
+    <!-- Order Items Table -->
+    <div class="oe-table-wrap">
+      <table class="oe-table">
+        <thead>
+          <tr>
+            <th class="num-col">#</th>
+            <th class="model-col" data-i18n="col_model">Model</th>
+            <th class="desc-col" data-i18n="col_description">Description</th>
+            <th class="qty-col" data-i18n="col_qty">Qty</th>
+            <th class="price-col" data-i18n="col_unit_price">Unit Price</th>
+            <th class="total-col" data-i18n="col_line_total">Line Total</th>
+            <th class="stock-col" data-i18n="col_stock">Stock</th>
+            <th class="action-col"></th>
+          </tr>
+        </thead>
+        <tbody id="oeItemsBody">
+          <tr>
+            <td colspan="8" class="oe-dd-empty" data-i18n="oe_empty_msg">Click "Add Item" to start building your order</td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="oe-add-btn" onclick="addOEItem()">
+        <span>+</span> <span data-i18n="oe_add_item">Add Item</span>
+      </button>
+    </div>
+
+    <!-- Summary -->
+    <div class="oe-summary" id="oeSummary" style="display:none;">
+      <h3 data-i18n="oe_summary">Order Summary</h3>
+      <div class="oe-summary-grid">
+        <div class="oe-sum-item">
+          <span class="oe-sum-label" data-i18n="oe_sum_items">Items:</span>
+          <span class="oe-sum-value" id="oeSumItemsVal">0</span>
+        </div>
+        <div class="oe-sum-item">
+          <span class="oe-sum-label" data-i18n="oe_sum_qty">Total Qty:</span>
+          <span class="oe-sum-value" id="oeSumQtyVal">0</span>
+        </div>
+        <div class="oe-sum-item">
+          <span class="oe-sum-label" data-i18n="oe_sum_subtotal">Subtotal:</span>
+          <span class="oe-sum-value" id="oeSumSubtotalVal">$0.00</span>
+        </div>
+        <div class="oe-sum-item">
+          <span class="oe-sum-label" data-i18n="oe_sum_vat">VAT (7%):</span>
+          <span class="oe-sum-value" id="oeSumVatVal">$0.00</span>
+        </div>
+        <div class="oe-sum-item">
+          <span class="oe-sum-label" data-i18n="oe_sum_shipping">Shipping:</span>
+          <span class="oe-sum-value">
+            <input type="number" id="oeShipInput" value="0" min="0" step="0.01" onchange="recalcOESummary()" style="width:80px;display:inline-block;"> / <span id="oeShipCurrency"></span>
+          </span>
+        </div>
+        <div class="oe-sum-item oe-grand-total">
+          <span class="oe-sum-label" data-i18n="oe_sum_grand">Grand Total:</span>
+          <span class="oe-sum-value" id="oeSumGrandVal">$0.00</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1150,7 +1584,7 @@ a:hover { text-decoration: underline; }
 ═════════════════════════════════════════ -->
 <script>
 // Config injected by build_app.py
-window.__TM_CONFIG__ = {"gviz_product": "https://docs.google.com/spreadsheets/d/1SJKY8cDn5_mGmaCw3zraOrAVpK95kPZ5/gviz/tq?tqx=out:json&gid=1191522392", "gviz_inventory": "https://docs.google.com/spreadsheets/d/1GVRc_dSaDGesEdh_7pnU4bzhm5lyBLvm-XCC4gQWr8w/gviz/tq?tqx=out:json&gid=817864539", "product_columns": {"model": 0, "short_desc": 1, "msrp": 2, "wholesale_plus5": 3, "wholesale": 4, "compatibility": 5, "dimensions_mm": 6, "dimensions_inch": 7, "weight_kg": 8, "weight_lb": 9, "qty_per_case": 10, "case_dimensions_mm": 11, "case_dimensions_inch": 12, "case_weight_kg": 13, "case_weight_lb": 14, "upc_sku": 15, "image_link": 16, "full_description": 17, "features": 18, "package_content": 19, "specifications": 20, "materials_link": 21}, "inventory_columns": {"model": 0, "description": 1, "stock_can_sale": 2, "stock_level": 3}, "popular_models": ["WCS-9", "NFS-2", "ECW-1", "ECS-7", "GCS-1", "HCS-2", "WN-9", "Model-V", "V-6", "V-10"], "fallback_rates": {"USD": 1, "HKD": 7.8, "THB": 35.5}, "lang_currency_map": {"en": "USD", "zh-Hant": "HKD", "th": "THB"}, "pages": [{"id": "product-search", "icon": "&#128269;", "i18n_key": "nav_product_search", "label": "Product Price and Stock", "disabled": false}, {"id": "tech-sheet", "icon": "&#128196;", "i18n_key": "nav_tech_sheet", "label": "Tech sheet download", "disabled": true}, {"id": "model-one", "icon": "&#128290;", "i18n_key": "nav_cable_calculator", "label": "Model-One Calculator", "disabled": true}, {"id": "order-est", "icon": "&#128178;", "i18n_key": "nav_orders_estimation", "label": "Order Estimation", "disabled": true}]};
+window.__TM_CONFIG__ = {"gviz_product": "https://docs.google.com/spreadsheets/d/1SJKY8cDn5_mGmaCw3zraOrAVpK95kPZ5/gviz/tq?tqx=out:json&gid=1191522392", "gviz_inventory": "https://docs.google.com/spreadsheets/d/1GVRc_dSaDGesEdh_7pnU4bzhm5lyBLvm-XCC4gQWr8w/gviz/tq?tqx=out:json&gid=817864539", "product_columns": {"model": 0, "short_desc": 1, "msrp": 2, "wholesale_plus5": 3, "wholesale": 4, "compatibility": 5, "dimensions_mm": 6, "dimensions_inch": 7, "weight_kg": 8, "weight_lb": 9, "qty_per_case": 10, "case_dimensions_mm": 11, "case_dimensions_inch": 12, "case_weight_kg": 13, "case_weight_lb": 14, "upc_sku": 15, "image_link": 16, "full_description": 17, "features": 18, "package_content": 19, "specifications": 20, "materials_link": 21}, "inventory_columns": {"model": 0, "description": 1, "stock_can_sale": 2, "stock_level": 3}, "popular_models": ["WCS-9", "NFS-2", "ECW-1", "ECS-7", "GCS-1", "HCS-2", "WN-9", "Model-V", "V-6", "V-10"], "fallback_rates": {"USD": 1, "HKD": 7.8, "THB": 35.5}, "lang_currency_map": {"en": "USD", "zh-Hant": "HKD", "th": "THB"}, "pages": [{"id": "product-search", "icon": "&#128269;", "i18n_key": "nav_product_search", "label": "Product Price and Stock", "disabled": false}, {"id": "order-est", "icon": "&#128178;", "i18n_key": "nav_orders_estimation", "label": "Order Estimation", "disabled": false}, {"id": "tech-sheet", "icon": "&#128196;", "i18n_key": "nav_tech_sheet", "label": "Tech sheet download", "disabled": true}, {"id": "model-one", "icon": "&#128290;", "i18n_key": "nav_cable_calculator", "label": "Model-One Calculator", "disabled": true}]};
 
 // i18n bundles
 window.__TM_I18N__ = {"en": {"app_name": "TrolMaster Product Portal", "company_name": "TrolMaster Asia Company Ltd", "nav_product_search": "Product Search", "nav_orders_estimation": "Orders Estimation", "nav_cable_calculator": "Model-One Cable Calculator", "coming_soon": "Coming Soon", "search_placeholder": "Search model number (e.g. WCS-9, V-6...)", "search_button": "Search", "clear_button": "Clear", "popular_models": "Popular Models", "currency_label": "Currency", "language_label": "Language", "hero_title": "Product Price and Stock", "hero_sub": "Search by model number, keyword, or description to view pricing and stock availability", "result_title": "Search Results", "no_results": "No products found for '{q}'. Please check and try again.", "loading": "Loading...", "error_network": "Network error. Please check your connection.", "error_data": "Failed to load product data.", "col_model": "Model", "col_msrp": "MSRP", "col_wholesale_plus5": "Wholesale +5%", "col_wholesale": "Wholesale", "col_stock": "Stock", "col_stock_level": "Stock Level", "col_image": "Image", "col_materials": "Materials", "col_description": "Description", "col_features": "Features", "col_package_content": "Package Content", "col_specifications": "Specifications", "col_compatibility": "Compatibility", "stock_in": "In Stock", "stock_low": "Low Stock", "stock_out": "Out of Stock", "in_stock": "In Stock", "low_stock": "Low Stock", "out_of_stock": "Out of Stock", "unknown": "N/A", "view_image": "View Image", "view_materials": "Materials Link", "expand_details": "Show Details", "collapse_details": "Hide Details", "more": "more...", "less": "less", "footer_data_source": "Data sourced from Google Sheets · Prices subject to change", "rate_updated": "Exchange rate updated", "rate_fallback": "Using fallback exchange rate", "tab_overview": "Overview", "tab_details": "Details", "tab_specs": "Specifications", "product_information": "Product Information", "cs_order_est_desc": "We're working on this feature. Stay tuned for order estimation tools!", "cat_controllers": "Controllers", "disclaimer": "Prices shown are for reference only. Final pricing is subject to confirmation by TrolMaster."}, "zh-Hant": {"app_name": "TrolMaster 產品查詢系統", "company_name": "TrolMaster Asia Company Ltd", "nav_product_search": "產品搜索", "nav_orders_estimation": "訂單估算", "nav_cable_calculator": "Model-One 線材計算器", "coming_soon": "即將推出", "search_placeholder": "輸入型號搜索（例如 WCS-9、V-6...）", "search_button": "搜索", "clear_button": "清除", "popular_models": "熱門型號", "currency_label": "貨幣", "language_label": "語言", "hero_title": "產品價格及庫存", "hero_sub": "輸入型號、關鍵字或描述，查詢定價及庫存狀況", "result_title": "搜索結果", "no_results": "找不到「{q}」相關產品，請確認後重試。", "loading": "載入中...", "error_network": "網絡錯誤，請檢查連線。", "error_data": "無法載入產品數據。", "col_model": "型號", "col_msrp": "建議零售價", "col_wholesale_plus5": "批發價 +5%", "col_wholesale": "批發價", "col_stock": "庫存", "col_stock_level": "庫存等級", "col_image": "圖片", "col_materials": "材料資料", "col_description": "產品描述", "col_features": "主要功能", "col_package_content": "包裝內容", "col_specifications": "規格參數", "col_compatibility": "兼容性", "stock_in": "有貨", "stock_low": "庫存偏低", "stock_out": "缺貨", "in_stock": "有貨", "low_stock": "庫存偏低", "out_of_stock": "缺貨", "unknown": "未確認", "view_image": "查看圖片", "view_materials": "材料連結", "expand_details": "顯示詳情", "collapse_details": "收起詳情", "more": "更多...", "less": "收起", "footer_data_source": "數據來源：Google Sheets · 價格以最終確認為準", "rate_updated": "匯率已更新", "rate_fallback": "使用預設匯率", "tab_overview": "概覽", "tab_details": "詳情", "tab_specs": "規格", "product_information": "產品資訊", "cs_order_est_desc": "我們正在開發此功能，敬請期待訂單估算工具！", "cat_controllers": "控制器", "disclaimer": "本平台所示價格僅供參考，實際價格以 TrolMaster 最終確認為準。"}, "th": {"app_name": "ระบบค้นหาสินค้า TrolMaster", "company_name": "TrolMaster Asia Company Ltd", "nav_product_search": "ค้นหาสินค้า", "nav_orders_estimation": "ประมาณการสั่งซื้อ", "nav_cable_calculator": "เครื่องคำนวณสาย Model-One", "coming_soon": "เร็วๆ นี้", "search_placeholder": "ค้นหารุ่นสินค้า (เช่น WCS-9, V-6...)", "search_button": "ค้นหา", "clear_button": "ล้าง", "popular_models": "รุ่นยอดนิยม", "currency_label": "สกุลเงิน", "language_label": "ภาษา", "hero_title": "ราคาและสต็อกสินค้า", "hero_sub": "ค้นหาด้วยรุ่น คำค้นหา หรือคำอธิบาย เพื่อดูราคาและสถานะสต็อก", "result_title": "ผลการค้นหา", "no_results": "ไม่พบสินค้า กรุณาตรวจสอบรหัสรุ่นและลองอีกครั้ง", "loading": "กำลังโหลด...", "error_network": "เกิดข้อผิดพลาดด้านเครือข่าย กรุณาตรวจสอบการเชื่อมต่อ", "error_data": "ไม่สามารถโหลดข้อมูลสินค้าได้", "col_model": "รุ่น", "col_msrp": "ราคาแนะนำ", "col_wholesale_plus5": "ราคาส่ง +5%", "col_wholesale": "ราคาส่ง", "col_stock": "สต็อก", "col_stock_level": "ระดับสต็อก", "col_image": "รูปภาพ", "col_materials": "ข้อมูลวัสดุ", "col_description": "คำอธิบายสินค้า", "col_features": "คุณสมบัติหลัก", "col_package_content": "สิ่งที่มาในกล่อง", "col_specifications": "ข้อมูลจำเพาะ", "col_compatibility": "ความเข้ากันได้", "stock_in": "มีสินค้า", "stock_low": "สินค้าใกล้หมด", "stock_out": "สินค้าหมด", "in_stock": "มีสินค้า", "low_stock": "สินค้าใกล้หมด", "out_of_stock": "สินค้าหมด", "unknown": "ไม่ทราบ", "view_image": "ดูรูปภาพ", "view_materials": "ลิงก์วัสดุ", "expand_details": "แสดงรายละเอียด", "collapse_details": "ซ่อนรายละเอียด", "more": "เพิ่มเติม...", "less": "ย่อ", "footer_data_source": "ข้อมูลจาก Google Sheets · ราคาอาจเปลี่ยนแปลงได้", "rate_updated": "อัปเดตอัตราแลกเปลี่ยนแล้ว", "rate_fallback": "ใช้อัตราแลกเปลี่ยนสำรอง", "tab_overview": "ภาพรวม", "tab_details": "รายละเอียด", "tab_specs": "ข้อมูลจำเพาะ", "product_information": "ข้อมูลสินค้า", "cs_order_est_desc": "เรากำลังพัฒนาฟีเจอร์นี้ โปรดติดตามเครื่องมือประมาณการสั่งซื้อ!", "cat_controllers": "ตัวควบคุม", "disclaimer": "ราคาที่แสดงเป็นเพียงข้อมูลอ้างอิง เท่านั้น ราคาสุดท้ายอยู่ที่การยืนยันจาก TrolMaster"}};
@@ -1530,24 +1964,21 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
 /* ===== Page: product-search ===== */
 
 
-/* ===== product-search/page.js — Product Search & Order Est. ===== */
+/* ===== product-search/page.js — Product Search Page ===== */
 (function () {
   'use strict';
 
-  // ─── State ────────────────────────────────────────────────────────
-  let oeItems = [];  // Order Estimation items
+  // ─── State ────────────────────────────────────────────────
+  var lastQuery = '';
 
-  // ─── Search ───────────────────────────────────────────────────────
-  let lastQuery = '';
-
-  // Build a word-boundary-aware regex from a search query.
+  // ─── Search ───────────────────────────────────────────────
   function buildSearchRegex(query, strict) {
-    const segments = query.match(/[a-zA-Z0-9]+/g);
+    var segments = query.match(/[a-zA-Z0-9]+/g);
     if (!segments || segments.length === 0) return null;
-    const pattern = segments
-      .map(seg => seg.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+    var pattern = segments
+      .map(function(seg) { return seg.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); })
       .join('[\\s\\-_]*');
-    let fullPattern;
+    var fullPattern;
     if (strict) {
       fullPattern = '(?<![a-zA-Z0-9])' + pattern + '(?![a-zA-Z0-9])';
     } else {
@@ -1560,20 +1991,15 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     }
   }
 
-  function fieldContainsQuery(text, regex) {
-    if (!text || !regex) return false;
-    return regex.test(text);
-  }
-
   function productRelevanceScore(p, q) {
     if (!p.model) return 0;
-    const strictRegex = buildSearchRegex(q, true);
-    const looseRegex  = buildSearchRegex(q, false);
+    var strictRegex = buildSearchRegex(q, true);
+    var looseRegex  = buildSearchRegex(q, false);
     if (!strictRegex && !looseRegex) return 0;
 
-    const qNorm = q.replace(/[-_\s]/g, '').toLowerCase();
-    const modelNorm = (p.model || '').replace(/[-_\s]/g, '').toLowerCase();
-    let score = 0;
+    var qNorm = q.replace(/[-_\s]/g, '').toLowerCase();
+    var modelNorm = (p.model || '').replace(/[-_\s]/g, '').toLowerCase();
+    var score = 0;
 
     if (modelNorm === qNorm) {
       score += 2000;
@@ -1595,8 +2021,9 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
       score += 50;
     }
 
-    const lowFields = [p.features, p.specifications, p.compatibility, p.package_content];
-    for (const field of lowFields) {
+    var lowFields = [p.features, p.specifications, p.compatibility, p.package_content];
+    for (var i = 0; i < lowFields.length; i++) {
+      var field = lowFields[i];
       if (looseRegex && field && looseRegex.test(field)) {
         score += 20;
         break;
@@ -1607,7 +2034,7 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
   }
 
   window.doSearch = function () {
-    const q = (document.getElementById('q').value || '').trim();
+    var q = (document.getElementById('q').value || '').trim();
     lastQuery = q;
     if (!q) {
       document.getElementById('res').innerHTML = '';
@@ -1615,31 +2042,31 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     }
     if (!window.TM_DataLoaded) return;
 
-    const scored = window.TM_ProductData
-      .map(p => ({ product: p, score: productRelevanceScore(p, q) }))
-      .filter(item => item.score > 0);
+    var scored = window.TM_ProductData
+      .map(function(p) { return { product: p, score: productRelevanceScore(p, q) }; })
+      .filter(function(item) { return item.score > 0; });
 
-    scored.sort((a, b) => {
+    scored.sort(function(a, b) {
       if (b.score !== a.score) return b.score - a.score;
       return (a.product.model || '').localeCompare(b.product.model || '');
     });
 
-    const results = scored.map(item => item.product);
+    var results = scored.map(function(item) { return item.product; });
     renderResults(results);
   };
 
   function renderPopularTags() {
-    const tagsEl = document.getElementById('tags');
+    var tagsEl = document.getElementById('tags');
     if (!tagsEl) return;
-    const models = window.TM_PopularModels || [];
-    tagsEl.innerHTML = models.map(m => {
-      const safe = window.escHtml(m);
+    var models = window.TM_PopularModels || [];
+    tagsEl.innerHTML = models.map(function(m) {
+      var safe = window.escHtml(m);
       return '<span class="tag" onclick="document.getElementById(\'q\').value=\'' + safe + '\';doSearch()">' + safe + '</span>';
     }).join('');
   }
 
   function renderResults(results) {
-    const area = document.getElementById('res');
+    var area = document.getElementById('res');
     if (!area) return;
 
     if (!results || results.length === 0) {
@@ -1647,56 +2074,56 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
       return;
     }
 
-    let html = '';
-    let lastCategory = '__NONE__';
+    var html = '';
+    var lastCategory = '__NONE__';
 
-    results.forEach((p, i) => {
-      const cat = p.category || '';
+    results.forEach(function(p, idx) {
+      var cat = p.category || '';
       if (cat !== lastCategory) {
         html += buildCategoryHeader(cat);
         lastCategory = cat;
       }
-      html += buildProductCard(p, i);
+      html += buildProductCard(p, idx);
     });
 
     area.innerHTML = html;
   }
 
   function buildCategoryHeader(category) {
-    const label = category || t('cat_controllers');
+    var label = category || t('cat_controllers');
     return '<div class="category-header"><span class="cat-icon">◆</span> ' + escHtml(label) + '</div>';
   }
 
-  // ─── Stock Info ─────────────────────────────────────────────────
+  // ─── Stock Info ─────────────────────────────────────────
   function getStockInfo(model) {
-    const key = (model || '').trim().toUpperCase();
-    const inv = window.TM_InventoryData ? window.TM_InventoryData[key] : null;
+    var key = (model || '').trim().toUpperCase();
+    var inv = window.TM_InventoryData ? window.TM_InventoryData[key] : null;
     if (!inv) return { level: '', qty: '', badgeClass: 'unknown', badgeKey: 'unknown' };
 
-    const canSale     = parseFloat(String(inv.stock_can_sale || '0').replace(/[^0-9.\-]/g, '')) || 0;
-    const stockLevel = parseFloat(String(inv.stock_level    || '0').replace(/[^0-9.\-]/g, '')) || 0;
+    var canSale     = parseFloat(String(inv.stock_can_sale || '0').replace(/[^0-9.\-]/g, '')) || 0;
+    var stockLevel = parseFloat(String(inv.stock_level    || '0').replace(/[^0-9.\-]/g, '')) || 0;
 
-    let badgeClass = 'in-stock';
-    let badgeKey   = 'in_stock';
+    var badgeClass = 'in-stock';
+    var badgeKey   = 'in_stock';
     if (canSale <= 0) {
       badgeClass = 'no-stock'; badgeKey = 'out_of_stock';
     } else if (canSale <= 5) {
       badgeClass = 'low-stock'; badgeKey = 'low_stock';
     }
 
-    return { level: stockLevel, qty: canSale, badgeClass, badgeKey };
+    return { level: stockLevel, qty: canSale, badgeClass: badgeClass, badgeKey: badgeKey };
   }
 
-  // ─── Product Card ───────────────────────────────────────────────
-  const DESC_MAX_CHARS = 80;
+  // ─── Product Card ───────────────────────────────────────
+  var DESC_MAX_CHARS = 80;
 
   function buildProductCard(p, idx) {
-    let product = p;
+    var product = p;
     if (window.TM_CurrentLang && window.TM_CurrentLang !== 'en' && p.model) {
-      const model = p.model.trim();
-      const langTranslations = (window.__TM_PRODUCT_TRANSLATIONS__ || {})[window.TM_CurrentLang];
+      var model = p.model.trim();
+      var langTranslations = (window.__TM_PRODUCT_TRANSLATIONS__ || {})[window.TM_CurrentLang];
       if (langTranslations && langTranslations[model]) {
-        const trans = langTranslations[model];
+        var trans = langTranslations[model];
         product = Object.assign({}, p);
         if (trans.short_desc       && trans.short_desc.trim())       product.short_desc       = trans.short_desc;
         if (trans.full_description  && trans.full_description.trim())  product.full_description  = trans.full_description;
@@ -1706,96 +2133,91 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
       }
     }
 
-    const stock     = getStockInfo(product.model);
-    const stockBadge = (stock.badgeKey && stock.badgeKey !== 'unknown')
+    var stock     = getStockInfo(product.model);
+    var stockBadge = (stock.badgeKey && stock.badgeKey !== 'unknown')
       ? '<span class="oe-stock-badge ' + stock.badgeClass + '">' + t(stock.badgeKey) + (stock.qty ? ' (' + stock.qty + ')' : '') + '</span>'
       : '';
 
-    const imgRow = product.image_link
+    var imgRow = product.image_link
       ? '<div class="irow"><div class="ilabel" data-i18n="col_image">' + t('col_image') + '</div><div class="ivalue"><a href="' + escHtml(product.image_link) + '" target="_blank" rel="noopener">' + t('view_image') + '</a></div></div>'
       : '';
 
-    const matRow = product.materials_link
+    var matRow = product.materials_link
       ? '<div class="irow"><div class="ilabel" data-i18n="col_materials">' + t('col_materials') + '</div><div class="ivalue"><a href="' + escHtml(product.materials_link) + '" target="_blank" rel="noopener">' + t('view_materials') + '</a></div></div>'
       : '';
 
-    const compatRow = product.compatibility
+    var compatRow = product.compatibility
       ? '<div class="irow"><div class="ilabel" data-i18n="col_compatibility">' + t('col_compatibility') + '</div><div class="ivalue">' + escHtml(product.compatibility) + '</div></div>'
       : '';
 
-    const fullDesc    = product.full_description || product.short_desc || '';
-    const needsTruncation = fullDesc.length > DESC_MAX_CHARS;
-    const shortDesc   = needsTruncation ? fullDesc.substring(0, DESC_MAX_CHARS) + '...' : fullDesc;
-    const titleDesc   = product.short_desc || product.model;
+    var fullDesc    = product.full_description || product.short_desc || '';
+    var needsTruncation = fullDesc.length > DESC_MAX_CHARS;
+    var shortDesc   = needsTruncation ? fullDesc.substring(0, DESC_MAX_CHARS) + '...' : fullDesc;
+    var titleDesc   = product.short_desc || product.model;
 
-    return `
-<div class="card" id="card-${idx}">
-  <div class="c-head">
-    <div class="c-title-area">
-      <h2 class="c-desc-title">${escHtml(titleDesc)}</h2>
-      <div class="c-model-chip">${t('col_model')}: ${escHtml(p.model)}</div>
-    </div>
-    ${stockBadge}
-  </div>
-  <div class="c-body">
-    <!-- Price Section -->
-    <table class="ptable">
-      <thead>
-        <tr>
-          <th data-i18n="col_msrp">${t('col_msrp')}</th>
-          <th data-i18n="col_wholesale_plus5">${t('col_wholesale_plus5')}</th>
-          <th data-i18n="col_wholesale">${t('col_wholesale')}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>${formatPrice(product.msrp)}</td>
-          <td>${formatPrice(product.wholesale_plus5)}</td>
-          <td>${formatPrice(product.wholesale)}</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="price-note">* ${t('prices_in')} ${CURRENCY_SYMBOL[window.TM_CurrentCurrency] || window.TM_CurrentCurrency}</div>
+    return '<div class="card" id="card-' + idx + '">' +
+      '<div class="c-head">' +
+        '<div class="c-title-area">' +
+          '<h2 class="c-desc-title">' + escHtml(titleDesc) + '</h2>' +
+          '<div class="c-model-chip">' + t('col_model') + ': ' + escHtml(p.model) + '</div>' +
+        '</div>' +
+        stockBadge +
+      '</div>' +
+      '<div class="c-body">' +
+        '<!-- Price Section -->' +
+        '<table class="ptable">' +
+          '<thead><tr>' +
+            '<th data-i18n="col_msrp">' + t('col_msrp') + '</th>' +
+            '<th data-i18n="col_wholesale_plus5">' + t('col_wholesale_plus5') + '</th>' +
+            '<th data-i18n="col_wholesale">' + t('col_wholesale') + '</th>' +
+          '</tr></thead>' +
+          '<tbody><tr>' +
+            '<td>' + formatPrice(product.msrp) + '</td>' +
+            '<td>' + formatPrice(product.wholesale_plus5) + '</td>' +
+            '<td>' + formatPrice(product.wholesale) + '</td>' +
+          '</tr></tbody>' +
+        '</table>' +
+        '<div class="price-note">* ' + t('prices_in') + ' ' + (window.CURRENCY_SYMBOL ? (window.CURRENCY_SYMBOL[window.TM_CurrentCurrency] || window.TM_CurrentCurrency) : window.TM_CurrentCurrency) + '</div>' +
 
-    <!-- Product Information Section -->
-    <div class="product-info-section">
-      <div class="pi-title">${t('product_information')}</div>
-      <div class="pi-content" id="pi-content-${idx}">
-        <div class="pi-short">${escHtml(shortDesc)}</div>
-        ${needsTruncation ? '<div class="pi-full" style="display:none">' + escHtml(fullDesc) + '</div>' : ''}
-      </div>
-      ${needsTruncation ? '<button class="pi-toggle" onclick="toggleProductInfo(' + idx + ')" data-expanded="false">' + t('more') + '</button>' : ''}
-      ${imgRow}
-      ${matRow}
-      ${compatRow}
-    </div>
+        '<!-- Product Information Section -->' +
+        '<div class="product-info-section">' +
+          '<div class="pi-title">' + t('product_information') + '</div>' +
+          '<div class="pi-content" id="pi-content-' + idx + '">' +
+            '<div class="pi-short">' + escHtml(shortDesc) + '</div>' +
+            (needsTruncation ? '<div class="pi-full" style="display:none">' + escHtml(fullDesc) + '</div>' : '') +
+          '</div>' +
+          (needsTruncation ? '<button class="pi-toggle" onclick="toggleProductInfo(' + idx + ')" data-expanded="false">' + t('more') + '</button>' : '') +
+          imgRow +
+          matRow +
+          compatRow +
+        '</div>' +
 
-    <div class="stock">
-      <div class="stock-title" data-i18n="col_stock">${t('col_stock')}</div>
-      <div class="igrid">
-        <div class="icard">
-          <div class="l" data-i18n="col_stock_level">${t('col_stock_level')}</div>
-          <div class="v">${stock.badgeKey !== 'unknown' ? t(stock.badgeKey) : '—'}</div>
-        </div>
-        <div class="icard">
-          <div class="l" data-i18n="col_stock">${t('col_stock')}</div>
-          <div class="v">${stock.qty || '—'}</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>`;
+        '<div class="stock">' +
+          '<div class="stock-title" data-i18n="col_stock">' + t('col_stock') + '</div>' +
+          '<div class="igrid">' +
+            '<div class="icard">' +
+              '<div class="l" data-i18n="col_stock_level">' + t('col_stock_level') + '</div>' +
+              '<div class="v">' + (stock.badgeKey !== 'unknown' ? t(stock.badgeKey) : '—') + '</div>' +
+            '</div>' +
+            '<div class="icard">' +
+              '<div class="l" data-i18n="col_stock">' + t('col_stock') + '</div>' +
+              '<div class="v">' + (stock.qty || '—') + '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
   }
 
-  // ─── Description Toggle ──────────────────────────────────────────
+  // ─── Description Toggle ──────────────────────────────────
   window.toggleProductInfo = function (idx) {
-    const content = document.getElementById('pi-content-' + idx);
-    const btn = content ? content.nextElementSibling : null;
+    var content = document.getElementById('pi-content-' + idx);
+    var btn = content ? content.nextElementSibling : null;
     if (!content || !btn) return;
 
-    const shortEl = content.querySelector('.pi-short');
-    const fullEl  = content.querySelector('.pi-full');
-    const isExpanded = btn.getAttribute('data-expanded') === 'true';
+    var shortEl = content.querySelector('.pi-short');
+    var fullEl  = content.querySelector('.pi-full');
+    var isExpanded = btn.getAttribute('data-expanded') === 'true';
 
     if (isExpanded) {
       shortEl.style.display = '';
@@ -1810,7 +2232,71 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     }
   };
 
-  // ─── Order Estimation ───────────────────────────────────────────
+  // ─── Helpers (from shell.js via window) ─────────────────
+  var formatPrice  = window.formatPrice  || function () { return '—'; };
+  var t            = window.t            || function (k) { return k; };
+  var escHtml      = window.escHtml      || function (s) { return s || ''; };
+
+  // ─── Page Init ─────────────────────────────────────────
+  function initProductSearchPage() {
+    var searchBtn = document.getElementById('searchBtn');
+    var qInput    = document.getElementById('q');
+    if (searchBtn) searchBtn.addEventListener('click', window.doSearch);
+    if (qInput) {
+      qInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') window.doSearch();
+      });
+    }
+    renderPopularTags();
+  }
+
+  // ─── Data Ready Hook ──────────────────────────────────
+  window.onPageDataReady = function () {
+    renderPopularTags();
+    initProductSearchPage();
+  };
+
+  // ─── Lang Change Hook ─────────────────────────────────
+  window.onPageLangChange = function () {
+    // Re-render search results if data loaded and there's a query
+    if (window.TM_DataLoaded && lastQuery) {
+      window.doSearch();
+    }
+  };
+
+})();
+
+
+
+</script>
+
+<script>
+/* ===== Page: order-est ===== */
+
+
+/* ===== order-est/page.js — Order Estimation Page ===== */
+(function () {
+  'use strict';
+
+  // ─── State ────────────────────────────────────────────────
+  let oeItems = [];
+
+  // ─── Helpers (from shell.js via window) ─────────────────
+  const formatPrice  = window.formatPrice  || function () { return '—'; };
+  const t            = window.t            || function (k) { return k; };
+  const escHtml      = window.escHtml      || function (s) { return s || ''; };
+
+  // ─── Price Type ──────────────────────────────────────────
+  function getOEPriceType() {
+    const checked = document.querySelector('input[name="oePriceType"]:checked');
+    return checked ? checked.value : 'msrp';
+  }
+
+  window.onOEPriceTypeChange = function () {
+    if (oeItems.length > 0) rerenderOETable();
+  };
+
+  // ─── Add/Remove/Update Items ────────────────────────────
   window.addOEItem = function () {
     oeItems.push({ model: '', qty: 1 });
     rerenderOETable();
@@ -1826,7 +2312,7 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     oeItems[idx][field] = value;
     if (field === 'model') {
       const found = window.TM_ProductData
-        ? window.TM_ProductData.find(p => p.model.toUpperCase() === value.trim().toUpperCase())
+        ? window.TM_ProductData.find(function(p) { return p.model.toUpperCase() === value.trim().toUpperCase(); })
         : null;
       if (found) {
         oeItems[idx]._product = found;
@@ -1837,108 +2323,81 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     rerenderOETable();
   };
 
-  window.recalcOE = function () {
-    rerenderOESummary();
-  };
-
-  function getOEPriceType() {
-    const checked = document.querySelector('input[name="priceType"]:checked');
-    return checked ? checked.value : 'msrp';
-  }
-
-  function rerenderOETable() {
-    const tbody   = document.getElementById('oeItemsBody');
-    const summary = document.getElementById('oeSummary');
-    if (!tbody) return;
-
-    if (oeItems.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="7" class="oe-dd-empty" data-i18n="oe_empty">' + t('oe_empty_msg') + '</td></tr>';
-      if (summary) summary.style.display = 'none';
-      return;
+  // ─── Search Products ────────────────────────────────────
+  function buildSearchRegex(query, strict) {
+    var segments = query.match(/[a-zA-Z0-9]+/g);
+    if (!segments || segments.length === 0) return null;
+    var pattern = segments
+      .map(function(seg) { return seg.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); })
+      .join('[\\s\\-_]*');
+    var fullPattern;
+    if (strict) {
+      fullPattern = '(?<![a-zA-Z0-9])' + pattern + '(?![a-zA-Z0-9])';
+    } else {
+      fullPattern = '(?<![a-zA-Z0-9])' + pattern;
     }
-
-    const priceType   = getOEPriceType();
-    let totalItems   = 0;
-    let totalQty     = 0;
-    let subtotal     = 0;
-
-    tbody.innerHTML = oeItems.map((item, idx) => {
-      const p = item._product;
-      const priceField = priceType === 'msrp' ? 'msrp' : priceType === 'ws5' ? 'wholesale_plus5' : 'wholesale';
-      const unitPrice = p ? parseFloat(String(p[priceField] || '0').replace(/[^0-9.]/g, '')) : 0;
-      const qty       = parseInt(item.qty) || 0;
-      const lineTotal = unitPrice * qty;
-      if (p) { totalItems++; totalQty += qty; subtotal += lineTotal; }
-
-      const stock     = p ? getStockInfo(p.model) : null;
-      const stockBadge = stock
-        ? '<span class="oe-stock-badge ' + stock.badgeClass + '">' + t(stock.badgeKey) + '</span>'
-        : '';
-
-      return `<tr>
-        <td class="num-col">${idx + 1}</td>
-        <td class="model-col">
-          <div class="oe-search-wrap">
-            <input type="text" class="oe-search-input" value="${escHtml(item.model)}"
-                   placeholder="Model..." oninput="searchOEProduct(${idx}, this.value)"
-                   onfocus="searchOEProduct(${idx}, this.value)">
-            <div class="oe-dropdown" id="oedd-${idx}"></div>
-          </div>
-        </td>
-        <td class="desc-col">${escHtml(p ? (p.full_description || p.short_desc || '') : '')}</td>
-        <td class="qty-col"><input type="number" value="${qty}" min="0" onchange="updateOEItem(${idx},'qty',this.value)"></td>
-        <td class="price-col">${p ? formatPrice(p[priceField]) : '—'}</td>
-        <td class="total-col">${p ? formatPrice(lineTotal) : '—'}</td>
-        <td class="action-col"><button class="oe-del-btn" onclick="removeOEItem(${idx})">✕</button></td>
-      </tr>`;
-    }).join('');
-
-    if (summary && totalItems > 0) {
-      summary.style.display = 'block';
-      const vat        = subtotal * 0.07;
-      const shipping   = parseFloat(document.getElementById('oeShipInput').value) || 0;
-      const grandTotal = subtotal + vat + shipping;
-
-      document.getElementById('oeSumItemsVal').textContent   = totalItems;
-      document.getElementById('oeSumQtyVal').textContent     = totalQty;
-      document.getElementById('oeSumSubtotalVal').textContent = formatPrice(subtotal);
-      document.getElementById('oeSumVatVal').textContent     = formatPrice(vat);
-      document.getElementById('oeSumGrandVal').textContent   = formatPrice(grandTotal);
-    } else if (summary) {
-      summary.style.display = 'none';
+    try {
+      return new RegExp(fullPattern, 'i');
+    } catch (e) {
+      return null;
     }
   }
 
-  function rerenderOESummary() {
-    rerenderOETable();
+  function productRelevanceScore(p, q) {
+    if (!p.model) return 0;
+    var strictRegex = buildSearchRegex(q, true);
+    var looseRegex  = buildSearchRegex(q, false);
+    if (!strictRegex && !looseRegex) return 0;
+
+    var qNorm = q.replace(/[-_\s]/g, '').toLowerCase();
+    var modelNorm = (p.model || '').replace(/[-_\s]/g, '').toLowerCase();
+    var score = 0;
+
+    if (modelNorm === qNorm) {
+      score += 2000;
+    } else if (modelNorm.startsWith(qNorm)) {
+      score += 1000;
+    } else if (strictRegex && strictRegex.test(p.model)) {
+      score += 500;
+    }
+
+    if (looseRegex && p.short_desc) {
+      if (p.short_desc.toLowerCase().startsWith(q.toLowerCase())) {
+        score += 300;
+      } else if (looseRegex.test(p.short_desc)) {
+        score += 200;
+      }
+    }
+
+    return score;
   }
 
   window.searchOEProduct = function (idx, val) {
-    const dd = document.getElementById('oedd-' + idx);
+    var dd = document.getElementById('oedd-' + idx);
     if (!dd) return;
     if (!val.trim()) { dd.classList.remove('show'); return; }
 
-    const q = val.toLowerCase();
-    const matches = window.TM_ProductData
+    var matches = window.TM_ProductData
       ? window.TM_ProductData
-        .map(p => ({ product: p, score: productRelevanceScore(p, val) }))
-        .filter(item => item.score > 0)
-        .sort((a, b) => b.score - a.score || (a.product.model || '').localeCompare(b.product.model || ''))
+        .map(function(p) { return { product: p, score: productRelevanceScore(p, val) }; })
+        .filter(function(item) { return item.score > 0; })
+        .sort(function(a, b) { return b.score - a.score || (a.product.model || '').localeCompare(b.product.model || ''); })
         .slice(0, 10)
-        .map(item => item.product)
+        .map(function(item) { return item.product; })
       : [];
 
     if (matches.length === 0) {
-      dd.innerHTML = '<div class="oe-dd-empty">No matches</div>';
+      dd.innerHTML = '<div class="oe-dd-empty">' + t('no_results').replace('{q}', escHtml(val)) + '</div>';
     } else {
-      const priceType = getOEPriceType();
-      const priceField = priceType === 'msrp' ? 'msrp' : priceType === 'ws5' ? 'wholesale_plus5' : 'wholesale';
-      dd.innerHTML = matches.map(p => {
-        return `<div class="oe-dd-item" onclick="selectOEProduct(${idx},'${escHtml(p.model)}')">
-          <div class="dd-model">${escHtml(p.model)}</div>
-          <div class="dd-desc">${escHtml(p.short_desc || '')}</div>
-          <div class="dd-price">${formatPrice(p[priceField])}</div>
-        </div>`;
+      var priceType = getOEPriceType();
+      var priceField = priceType === 'msrp' ? 'msrp' : priceType === 'ws5' ? 'wholesale_plus5' : 'wholesale';
+      dd.innerHTML = matches.map(function(p) {
+        var modelEscaped = escHtml(p.model);
+        return '<div class="oe-dd-item" onclick="selectOEProduct(' + idx + ',\'' + modelEscaped + '\')">' +
+          '<div class="dd-model">' + modelEscaped + '</div>' +
+          '<div class="dd-desc">' + escHtml(p.short_desc || '') + '</div>' +
+          '<div class="dd-price">' + formatPrice(p[priceField]) + '</div>' +
+        '</div>';
       }).join('');
     }
     dd.classList.add('show');
@@ -1946,52 +2405,144 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
 
   window.selectOEProduct = function (idx, model) {
     updateOEItem(idx, 'model', model);
-    const dd = document.getElementById('oedd-' + idx);
+    var dd = document.getElementById('oedd-' + idx);
     if (dd) dd.classList.remove('show');
   };
 
-  // ─── Helpers (from shell.js via window) ─────────────────────────
-  const formatPrice  = window.formatPrice  || function () { return '—'; };
-  const t            = window.t            || function (k) { return k; };
-  const escHtml      = window.escHtml      || function (s) { return s || ''; };
+  // ─── Stock Info ─────────────────────────────────────────
+  function getStockInfo(model) {
+    var key = (model || '').trim().toUpperCase();
+    var inv = window.TM_InventoryData ? window.TM_InventoryData[key] : null;
+    if (!inv) return { level: '', qty: '', badgeClass: 'unknown', badgeKey: 'unknown' };
 
-  // ─── Page Init ─────────────────────────────────────────────────
-  function initProductSearchPage() {
-    // Search
-    const searchBtn = document.getElementById('searchBtn');
-    const qInput    = document.getElementById('q');
-    if (searchBtn) searchBtn.addEventListener('click', window.doSearch);
-    if (qInput) {
-      qInput.addEventListener('keydown', e => {
-        if (e.key === 'Enter') window.doSearch();
-      });
+    var canSale     = parseFloat(String(inv.stock_can_sale || '0').replace(/[^0-9.\-]/g, '')) || 0;
+    var stockLevel = parseFloat(String(inv.stock_level    || '0').replace(/[^0-9.\-]/g, '')) || 0;
+
+    var badgeClass = 'in-stock';
+    var badgeKey   = 'in_stock';
+    if (canSale <= 0) {
+      badgeClass = 'no-stock'; badgeKey = 'out_of_stock';
+    } else if (canSale <= 5) {
+      badgeClass = 'low-stock'; badgeKey = 'low_stock';
     }
 
-    // Price type change in OE
-    document.querySelectorAll('input[name="priceType"]').forEach(radio => {
-      radio.addEventListener('change', () => { if (oeItems.length > 0) rerenderOETable(); });
-    });
-
-    renderPopularTags();
+    return { level: stockLevel, qty: canSale, badgeClass: badgeClass, badgeKey: badgeKey };
   }
 
-  // ─── Data Ready Hook ──────────────────────────────────────────
-  // Called by shell.js when product+inventory data is loaded
-  window.onPageDataReady = function () {
-    renderPopularTags();
-    initProductSearchPage();
+  // ─── Render Table ───────────────────────────────────────
+  function rerenderOETable() {
+    var tbody   = document.getElementById('oeItemsBody');
+    var summary = document.getElementById('oeSummary');
+    if (!tbody) return;
+
+    if (oeItems.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="8" class="oe-dd-empty" data-i18n="oe_empty_msg">' + t('oe_empty_msg') + '</td></tr>';
+      if (summary) summary.style.display = 'none';
+      return;
+    }
+
+    var priceType   = getOEPriceType();
+    var totalItems   = 0;
+    var totalQty     = 0;
+    var subtotal     = 0;
+    var html = '';
+
+    oeItems.forEach(function(item, idx) {
+      var p = item._product;
+      var priceField = priceType === 'msrp' ? 'msrp' : priceType === 'ws5' ? 'wholesale_plus5' : 'wholesale';
+      var unitPrice = p ? parseFloat(String(p[priceField] || '0').replace(/[^0-9.]/g, '')) : 0;
+      var qty       = parseInt(item.qty) || 0;
+      var lineTotal = unitPrice * qty;
+      if (p) { totalItems++; totalQty += qty; subtotal += lineTotal; }
+
+      var stock     = p ? getStockInfo(p.model) : null;
+      var stockBadge = stock
+        ? '<span class="oe-stock-badge ' + stock.badgeClass + '">' + t(stock.badgeKey) + (stock.qty ? ' (' + stock.qty + ')' : '') + '</span>'
+        : '';
+
+      var modelEscaped = escHtml(item.model);
+      html += '<tr>' +
+        '<td class="num-col">' + (idx + 1) + '</td>' +
+        '<td class="model-col">' +
+          '<div class="oe-search-wrap">' +
+            '<input type="text" class="oe-search-input" value="' + modelEscaped + '"' +
+                   ' placeholder="Model..." oninput="searchOEProduct(' + idx + ', this.value)"' +
+                   ' onfocus="searchOEProduct(' + idx + ', this.value)">' +
+            '<div class="oe-dropdown" id="oedd-' + idx + '"></div>' +
+          '</div>' +
+        '</td>' +
+        '<td class="desc-col">' + escHtml(p ? (p.full_description || p.short_desc || '') : '') + '</td>' +
+        '<td class="qty-col"><input type="number" value="' + qty + '" min="0" onchange="updateOEItem(' + idx + ',\'qty\',this.value)"></td>' +
+        '<td class="price-col">' + (p ? formatPrice(p[priceField]) : '—') + '</td>' +
+        '<td class="total-col">' + (p ? formatPrice(lineTotal) : '—') + '</td>' +
+        '<td class="stock-col">' + stockBadge + '</td>' +
+        '<td class="action-col"><button class="oe-del-btn" onclick="removeOEItem(' + idx + ')">✕</button></td>' +
+      '</tr>';
+    });
+
+    tbody.innerHTML = html;
+
+    // Update summary
+    if (summary && totalItems > 0) {
+      summary.style.display = 'block';
+      var vat        = subtotal * 0.07;
+      var shipping   = parseFloat(document.getElementById('oeShipInput').value) || 0;
+      var grandTotal = subtotal + vat + shipping;
+
+      document.getElementById('oeSumItemsVal').textContent   = totalItems;
+      document.getElementById('oeSumQtyVal').textContent     = totalQty;
+      document.getElementById('oeSumSubtotalVal').textContent = formatPrice(subtotal);
+      document.getElementById('oeSumVatVal').textContent     = formatPrice(vat);
+      document.getElementById('oeSumGrandVal').textContent   = formatPrice(grandTotal);
+
+      // Update shipping currency label
+      var shipCurrency = document.getElementById('oeShipCurrency');
+      if (shipCurrency) {
+        var symbol = window.CURRENCY_SYMBOL ? (window.CURRENCY_SYMBOL[window.TM_CurrentCurrency] || window.TM_CurrentCurrency) : '';
+        shipCurrency.textContent = symbol || '$';
+      }
+    } else if (summary) {
+      summary.style.display = 'none';
+    }
+  }
+
+  window.recalcOESummary = function () {
+    rerenderOETable();
   };
 
-  // ─── Lang Change Hook ─────────────────────────────────────────
-  // Called by shell.js when language/currency is switched
-  window.onPageLangChange = function () {
-    // Re-render search results if data loaded and there's a query
-    if (window.TM_DataLoaded && lastQuery) {
-      window.doSearch();
+  // ─── Page Init ─────────────────────────────────────────
+  function initOrderEstPage() {
+    // Close all dropdowns when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.oe-search-wrap')) {
+        document.querySelectorAll('.oe-dropdown').forEach(function(dd) { dd.classList.remove('show'); });
+      }
+    });
+
+    // Initialize shipping currency label
+    var shipCurrency = document.getElementById('oeShipCurrency');
+    if (shipCurrency) {
+      var symbol = window.CURRENCY_SYMBOL ? (window.CURRENCY_SYMBOL[window.TM_CurrentCurrency] || window.TM_CurrentCurrency) : '';
+      shipCurrency.textContent = symbol || '$';
     }
-    // Re-render OE table if there are items
+  }
+
+  // ─── Data Ready Hook ──────────────────────────────────
+  window.onPageDataReady = function () {
+    initOrderEstPage();
+  };
+
+  // ─── Lang Change Hook ─────────────────────────────────
+  window.onPageLangChange = function () {
+    // Re-render table if there are items (prices may change due to currency)
     if (oeItems.length > 0) {
       rerenderOETable();
+    }
+    // Update shipping currency label
+    var shipCurrency = document.getElementById('oeShipCurrency');
+    if (shipCurrency) {
+      var symbol = window.CURRENCY_SYMBOL ? (window.CURRENCY_SYMBOL[window.TM_CurrentCurrency] || window.TM_CurrentCurrency) : '';
+      shipCurrency.textContent = symbol || '$';
     }
   };
 
