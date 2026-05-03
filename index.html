@@ -1241,16 +1241,22 @@ a:hover { text-decoration: underline; }
 
 /* ── Responsive: narrow screens ── */
 @media (max-width: 520px) {
+  .oe-list {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
   .oe-item {
-    grid-template-columns: 24px 1fr 60px 32px;
-    gap: 6px;
+    grid-template-columns: 24px 1fr 60px 80px 80px 32px;
+    min-width: max-content;
+  }
+  .oe-list-header {
+    grid-template-columns: 24px 1fr 60px 80px 80px 32px;
+    min-width: max-content;
+    font-size: 10px;
   }
   .oe-item-price,
   .oe-item-total {
-    display: none;
-  }
-  .oe-list-header {
-    display: none;
+    font-size: 12px;
   }
   .oe-price-type {
     gap: 10px;
