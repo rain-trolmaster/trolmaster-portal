@@ -894,100 +894,6 @@ a:hover { text-decoration: underline; }
 .oe-stock-badge.no-stock { color: var(--color-danger); background: var(--color-danger-bg); }
 .oe-stock-badge.unknown { color: var(--color-text-faint); background: var(--color-bg); }
 
-/* Summary */
-.oe-summary {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-}
-
-.oe-summary-head {
-  background: var(--color-primary);
-  color: #fff;
-  padding: 14px 18px;
-}
-.oe-summary-head h3 { font-size: 15px; font-weight: 600; }
-
-.oe-summary-body { padding: 16px 18px; }
-
-.oe-summary-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.oe-sum-item {
-  background: var(--color-bg);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-md);
-  padding: 12px 16px;
-}
-
-.oe-sum-item .sum-label {
-  font-size: 11px;
-  color: var(--color-text-muted);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-  margin-bottom: 4px;
-}
-
-.oe-sum-item .sum-value {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--color-primary);
-}
-
-.oe-sum-item.sum-total {
-  grid-column: 1 / -1;
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-}
-.oe-sum-item.sum-total .sum-label { color: rgba(255,255,255,0.7); }
-.oe-sum-item.sum-total .sum-value { color: #fff; font-size: 24px; }
-
-.oe-sum-item.sum-ship .sum-value { font-size: 16px; }
-.oe-sum-item.sum-ship input {
-  width: 120px;
-  padding: 6px 10px;
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 6px;
-  font-size: 16px;
-  font-weight: 700;
-  font-family: inherit;
-  background: rgba(255,255,255,0.1);
-  color: #fff;
-  text-align: right;
-  outline: none;
-}
-
-.oe-empty {
-  text-align: center;
-  padding: 60px 20px;
-  color: var(--color-text-faint);
-}
-.oe-empty .empty-icon { font-size: 48px; margin-bottom: 12px; }
-.oe-empty p { font-size: 14px; }
-
-.oe-add-row {
-  background: var(--color-bg);
-  border: none;
-  border-top: 1px solid var(--color-border);
-  width: 100%;
-  padding: 12px 18px;
-  font-size: 13px;
-  color: var(--color-primary);
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: inherit;
-  transition: background 0.2s;
-}
-.oe-add-row:hover { background: var(--color-border-light); }
 
 /* ---- Coming Soon Page ---- */
 .coming-soon-page {
@@ -1050,280 +956,323 @@ a:hover { text-decoration: underline; }
 
 /* Page Layout */
 .oe-page {
-  max-width: 1000px;
+  max-width: 700px;
   margin: 0 auto;
-  padding: 30px 20px;
+  padding: 20px 16px 40px;
 }
 
+/* ── Header ── */
 .oe-header {
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.oe-header h1 {
-  font-size: 28px;
-  color: #0d1b3e;
-  margin-bottom: 8px;
-}
-
-.oe-subtitle {
-  color: #666;
-  font-size: 14px;
-}
-
-/* Price Type Selector */
-.oe-price-type {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 25px;
-  padding: 15px 20px;
-  background: #f8f9fa;
-  border-radius: 8px;
-  flex-wrap: wrap;
-}
-
-.oe-price-type > label:first-child {
-  font-weight: 600;
-  color: #0d1b3e;
-  margin-right: 10px;
-}
-
-.radio-label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  color: #333;
-}
-
-.radio-label input[type="radio"] {
-  cursor: pointer;
-}
-
-/* Table */
-.oe-table-wrap {
-  overflow-x: auto;
-  margin-bottom: 30px;
-}
-
-.oe-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: white;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.oe-table thead {
-  background: #0d1b3e;
-  color: white;
-}
-
-.oe-table th {
-  padding: 12px 10px;
-  text-align: left;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.oe-table td {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-  font-size: 14px;
-}
-
-.oe-table tbody tr:hover {
-  background: #f8f9fa;
-}
-
-.oe-table input[type="text"],
-.oe-table input[type="number"] {
-  padding: 4px 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 13px;
-}
-
-.oe-table input[type="text"]:focus,
-.oe-table input[type="number"]:focus {
-  border-color: #0d1b3e;
-  outline: none;
-}
-
-/* Stock Badge */
-.oe-stock-badge {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 11px;
-  font-weight: 600;
-}
-
-.oe-stock-badge.in-stock {
-  background: #d4edda;
-  color: #155724;
-}
-
-.oe-stock-badge.low-stock {
-  background: #fff3cd;
-  color: #856404;
-}
-
-.oe-stock-badge.no-stock {
-  background: #f8d7da;
-  color: #721c24;
-}
-
-.oe-stock-badge.unknown {
-  background: #e2e3e5;
-  color: #383d41;
-}
-
-/* Delete Button */
-.oe-del-btn {
-  background: none;
-  border: none;
-  color: #dc3545;
-  font-size: 16px;
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 4px;
-}
-
-.oe-del-btn:hover {
-  background: #f8d7da;
-}
-
-/* Add Item Button */
-.oe-add-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  background: #0d1b3e;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.oe-add-btn:hover {
-  background: #1a2d5e;
-}
-
-/* Summary */
-.oe-summary {
-  background: white;
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  margin-bottom: 30px;
-}
-
-.oe-summary h3 {
-  margin: 0 0 20px 0;
-  color: #0d1b3e;
-  font-size: 18px;
-}
-
-.oe-summary-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
   margin-bottom: 20px;
 }
 
-.oe-sum-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
-  background: #f8f9fa;
-  border-radius: 6px;
+.oe-header h1 {
+  font-size: 22px;
+  color: var(--color-primary, #0d1b3e);
+  margin: 0 0 4px 0;
+  line-height: 1.3;
 }
 
-.oe-sum-label {
-  color: #666;
+.oe-subtitle {
+  color: var(--color-text-secondary, #2d3748);
   font-size: 14px;
+  margin: 0 0 6px 0;
 }
 
-.oe-sum-value {
-  font-weight: 600;
-  color: #0d1b3e;
-  font-size: 14px;
-}
-
-/* Disclaimer */
-.oe-disclaimer {
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  padding: 20px;
-  background: #fff3cd;
-  border-left: 4px solid #ffc107;
-  border-radius: 4px;
-  margin-top: 20px;
-}
-
-.oe-disclaimer-icon {
-  font-size: 24px;
-  line-height: 1;
-}
-
-.oe-disclaimer-text {
-  flex: 1;
-}
-
-.oe-disclaimer-text strong {
-  display: block;
-  color: #856404;
-  margin-bottom: 8px;
-  font-size: 14px;
-}
-
-.oe-disclaimer-text p {
-  color: #856404;
+.oe-guide {
+  color: var(--color-text-muted, #718096);
   font-size: 13px;
   line-height: 1.5;
   margin: 0;
 }
 
-/* Coming Soon (if needed) */
-.coming-soon-page {
-  text-align: center;
-  padding: 100px 20px;
+/* ── Price Type Selector ── */
+.oe-price-type {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background: var(--color-surface, #fff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-md, 10px);
+  flex-wrap: wrap;
 }
 
-.cs-icon {
-  font-size: 80px;
+.oe-pt-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-secondary, #2d3748);
+  margin-right: 4px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  white-space: nowrap;
+  padding: 4px 0;
+}
+
+.radio-label span {
+  color: #a0aec0;
+  transition: color 0.2s, font-weight 0.2s;
+}
+
+.radio-label input[type="radio"] {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  accent-color: #718096;
+}
+
+.radio-label input[type="radio"]:checked + span {
+  color: #2d3748;
+  font-weight: 600;
+}
+
+/* ── Quick Add ── */
+.oe-quick-add {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.oe-qa-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted, #718096);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.oe-qa-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.oe-qa-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 100px;
+  font-size: 12px;
+  color: var(--color-primary, #0d1b3e);
+  background: var(--color-surface, #fff);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.oe-qa-tag:hover {
+  background: var(--color-primary, #0d1b3e);
+  color: #fff;
+  border-color: var(--color-primary, #0d1b3e);
+}
+
+/* ── Order Item List ── */
+.oe-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+  min-height: 20px;
+}
+
+/* ── Table Header ── */
+.oe-list-header {
+  display: grid;
+  grid-template-columns: 28px 1fr 70px 90px 90px 32px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-muted, #718096);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ── Single Item Row ── */
+.oe-item {
+  display: grid;
+  grid-template-columns: 28px 1fr 70px 90px 90px 32px;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--color-surface, #fff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-sm, 8px);
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.oe-item:hover {
+  border-color: var(--color-primary, #0d1b3e);
+}
+
+.oe-item-num {
+  color: var(--color-text-faint, #a0aec0);
+  font-size: 12px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.oe-item input[type="text"],
+.oe-item input[type="number"] {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  background: var(--color-bg, #f5f5f5);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.oe-item input[type="text"]:focus,
+.oe-item input[type="number"]:focus {
+  border-color: var(--color-primary, #0d1b3e);
+  outline: none;
+  background: var(--color-surface, #fff);
+}
+
+.oe-item-price {
+  font-weight: 600;
+  color: var(--color-text-secondary, #2d3748);
+  font-size: 13px;
+  text-align: right;
+}
+
+.oe-item-total {
+  font-weight: 700;
+  color: var(--color-primary, #0d1b3e);
+  font-size: 13px;
+  text-align: right;
+}
+
+.oe-item-notfound {
+  color: var(--color-text-faint, #a0aec0);
+  font-size: 12px;
+}
+
+/* ── Delete Button ── */
+.oe-del-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-text-faint, #a0aec0);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.oe-del-btn:hover {
+  background: #fde8e8;
+  color: #c53030;
+}
+
+/* ── Add Item Button (below list) ── */
+.oe-add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  color: var(--color-primary, #0d1b3e);
+  border: 2px dashed var(--color-border, #e2e8f0);
+  border-radius: var(--radius-sm, 8px);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
   margin-bottom: 20px;
 }
 
-.cs-title {
-  font-size: 32px;
-  color: #0d1b3e;
-  margin-bottom: 10px;
+.oe-add-btn:hover {
+  border-color: var(--color-primary, #0d1b3e);
+  background: var(--color-primary-bg, rgba(13,27,62,0.05));
 }
 
-.cs-badge {
-  display: inline-block;
-  padding: 6px 16px;
-  background: #ffc107;
-  color: #333;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 15px;
+/* ── Summary ── */
+.oe-summary {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 16px;
+  background: var(--color-surface, #fff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-md, 10px);
+  padding: 14px 20px;
+  margin-bottom: 16px;
 }
 
-.cs-desc {
-  color: #666;
+.oe-sum-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.oe-sum-label {
+  font-size: 12px;
+  color: var(--color-text-muted, #718096);
+  font-weight: 500;
+}
+
+.oe-sum-value {
   font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text-primary, #1a1a2e);
+}
+
+.oe-sum-total-row {
+  /* Remove border for horizontal layout */
+}
+
+.oe-sum-total {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primary, #0d1b3e);
+}
+
+/* ── Disclaimer ── */
+.oe-disclaimer {
+  font-size: 12px;
+  color: var(--color-text-muted, #718096);
+  line-height: 1.5;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* ── Responsive: narrow screens ── */
+@media (max-width: 520px) {
+  .oe-item {
+    grid-template-columns: 24px 1fr 60px 32px;
+    gap: 6px;
+  }
+  .oe-item-price,
+  .oe-item-total {
+    display: none;
+  }
+  .oe-list-header {
+    display: none;
+  }
+  .oe-price-type {
+    gap: 10px;
+  }
 }
 
   </style>
@@ -1409,24 +1358,26 @@ a:hover { text-decoration: underline; }
 
 <!-- ═════════════════════════════════════
      PAGE: ORDER ESTIMATION
-═════════════════════════════════════ -->
+═══════════════════════════════════════ -->
 <div class="page" id="page-order-est">
   <div class="oe-page">
+
+    <!-- Header -->
     <div class="oe-header">
-      <h1 data-i18n="nav_orders_estimation">Order Estimation</h1>
-      <p class="oe-subtitle" data-i18n="oe_subtitle">Quick price calculation for your order</p>
+      <h1 data-i18n="nav_orders_estimation">Orders Estimation</h1>
+      <p class="oe-guide" data-i18n="oe_guide">輸入型號同數量即時計算總價，或點擊下方熱門型號快速加入。</p>
     </div>
 
-    <!-- Price Type -->
+    <!-- Price Type (compact inline) — separate from add button -->
     <div class="oe-price-type">
-      <label data-i18n="oe_price_type">Price Type:</label>
+      <span class="oe-pt-label" data-i18n="oe_price_type">Price Type</span>
       <label class="radio-label">
         <input type="radio" name="oePriceType" value="msrp" checked onchange="onOEPriceTypeChange()">
         <span data-i18n="col_msrp">MSRP</span>
       </label>
       <label class="radio-label">
         <input type="radio" name="oePriceType" value="ws5" onchange="onOEPriceTypeChange()">
-        <span data-i18n="col_wholesale_plus5">Wholesale +5%</span>
+        <span data-i18n="col_wholesale_plus5">W+5%</span>
       </label>
       <label class="radio-label">
         <input type="radio" name="oePriceType" value="ws" onchange="onOEPriceTypeChange()">
@@ -1434,58 +1385,45 @@ a:hover { text-decoration: underline; }
       </label>
     </div>
 
-    <!-- Order Items -->
-    <div class="oe-table-wrap">
-      <table class="oe-table">
-        <thead>
-          <tr>
-            <th class="num-col">#</th>
-            <th class="model-col" data-i18n="col_model">Model</th>
-            <th class="qty-col" data-i18n="col_qty">Qty</th>
-            <th class="price-col" data-i18n="col_unit_price">Unit Price</th>
-            <th class="total-col" data-i18n="col_line_total">Line Total</th>
-            <th class="stock-col" data-i18n="col_stock">Stock</th>
-            <th class="action-col"></th>
-          </tr>
-        </thead>
-        <tbody id="oeItemsBody">
-          <tr>
-            <td colspan="7" class="oe-dd-empty" data-i18n="oe_empty_msg">Click "Add Item" to start building your order</td>
-          </tr>
-        </tbody>
-      </table>
-      <button class="oe-add-btn" onclick="addOEItem()">
-        <span>+</span> <span data-i18n="oe_add_item">Add Item</span>
-      </button>
+    <!-- Quick Add popular models -->
+    <div class="oe-quick-add">
+      <span class="oe-qa-label" data-i18n="oe_quick_add">Quick Add</span>
+      <div class="oe-qa-tags" id="oeQuickTags">
+        <!-- populated by JS -->
+      </div>
     </div>
 
-    <!-- Summary -->
+    <!-- Order Items — compact list -->
+    <div class="oe-list" id="oeList">
+      <!-- populated by JS -->
+    </div>
+
+    <!-- Add Item button (below the list) -->
+    <button class="oe-add-btn" onclick="addOEItem()">
+      <span>＋</span> <span data-i18n="oe_add_item">Add Item</span>
+    </button>
+
+    <!-- Summary (always visible at bottom) -->
     <div class="oe-summary" id="oeSummary" style="display:none;">
-      <h3 data-i18n="oe_summary">Order Summary</h3>
-      <div class="oe-summary-grid">
-        <div class="oe-sum-item">
-          <span class="oe-sum-label" data-i18n="oe_sum_items">Items:</span>
-          <span class="oe-sum-value" id="oeSumItemsVal">0</span>
-        </div>
-        <div class="oe-sum-item">
-          <span class="oe-sum-label" data-i18n="oe_sum_qty">Total Qty:</span>
-          <span class="oe-sum-value" id="oeSumQtyVal">0</span>
-        </div>
-        <div class="oe-sum-item">
-          <span class="oe-sum-label" data-i18n="oe_sum_subtotal">Subtotal:</span>
-          <span class="oe-sum-value" id="oeSumSubtotalVal">$0.00</span>
-        </div>
+      <div class="oe-sum-row">
+        <span class="oe-sum-label" data-i18n="oe_sum_items">Items</span>
+        <span class="oe-sum-value" id="oeSumItemsVal">0</span>
       </div>
-
-      <!-- Disclaimer -->
-      <div class="oe-disclaimer">
-        <div class="oe-disclaimer-icon">⚠️</div>
-        <div class="oe-disclaimer-text">
-          <strong data-i18n="oe_disclaimer_title">Price Reference Only</strong>
-          <p data-i18n="oe_disclaimer_text">All prices shown are for reference only. VAT and shipping costs may vary by region. Final pricing and availability are subject to confirmation by TrolMaster.</p>
-        </div>
+      <div class="oe-sum-row">
+        <span class="oe-sum-label" data-i18n="oe_sum_qty">Qty</span>
+        <span class="oe-sum-value" id="oeSumQtyVal">0</span>
+      </div>
+      <div class="oe-sum-row oe-sum-total-row">
+        <span class="oe-sum-label" data-i18n="oe_sum_subtotal">Subtotal</span>
+        <span class="oe-sum-value oe-sum-total" id="oeSumSubtotalVal">$0.00</span>
       </div>
     </div>
+
+    <!-- Disclaimer -->
+    <p class="oe-disclaimer">
+      <span data-i18n="oe_empty_msg">Price is for reference only. VAT and shipping may apply depending on region. Final price is determined by the company.</span>
+    </p>
+
   </div>
 </div>
 
@@ -1508,7 +1446,7 @@ a:hover { text-decoration: underline; }
 window.__TM_CONFIG__ = {"gviz_product": "https://docs.google.com/spreadsheets/d/1SJKY8cDn5_mGmaCw3zraOrAVpK95kPZ5/gviz/tq?tqx=out:json&gid=1191522392", "gviz_inventory": "https://docs.google.com/spreadsheets/d/1GVRc_dSaDGesEdh_7pnU4bzhm5lyBLvm-XCC4gQWr8w/gviz/tq?tqx=out:json&gid=817864539", "product_columns": {"model": 0, "short_desc": 1, "msrp": 2, "wholesale_plus5": 3, "wholesale": 4, "compatibility": 5, "dimensions_mm": 6, "dimensions_inch": 7, "weight_kg": 8, "weight_lb": 9, "qty_per_case": 10, "case_dimensions_mm": 11, "case_dimensions_inch": 12, "case_weight_kg": 13, "case_weight_lb": 14, "upc_sku": 15, "image_link": 16, "full_description": 17, "features": 18, "package_content": 19, "specifications": 20, "materials_link": 21}, "inventory_columns": {"model": 0, "description": 1, "stock_can_sale": 2, "stock_level": 3}, "popular_models": ["WCS-9", "NFS-2", "ECW-1", "ECS-7", "GCS-1", "HCS-2", "WN-9", "Model-V", "V-6", "V-10"], "fallback_rates": {"USD": 1, "HKD": 7.8, "THB": 35.5}, "lang_currency_map": {"en": "USD", "zh-Hant": "HKD", "th": "THB"}, "pages": [{"id": "product-search", "icon": "&#128269;", "i18n_key": "nav_product_search", "label": "Product Price and Stock", "disabled": false}, {"id": "order-est", "icon": "&#128178;", "i18n_key": "nav_orders_estimation", "label": "Order Estimation", "disabled": false}, {"id": "tech-sheet", "icon": "&#128196;", "i18n_key": "nav_tech_sheet", "label": "Tech sheet download", "disabled": true}, {"id": "model-one", "icon": "&#128290;", "i18n_key": "nav_cable_calculator", "label": "Model-One Calculator", "disabled": true}]};
 
 // i18n bundles
-window.__TM_I18N__ = {"en": {"app_name": "TrolMaster Product Portal", "company_name": "TrolMaster Asia Company Ltd", "nav_product_search": "Product Search", "nav_orders_estimation": "Orders Estimation", "nav_cable_calculator": "Model-One Cable Calculator", "coming_soon": "Coming Soon", "search_placeholder": "Search model number (e.g. WCS-9, V-6...)", "search_button": "Search", "clear_button": "Clear", "popular_models": "Popular Models", "currency_label": "Currency", "language_label": "Language", "hero_title": "Product Price and Stock", "hero_sub": "Search by model number, keyword, or description to view pricing and stock availability", "result_title": "Search Results", "no_results": "No products found for '{q}'. Please check and try again.", "loading": "Loading...", "error_network": "Network error. Please check your connection.", "error_data": "Failed to load product data.", "col_model": "Model", "col_msrp": "MSRP", "col_wholesale_plus5": "Wholesale +5%", "col_wholesale": "Wholesale", "col_stock": "Stock", "col_stock_level": "Stock Level", "col_image": "Image", "col_materials": "Materials", "col_description": "Description", "col_features": "Features", "col_package_content": "Package Content", "col_specifications": "Specifications", "col_compatibility": "Compatibility", "stock_in": "In Stock", "stock_low": "Low Stock", "stock_out": "Out of Stock", "in_stock": "In Stock", "low_stock": "Low Stock", "out_of_stock": "Out of Stock", "unknown": "N/A", "view_image": "View Image", "view_materials": "Materials Link", "expand_details": "Show Details", "collapse_details": "Hide Details", "more": "more...", "less": "less", "footer_data_source": "Data sourced from Google Sheets · Prices subject to change", "rate_updated": "Exchange rate updated", "rate_fallback": "Using fallback exchange rate", "tab_overview": "Overview", "tab_details": "Details", "tab_specs": "Specifications", "product_information": "Product Information", "cs_order_est_desc": "We're working on this feature. Stay tuned for order estimation tools!", "cat_controllers": "Controllers", "disclaimer": "Prices shown are for reference only. Final pricing is subject to confirmation by TrolMaster."}, "zh-Hant": {"app_name": "TrolMaster 產品查詢系統", "company_name": "TrolMaster Asia Company Ltd", "nav_product_search": "產品搜索", "nav_orders_estimation": "訂單估算", "nav_cable_calculator": "Model-One 線材計算器", "coming_soon": "即將推出", "search_placeholder": "輸入型號搜索（例如 WCS-9、V-6...）", "search_button": "搜索", "clear_button": "清除", "popular_models": "熱門型號", "currency_label": "貨幣", "language_label": "語言", "hero_title": "產品價格及庫存", "hero_sub": "輸入型號、關鍵字或描述，查詢定價及庫存狀況", "result_title": "搜索結果", "no_results": "找不到「{q}」相關產品，請確認後重試。", "loading": "載入中...", "error_network": "網絡錯誤，請檢查連線。", "error_data": "無法載入產品數據。", "col_model": "型號", "col_msrp": "建議零售價", "col_wholesale_plus5": "批發價 +5%", "col_wholesale": "批發價", "col_stock": "庫存", "col_stock_level": "庫存等級", "col_image": "圖片", "col_materials": "材料資料", "col_description": "產品描述", "col_features": "主要功能", "col_package_content": "包裝內容", "col_specifications": "規格參數", "col_compatibility": "兼容性", "stock_in": "有貨", "stock_low": "庫存偏低", "stock_out": "缺貨", "in_stock": "有貨", "low_stock": "庫存偏低", "out_of_stock": "缺貨", "unknown": "未確認", "view_image": "查看圖片", "view_materials": "材料連結", "expand_details": "顯示詳情", "collapse_details": "收起詳情", "more": "更多...", "less": "收起", "footer_data_source": "數據來源：Google Sheets · 價格以最終確認為準", "rate_updated": "匯率已更新", "rate_fallback": "使用預設匯率", "tab_overview": "概覽", "tab_details": "詳情", "tab_specs": "規格", "product_information": "產品資訊", "cs_order_est_desc": "我們正在開發此功能，敬請期待訂單估算工具！", "cat_controllers": "控制器", "disclaimer": "本平台所示價格僅供參考，實際價格以 TrolMaster 最終確認為準。"}, "th": {"app_name": "ระบบค้นหาสินค้า TrolMaster", "company_name": "TrolMaster Asia Company Ltd", "nav_product_search": "ค้นหาสินค้า", "nav_orders_estimation": "ประมาณการสั่งซื้อ", "nav_cable_calculator": "เครื่องคำนวณสาย Model-One", "coming_soon": "เร็วๆ นี้", "search_placeholder": "ค้นหารุ่นสินค้า (เช่น WCS-9, V-6...)", "search_button": "ค้นหา", "clear_button": "ล้าง", "popular_models": "รุ่นยอดนิยม", "currency_label": "สกุลเงิน", "language_label": "ภาษา", "hero_title": "ราคาและสต็อกสินค้า", "hero_sub": "ค้นหาด้วยรุ่น คำค้นหา หรือคำอธิบาย เพื่อดูราคาและสถานะสต็อก", "result_title": "ผลการค้นหา", "no_results": "ไม่พบสินค้า กรุณาตรวจสอบรหัสรุ่นและลองอีกครั้ง", "loading": "กำลังโหลด...", "error_network": "เกิดข้อผิดพลาดด้านเครือข่าย กรุณาตรวจสอบการเชื่อมต่อ", "error_data": "ไม่สามารถโหลดข้อมูลสินค้าได้", "col_model": "รุ่น", "col_msrp": "ราคาแนะนำ", "col_wholesale_plus5": "ราคาส่ง +5%", "col_wholesale": "ราคาส่ง", "col_stock": "สต็อก", "col_stock_level": "ระดับสต็อก", "col_image": "รูปภาพ", "col_materials": "ข้อมูลวัสดุ", "col_description": "คำอธิบายสินค้า", "col_features": "คุณสมบัติหลัก", "col_package_content": "สิ่งที่มาในกล่อง", "col_specifications": "ข้อมูลจำเพาะ", "col_compatibility": "ความเข้ากันได้", "stock_in": "มีสินค้า", "stock_low": "สินค้าใกล้หมด", "stock_out": "สินค้าหมด", "in_stock": "มีสินค้า", "low_stock": "สินค้าใกล้หมด", "out_of_stock": "สินค้าหมด", "unknown": "ไม่ทราบ", "view_image": "ดูรูปภาพ", "view_materials": "ลิงก์วัสดุ", "expand_details": "แสดงรายละเอียด", "collapse_details": "ซ่อนรายละเอียด", "more": "เพิ่มเติม...", "less": "ย่อ", "footer_data_source": "ข้อมูลจาก Google Sheets · ราคาอาจเปลี่ยนแปลงได้", "rate_updated": "อัปเดตอัตราแลกเปลี่ยนแล้ว", "rate_fallback": "ใช้อัตราแลกเปลี่ยนสำรอง", "tab_overview": "ภาพรวม", "tab_details": "รายละเอียด", "tab_specs": "ข้อมูลจำเพาะ", "product_information": "ข้อมูลสินค้า", "cs_order_est_desc": "เรากำลังพัฒนาฟีเจอร์นี้ โปรดติดตามเครื่องมือประมาณการสั่งซื้อ!", "cat_controllers": "ตัวควบคุม", "disclaimer": "ราคาที่แสดงเป็นเพียงข้อมูลอ้างอิง เท่านั้น ราคาสุดท้ายอยู่ที่การยืนยันจาก TrolMaster"}};
+window.__TM_I18N__ = {"en": {"app_name": "TrolMaster Product Portal", "company_name": "TrolMaster Asia Company Ltd", "nav_product_search": "Product Search", "nav_orders_estimation": "Orders Estimation", "nav_cable_calculator": "Model-One Cable Calculator", "coming_soon": "Coming Soon", "search_placeholder": "Search model number (e.g. WCS-9, V-6...)", "search_button": "Search", "clear_button": "Clear", "popular_models": "Popular Models", "currency_label": "Currency", "language_label": "Language", "hero_title": "Product Price and Stock", "hero_sub": "Search by model number, keyword, or description to view pricing and stock availability", "result_title": "Search Results", "no_results": "No products found for '{q}'. Please check and try again.", "loading": "Loading...", "error_network": "Network error. Please check your connection.", "error_data": "Failed to load product data.", "col_model": "Model", "col_msrp": "MSRP", "col_wholesale_plus5": "Wholesale +5%", "col_wholesale": "Wholesale", "col_stock": "Stock", "col_stock_level": "Stock Level", "col_image": "Image", "col_materials": "Materials", "col_description": "Description", "col_features": "Features", "col_package_content": "Package Content", "col_specifications": "Specifications", "col_compatibility": "Compatibility", "stock_in": "In Stock", "stock_low": "Low Stock", "stock_out": "Out of Stock", "in_stock": "In Stock", "low_stock": "Low Stock", "out_of_stock": "Out of Stock", "unknown": "N/A", "view_image": "View Image", "view_materials": "Materials Link", "expand_details": "Show Details", "collapse_details": "Hide Details", "more": "more...", "less": "less", "footer_data_source": "Data sourced from Google Sheets · Prices subject to change", "rate_updated": "Exchange rate updated", "rate_fallback": "Using fallback exchange rate", "tab_overview": "Overview", "tab_details": "Details", "tab_specs": "Specifications", "product_information": "Product Information", "cs_order_est_desc": "We're working on this feature. Stay tuned for order estimation tools!", "cat_controllers": "Controllers", "disclaimer": "Prices shown are for reference only. Final pricing is subject to confirmation by TrolMaster.", "oe_guide": "Enter model & qty to calculate. Or click popular models below to add quickly.", "oe_price_type": "Price Type", "oe_add_item": "Add Item", "oe_empty_msg": "Price is for reference only. VAT and shipping may apply depending on region. Final price is determined by the company.", "oe_sum_items": "Items", "oe_sum_qty": "Qty", "oe_sum_subtotal": "Subtotal", "oe_disclaimer_text": "All prices shown are for reference only. VAT and shipping costs may vary by region. Final pricing and availability are subject to confirmation by TrolMaster.", "oe_quick_add": "Quick Add", "oe_unit_price": "Unit", "oe_line_total": "Total"}, "zh-Hant": {"app_name": "TrolMaster 產品查詢系統", "company_name": "TrolMaster Asia Company Ltd", "nav_product_search": "產品搜索", "nav_orders_estimation": "訂單估算", "nav_cable_calculator": "Model-One 線材計算器", "coming_soon": "即將推出", "search_placeholder": "輸入型號搜索（例如 WCS-9、V-6...）", "search_button": "搜索", "clear_button": "清除", "popular_models": "熱門型號", "currency_label": "貨幣", "language_label": "語言", "hero_title": "產品價格及庫存", "hero_sub": "輸入型號、關鍵字或描述，查詢定價及庫存狀況", "result_title": "搜索結果", "no_results": "找不到「{q}」相關產品，請確認後重試。", "loading": "載入中...", "error_network": "網絡錯誤，請檢查連線。", "error_data": "無法載入產品數據。", "col_model": "型號", "col_msrp": "建議零售價", "col_wholesale_plus5": "批發價 +5%", "col_wholesale": "批發價", "col_stock": "庫存", "col_stock_level": "庫存等級", "col_image": "圖片", "col_materials": "材料資料", "col_description": "產品描述", "col_features": "主要功能", "col_package_content": "包裝內容", "col_specifications": "規格參數", "col_compatibility": "兼容性", "stock_in": "有貨", "stock_low": "庫存偏低", "stock_out": "缺貨", "in_stock": "有貨", "low_stock": "庫存偏低", "out_of_stock": "缺貨", "unknown": "未確認", "view_image": "查看圖片", "view_materials": "材料連結", "expand_details": "顯示詳情", "collapse_details": "收起詳情", "more": "更多...", "less": "收起", "footer_data_source": "數據來源：Google Sheets · 價格以最終確認為準", "rate_updated": "匯率已更新", "rate_fallback": "使用預設匯率", "tab_overview": "概覽", "tab_details": "詳情", "tab_specs": "規格", "product_information": "產品資訊", "cs_order_est_desc": "我們正在開發此功能，敬請期待訂單估算工具！", "cat_controllers": "控制器", "disclaimer": "本平台所示價格僅供參考，實際價格以 TrolMaster 最終確認為準。", "oe_guide": "輸入型號同數量即時計算總價，或點擊下方熱門型號快速加入。", "oe_price_type": "價格類型", "oe_add_item": "新增項目", "oe_empty_msg": "價格只供參考，部份地區還有 VAT 和運費需要增加，價格由公司決定。", "oe_sum_items": "項目", "oe_sum_qty": "數量", "oe_sum_subtotal": "小計", "oe_disclaimer_text": "所有價格僅供參考。部份地區可能需要加收 VAT 及運費，最終價格及供應情況以 TrolMaster 確認為準。", "oe_quick_add": "快速加入", "oe_unit_price": "單價", "oe_line_total": "金額"}, "th": {"app_name": "ระบบค้นหาสินค้า TrolMaster", "company_name": "TrolMaster Asia Company Ltd", "nav_product_search": "ค้นหาสินค้า", "nav_orders_estimation": "ประมาณการสั่งซื้อ", "nav_cable_calculator": "เครื่องคำนวณสาย Model-One", "coming_soon": "เร็วๆ นี้", "search_placeholder": "ค้นหารุ่นสินค้า (เช่น WCS-9, V-6...)", "search_button": "ค้นหา", "clear_button": "ล้าง", "popular_models": "รุ่นยอดนิยม", "currency_label": "สกุลเงิน", "language_label": "ภาษา", "hero_title": "ราคาและสต็อกสินค้า", "hero_sub": "ค้นหาด้วยรุ่น คำค้นหา หรือคำอธิบาย เพื่อดูราคาและสถานะสต็อก", "result_title": "ผลการค้นหา", "no_results": "ไม่พบสินค้า กรุณาตรวจสอบรหัสรุ่นและลองอีกครั้ง", "loading": "กำลังโหลด...", "error_network": "เกิดข้อผิดพลาดด้านเครือข่าย กรุณาตรวจสอบการเชื่อมต่อ", "error_data": "ไม่สามารถโหลดข้อมูลสินค้าได้", "col_model": "รุ่น", "col_msrp": "ราคาแนะนำ", "col_wholesale_plus5": "ราคาส่ง +5%", "col_wholesale": "ราคาส่ง", "col_stock": "สต็อก", "col_stock_level": "ระดับสต็อก", "col_image": "รูปภาพ", "col_materials": "ข้อมูลวัสดุ", "col_description": "คำอธิบายสินค้า", "col_features": "คุณสมบัติหลัก", "col_package_content": "สิ่งที่มาในกล่อง", "col_specifications": "ข้อมูลจำเพาะ", "col_compatibility": "ความเข้ากันได้", "stock_in": "มีสินค้า", "stock_low": "สินค้าใกล้หมด", "stock_out": "สินค้าหมด", "in_stock": "มีสินค้า", "low_stock": "สินค้าใกล้หมด", "out_of_stock": "สินค้าหมด", "unknown": "ไม่ทราบ", "view_image": "ดูรูปภาพ", "view_materials": "ลิงก์วัสดุ", "expand_details": "แสดงรายละเอียด", "collapse_details": "ซ่อนรายละเอียด", "more": "เพิ่มเติม...", "less": "ย่อ", "footer_data_source": "ข้อมูลจาก Google Sheets · ราคาอาจเปลี่ยนแปลงได้", "rate_updated": "อัปเดตอัตราแลกเปลี่ยนแล้ว", "rate_fallback": "ใช้อัตราแลกเปลี่ยนสำรอง", "tab_overview": "ภาพรวม", "tab_details": "รายละเอียด", "tab_specs": "ข้อมูลจำเพาะ", "product_information": "ข้อมูลสินค้า", "cs_order_est_desc": "เรากำลังพัฒนาฟีเจอร์นี้ โปรดติดตามเครื่องมือประมาณการสั่งซื้อ!", "cat_controllers": "ตัวควบคุม", "disclaimer": "ราคาที่แสดงเป็นเพียงข้อมูลอ้างอิง เท่านั้น ราคาสุดท้ายอยู่ที่การยืนยันจาก TrolMaster", "oe_guide": "กรอกรุ่นและจำนวนเพื่อคำนวณยอดรวม หรือคลิกรุ่นยอดนิยมด้านล่างเพิ่มได้เลย", "oe_price_type": "ประเภทราคา", "oe_add_item": "เพิ่มรายการ", "oe_empty_msg": "ราคาเพื่อการอ้างอิงเท่านั้น บางพื้นที่อาจมี VAT และค่าจัดส่งเพิ่มเติม ราคาสุดท้ายขึ้นอยู่กับบริษัท", "oe_sum_items": "รายการ", "oe_sum_qty": "จำนวน", "oe_sum_subtotal": "รวม", "oe_disclaimer_text": "ราคาที่แสดงเพื่อการอ้างอิงเท่านั้น ค่า VAT และค่าจัดส่งอาจแตกต่างกันตามภูมิภาค ราคาและความพร้อมของสินค้าขึ้นอยู่กับการยืนยันจาก TrolMaster", "oe_quick_add": "เพิ่มด่วน", "oe_unit_price": "ราคา/หน่วย", "oe_line_total": "รวม"}};
 
 // Product translations (zh-Hant & th)
 window.__TM_PRODUCT_TRANSLATIONS__ = {"zh-Hant": {"HCS-1": {"short_desc": "Hydro-X 控制器（附 3 合 1 感測器：溫度/濕度/光照）及連接線組，免費手機應用程式", "full_description": "", "features": ""}, "HCS-2": {"short_desc": "Hydro-X Pro 控制器（附 4 合 1 感測器：溫度/濕度/CO2/光照）及連接線組，免費手機應用程式", "full_description": "", "features": ""}, "HCS-3": {"short_desc": "Hydro-X Plus 控制器（附 4 合 1 感測器：溫度/濕度/CO2/光照）及連接線組，免費手機應用程式", "full_description": "", "features": ""}, "NFS-1": {"short_desc": "Aqua-X 控制器（附水位探測器套件），免費智能手機應用程式", "full_description": "", "features": ""}, "NFS-2": {"short_desc": "Aqua-X Pro 控制器（附 AMP-3 感測器板），免費手機應用程式", "full_description": "", "features": ""}, "NFS-3": {"short_desc": "Aqua-X Plus 控制器（附 AMP-3 感測器板），免費手機應用程式", "full_description": "", "features": ""}, "TCS-1": {"short_desc": "Tent-X 主控制器（附 3 合 1 感測器：溫度/濕度/光照）及連接線組，免費手機應用程式", "full_description": "", "features": ""}, "CDA-1": {"short_desc": "Carbon-X 控制器（附連接線組），免費智能手機應用程式", "full_description": "", "features": ""}, "GCS-1": {"short_desc": "Green-X 控制器（附 4 合 1 感測器：溫度/濕度/CO2/光照）及連接線組，免費手機應用程式", "full_description": "", "features": ""}, "MBS-TH": {"short_desc": "Hydro-X 替換及備用 溫度/濕度/光照 感測器", "full_description": "", "features": ""}, "MBS-S8": {"short_desc": "Hydro-X CO2 感測器（附連接線組）", "full_description": "", "features": ""}, "MBS-PRO": {"short_desc": "Hydro-X Pro 及 Hydro-X Plus 適用 溫度/濕度/CO2/光照 4 合 1 感測器", "full_description": "", "features": ""}, "MBS-SD": {"short_desc": "Hydro-X 煙霧探測器（附連接線組）", "full_description": "", "features": ""}, "MBS-PAR": {"short_desc": "全光譜量子感測器", "full_description": "", "features": ""}, "MBS-K30": {"short_desc": "Carbon-X CO2 感測器（附連接線組）", "full_description": "", "features": ""}, "AMP-2": {"short_desc": "連接感測器至控制器之感測器板", "full_description": "", "features": ""}, "AMP-3": {"short_desc": "連接感測器至 NFS-2 控制器之感測器板（附 LCD 顯示屏），適用於 Aqua-X Pro 及 Tent-X 主控制器", "full_description": "", "features": ""}, "PCT-1": {"short_desc": "儲液槽適用 2 合 1 EC + 溫度感測器", "full_description": "", "features": ""}, "PCT-2": {"short_desc": "重型 內聯式 EC+溫度 感測器", "full_description": "", "features": ""}, "PCT-3": {"short_desc": "重型營養液 EC+溫度感測器（可浸入/內聯式）", "full_description": "", "features": ""}, "PPH-1": {"short_desc": "儲液槽適用 pH 感測器", "full_description": "", "features": ""}, "PPH-2": {"short_desc": "重型 內聯式 pH 感測器", "full_description": "", "features": ""}, "PPH-3": {"short_desc": "重型營養液 pH 感測器（可浸入/內聯式）", "full_description": "", "features": ""}, "WCS-1": {"short_desc": "含水量感測器（附連接線組）", "full_description": "", "features": ""}, "WCS-2": {"short_desc": "土壤濕度、溫度及 EC 3 合 1 感測器（附連接線組）", "full_description": "", "features": ""}, "WCS-3": {"short_desc": "含水量感測器 3（附分接線組）", "full_description": "", "features": ""}, "WCS-9": {"short_desc": "土壤濕度、EC 及溫度 3 合 1 介質感測器套件", "full_description": "", "features": ""}, "WN-9": {"short_desc": "土壤濕度、EC 及溫度 3 合 1 介質感測器節點", "full_description": "", "features": ""}, "WD-1": {"short_desc": "水位探測器 + 觸摸點（用於澆水確認）", "full_description": "", "features": ""}, "DFM-1": {"short_desc": "1“ Digital Flow Meter", "full_description": "", "features": ""}, "DFM-2": {"short_desc": "1.25吋 數碼流量計", "full_description": "", "features": ""}, "DFM-3": {"short_desc": "1.5“ Digital Flow Meter", "full_description": "", "features": ""}, "MBS-WS": {"short_desc": "Green-X 控制器適用 氣象站感測器", "full_description": "", "features": ""}, "MBS-GH": {"short_desc": "Green-X 控制器替換用 4 合 1 感測器", "full_description": "", "features": ""}, "LMA-11": {"short_desc": "照明控制轉接器 P（適用於 Phantom 鎮流器）", "full_description": "", "features": ""}, "LMA-12": {"short_desc": "照明控制轉接器 D（適用於 Dimlux 鎮流器）", "full_description": "", "features": ""}, "LMA-13": {"short_desc": "照明控制轉接器 S（適用於 Sun System 鎮流器）", "full_description": "", "features": ""}, "LMA-14": {"short_desc": "Lighting Control Adapter F \nfor Controlling Fluence or any light using 0~10V protocal", "full_description": "", "features": ""}, "LMA-15": {"short_desc": "Lighting Control Adapter DLI\nfor Hydro-X Control System", "full_description": "", "features": ""}, "LMA-24": {"short_desc": "Lantern Schedule Lighting Adapter Compatible with any light controled by 0~10V code", "full_description": "", "features": ""}, "LMA-T": {"short_desc": "照明控制轉接器 T（適用於 ThinkGrow LED）", "full_description": "", "features": ""}, "LMA-G": {"short_desc": "群組控制照明轉接器（適用於 ThinkGrow Model-I LED 群組）", "full_description": "", "features": ""}, "LMA-9": {"short_desc": "將 0-10V 訊號轉換為數碼訊號以控制 ThinkGrow LED 之照明轉接器", "full_description": "", "features": ""}, "LMA-14G": {"short_desc": "群組控制照明轉接器（適用於 0-10V 協議）", "full_description": "", "features": ""}, "TS-1": {"short_desc": "Thermostat Station, for Cool only conventinal HVAC", "full_description": "", "features": ""}, "TS-2": {"short_desc": "恆溫站 2（適用於所有類型 HVAC，包括熱泵及傳統式）", "full_description": "", "features": ""}, "TS-3": {"short_desc": "再熱控制站", "full_description": "", "features": ""}, "ARS-1": {"short_desc": "AC 遙控站（通用遙控器，適用於任何遙控式冷氣，如分體式冷氣系統）", "full_description": "", "features": ""}, "ARS-2": {"short_desc": "AC 遙控站（通用遙控器，適用於任何遙控式冷暖冷氣，如分體式冷氣系統）", "full_description": "", "features": ""}, "DST-1": {"short_desc": "溫度裝置站\n溫度控制繼電器單裝包（附連接線組）", "full_description": "", "features": ""}, "HS-1": {"short_desc": "濕度恆定站（適用於附 24V 端子之除濕機）", "full_description": "", "features": ""}, "DSH-1": {"short_desc": "濕度裝置站\n濕度控制繼電器單裝包（附連接線組）", "full_description": "", "features": ""}, "OA6-24": {"short_desc": "24V Control Board, 6 inividual 24V controlled output for solenoid valve control", "full_description": "", "features": ""}, "OAT-24": {"short_desc": "12 輸出 24V 控制板", "full_description": "", "features": ""}, "OA6-110": {"short_desc": "110V Control Board, 6 inividual 110V controlled output (1.5A per outlet) for pump control", "full_description": "", "features": ""}, "DSC-1": {"short_desc": "CO2 裝置站\nCO2 控制繼電器單裝包（附連接線組）", "full_description": "", "features": ""}, "DSP-1": {"short_desc": "Program Device StationTimer Program Control Relay Single Pack with cable set", "full_description": "", "features": ""}, "DSD-1": {"short_desc": "乾觸點站單裝包（附連接線組）", "full_description": "", "features": ""}, "DSD-3": {"short_desc": "乾觸點控制站", "full_description": "", "features": ""}, "DSV-1": {"short_desc": "TrolMaster 低壓站", "full_description": "", "features": ""}, "DCC-1": {"short_desc": "Hydro-X 系統適用 雙條件轉接器", "full_description": "", "features": ""}, "DCC-2": {"short_desc": "雙系統控制轉接器", "full_description": "", "features": ""}, "4RS-1": {"short_desc": "Expander Station 4:\n 4 outlet expander station with trigger cable for mutiple devices control", "full_description": "", "features": ""}, "4RS-2": {"short_desc": "裝置站套件（4 個控制插座，包括 1x DST、1x DSH 及 2x DSP，新型號）", "full_description": "", "features": ""}, "EFC-1": {"short_desc": "EC 風扇控制轉接器（用於 PWM 或 0-10V 可變速控制 EC 風扇）", "full_description": "", "features": ""}, "VFD-1": {"short_desc": "Variable Frequency Drive Station for VFD \nfan speed control in the Hydro-X Pro system", "full_description": "", "features": ""}, "Delta-1": {"short_desc": "3PH 460V/5HP/3.7KW VFD,  Basic Compact Driver for AC motors speed controls", "full_description": "", "features": ""}, "TSH-1": {"short_desc": "TrolMaster 溫度/濕度站（附 0-10V 協議）", "full_description": "", "features": ""}, "OM-8": {"short_desc": "HCS-2/NFS-2 適用 乾觸點板（8 個獨立電觸點，每觸點最高 12 安培）", "full_description": "", "features": ""}, "DSE-1": {"short_desc": "緊急停止站（附連接線組）", "full_description": "", "features": ""}, "TC-1": {"short_desc": "TrolMaster 種植攝影機", "full_description": "", "features": ""}, "TC-2": {"short_desc": "TrolMaster 種植攝影機（新型號）", "full_description": "", "features": ""}, "DSR-1": {"short_desc": "25 安培繼電器裝置站（100-277V）", "full_description": "", "features": ""}, "DMC-1": {"short_desc": "24V DC 溫室捲膜馬達控制器", "full_description": "", "features": ""}, "AMC-1": {"short_desc": "單相/三相 遮光簾馬達控制器", "full_description": "", "features": ""}, "ECS-1": {"short_desc": "RJ12 延長線組：1 條 16 呎 RJ12 線；1 條 4 呎 RJ12 線；1 個 RJ12 T 型分接器", "full_description": "", "features": ""}, "ECS-2": {"short_desc": "RJ12 to 3.5 Jack Convertor Cable Set: 1x 4' RJ12 to 3.5 Jack Convertor Cable; 1x RJ12 T-Spliter; 1x 16' RJ12 Cable;", "full_description": "", "features": ""}, "ECS-3": {"short_desc": "1 條 16 呎 RJ12 線；1 條 4 呎 RJ12 轉 3.5 插孔線；1 個 T 型分接器；1 個 3.5mm 母座連接器", "full_description": "", "features": ""}, "ECS-4": {"short_desc": "AMP-2 感測器板適用 16 呎延長線", "full_description": "", "features": ""}, "ECS-5": {"short_desc": "Fluence 新型號適用 RJ12 轉 M16 PushLock 防水連接器轉換線組", "full_description": "", "features": ""}, "ECS-6": {"short_desc": "16 呎 4 針腳防水延長線", "full_description": "", "features": ""}, "ECS-8": {"short_desc": "ARS-1 及 Beta-1 適用 IR 發射器 32 呎延長線", "full_description": "", "features": ""}, "ECS-9": {"short_desc": "12ft RJ12 to 4-pin IP65 connecter cable for LMA-T and ThinkGrow LEDs", "full_description": "", "features": ""}, "ECS-10": {"short_desc": "RJ12 25 呎捲曲通訊線", "full_description": "", "features": ""}, "ECS-12": {"short_desc": "TrolMaster 4 針腳防水分接線", "full_description": "", "features": ""}, "ECS-500": {"short_desc": "500 呎 RJ12 線捲", "full_description": "", "features": ""}, "ECW-1": {"short_desc": "RJ12 防水直通內聯耦合器", "full_description": "", "features": ""}, "MC-1": {"short_desc": "多功能壓線鉗", "full_description": "", "features": ""}, "SPH-1": {"short_desc": "RJ12 Splitter Hub with cable set", "full_description": "", "features": ""}, "BM-1": {"short_desc": "Wheatherproof Box for TS-1, TS-2, HS-1 and ARS-1", "full_description": "", "features": ""}, "TSB-1": {"short_desc": "TrolMaster 感測器支架（2 個裝）", "full_description": "", "features": ""}, "TSS-1": {"short_desc": "觸摸點 + T 型分接延長線", "full_description": "", "features": ""}, "TSS-2": {"short_desc": "觸摸點 16 呎延長線", "full_description": "", "features": ""}, "AS-1": {"short_desc": "CO2 警報站（聲音/視覺，附連接線組）", "full_description": "", "features": ""}, "AS-2": {"short_desc": "CO2 警報站（聲音/視覺，附 LED 顯示指示燈及連接線組）", "full_description": "", "features": ""}, "AS-3": {"short_desc": "CO2 警報站（琥珀色燈）", "full_description": "", "features": ""}, "AS-4": {"short_desc": "CO2 警報站（藍色燈）", "full_description": "", "features": ""}, "AS-5": {"short_desc": "警報站", "full_description": "", "features": ""}, "SCC-1": {"short_desc": "25“ Standard Controller Cabinet for Hydro-X Pro / Aqua-X Pro", "full_description": "", "features": ""}, "SCC-2": {"short_desc": "Hydro-X Pro / Aqua-X Pro 適用 35 吋大型控制器機櫃", "full_description": "", "features": ""}, "SCC-3": {"short_desc": "25“ Standard Controller Cabinet for Hydro-X Plus", "full_description": "", "features": ""}, "SCC-D": {"short_desc": "無預切窗口之控制器機櫃門", "full_description": "", "features": ""}, "SCC-D2": {"short_desc": "SCC-2 適用 無預切窗口之控制器機櫃門", "full_description": "", "features": ""}, "SCC-4": {"short_desc": "Mini Controller Cabinet （100-277V）", "full_description": "", "features": ""}, "CM-1": {"short_desc": "Hawkeye 3 合 1 監測器及記錄儀（附 3 合 1 溫度/濕度/CO2 感測器、乙太網路轉接器），免費智能手機應用程式", "full_description": "", "features": ""}, "Beta-1": {"short_desc": "Digital Day/Night Remote controller (For remote controled AC such as Mini Split)", "full_description": "", "features": ""}, "Beta-2": {"short_desc": "Digital Day/Night Fans Speed controller", "full_description": "", "features": ""}, "Beta-4": {"short_desc": "數碼晝/夜溫度控制器", "full_description": "", "features": ""}, "Beta-6": {"short_desc": "數碼晝/夜濕度 110V 控制器", "full_description": "", "features": ""}, "Beta-8": {"short_desc": "數碼 CO2 PPM 控制器（適用於調節器及發生器）", "full_description": "", "features": ""}, "Model-H": {"short_desc": "ThinkGrow Model-H LED 種植燈", "full_description": "", "features": ""}, "Model-H Plus": {"short_desc": "ThinkGrow Model-H Plus LED 種植燈", "full_description": "", "features": ""}, "Model-W": {"short_desc": "ThinkGrow Model-W LED 種植燈", "full_description": "", "features": ""}, "Model-V": {"short_desc": "ThinkGrow Model-V LED 種植燈", "full_description": "", "features": ""}, "Model-H Plus 4'": {"short_desc": "720watt 4'x8 Multi-Bars LED Grow Light with 4 Spectrum Channels, On-Board Control and Built-in Group Control", "full_description": "", "features": ""}, "Model-H Plus 5'": {"short_desc": "720watt 5'x8 Multi-Bars LED Grow Light with 4 Spectrum Channels, On-Board Control and Built-in Group Control", "full_description": "", "features": ""}, "Model-I": {"short_desc": "ThinkGrow Model-I LED 種植燈", "full_description": "", "features": ""}, "Model-I plus": {"short_desc": "ThinkGrow Model-I Plus LED 種植燈", "full_description": "", "features": ""}, "ICL-300": {"short_desc": "120W 300° 發光角度 冠層內 LED（4 光譜）", "full_description": "", "features": ""}, "ICL-150": {"short_desc": "120W 150° 發光角度 多用途 LED（4 光譜）", "full_description": "", "features": ""}, "ICL-120": {"short_desc": "120W 120° 發光角度 冠層下 LED（4 個裝）", "full_description": "", "features": ""}, "ICL-120 (2)": {"short_desc": "120W 120° 發光角度 冠層下 LED（2 個裝）", "full_description": "", "features": ""}, "TSD-1": {"short_desc": "ThinkGrow LED 支架（適用於 ICL-300，高度可調，單裝）", "full_description": "", "features": ""}, "TSD-3": {"short_desc": "ThinkGrow 垂直 LED 支架（適用於 ICL-120 及 ICL-150，2 個裝）", "full_description": "", "features": ""}, "Model-C": {"short_desc": "18W 單光譜通道 克隆 LED（2 個裝）", "full_description": "", "features": ""}, "TLD-2": {"short_desc": "90W ThinkGrow Model One LED 驅動器（2 光譜控制通道）", "full_description": "", "features": ""}, "TLD-4": {"short_desc": "90W ThinkGrow Model One LED 驅動器（4 光譜控制通道）", "full_description": "", "features": ""}, "DR-1": {"short_desc": "4 呎 LED 燈條（2 光譜通道：全光譜 + 深紅光），適用於 Model One 系統", "full_description": "", "features": ""}, "FR-1": {"short_desc": "4 呎 LED 燈條（2 光譜通道：全光譜 + 遠紅光），適用於 Model One LED 系統", "full_description": "", "features": ""}, "TLB-1": {"short_desc": "4 呎 LED 燈條（4 光譜通道：白光+深紅光+遠紅光+紫外光），適用於 Model One LED 系統", "full_description": "", "features": ""}, "TLB-2": {"short_desc": "5 呎 LED 燈條（4 光譜通道：白光+深紅光+遠紅光+紫外光），適用於 Model One LED 系統", "full_description": "", "features": ""}, "TLB-3": {"short_desc": "2.5 呎 LED 燈條（4 光譜通道：白光+深紅光+紫外光+遠紅光）", "full_description": "", "features": ""}, "MB-4": {"short_desc": "4 個驅動器適用 快拆安裝條（360W）", "full_description": "", "features": ""}, "MB-7": {"short_desc": "7 個驅動器適用 快拆安裝條（630W）", "full_description": "", "features": ""}, "MB-8": {"short_desc": "8 個驅動器適用 快拆安裝條（720W）", "full_description": "", "features": ""}, "MB-9": {"short_desc": "9 個驅動器適用 快拆安裝條（810W）", "full_description": "", "features": ""}, "TDC-1": {"short_desc": "Model One LED 系統適用 AWG #18 分接電源線", "full_description": "", "features": ""}, "TDC-2": {"short_desc": "Model One LED 系統適用 1 呎 AWG #18 菊花鏈線", "full_description": "", "features": ""}, "TDC-3": {"short_desc": "Model One LED 系統適用 2 呎 AWG #18 菊花鏈線", "full_description": "", "features": ""}, "TDC-4": {"short_desc": "Model One LED 系統適用 5 呎 AWG #18 菊花鏈線", "full_description": "", "features": ""}, "TDC-120": {"short_desc": "Model One LED 系統適用 7 呎分接電源線 AWG #18（附 NEMA 5-15 插頭）", "full_description": "", "features": ""}, "LLT-2": {"short_desc": "ThinkGrow 智能燈具升降器", "full_description": "", "features": ""}, "LLT-3": {"short_desc": "ThinkGrow 智能迷你升降系統", "full_description": "", "features": ""}, "LRC-1": {"short_desc": "智能升降器遙控器", "full_description": "", "features": ""}, "RC-1": {"short_desc": "升降器索具線套件", "full_description": "", "features": ""}, "TDC-5": {"short_desc": "4' AWG#18 Daisy Chain CoiledCordwith T splitter for ThinkGrow Lifter systems", "full_description": "", "features": ""}, "OPA-1": {"short_desc": "100-277V 智能接線盒", "full_description": "", "features": ""}, "OPA-2": {"short_desc": "100-277V 智能接線盒", "full_description": "", "features": ""}, "DCA-10": {"short_desc": "5 呎 30A AWG#10 ThinkGrow 菊花鏈電源線", "full_description": "", "features": ""}, "DCA-12": {"short_desc": "5 呎 20A AWG#12 ThinkGrow 菊花鏈電源線", "full_description": "", "features": ""}, "DCA-14": {"short_desc": "5 呎 15A AWG#14 ThinkGrow 菊花鏈電源線", "full_description": "", "features": ""}, "DEA-10": {"short_desc": "3 呎 30A AWG#10 ThinkGrow 延長電源線", "full_description": "", "features": ""}, "DEA-12": {"short_desc": "3 呎 20A AWG#12 ThinkGrow 延長電源線", "full_description": "", "features": ""}, "DEA-14": {"short_desc": "3 呎 15A AWG#14 ThinkGrow 延長電源線", "full_description": "", "features": ""}, "DEA-10L": {"short_desc": "10 呎 菊花鏈延長電源線", "full_description": "", "features": ""}, "DPA-10": {"short_desc": "30A AWG#10 ThinkGrow 硬接線電源線", "full_description": "", "features": ""}, "DOA-10": {"short_desc": "OPA-2 輸出適用 30A AWG#10 ThinkGrow 硬接線電源線", "full_description": "", "features": ""}, "ECS-7": {"short_desc": "ThinkGrow 12'Daisy chain control cable", "full_description": "", "features": ""}, "UV-1": {"short_desc": "Model-H/W 適用 UV 光條", "full_description": "", "features": ""}, "UH-1": {"short_desc": "Unit-Strut Hanger for Modle-H/W/V", "full_description": "", "features": ""}, "UH-2": {"short_desc": "Model-I 及 Plus 適用 Unit-Strut 吊架", "full_description": "", "features": ""}, "EC-12": {"short_desc": "12’ power extension cord", "full_description": "", "features": ""}, "PA-1": {"short_desc": "ThinkGrow 美國適用 240V 轉 120V 插頭轉接器", "full_description": "", "features": ""}, "FRC-1": {"short_desc": "內置光敏元件之智能風扇遙控器（用於晝/夜設定）", "full_description": "", "features": ""}, "FRC-2": {"short_desc": "簡易風扇速度調光器", "full_description": "", "features": ""}, "V-6": {"short_desc": "6 吋 內聯式管道通風風扇", "full_description": "", "features": ""}, "V-8": {"short_desc": "8 吋 內聯式管道通風風扇", "full_description": "", "features": ""}, "V-10": {"short_desc": "10 吋 內聯式管道通風風扇", "full_description": "", "features": ""}, "V-10M": {"short_desc": "10 吋 金屬內聯式管道通風風扇 Pro 型號", "full_description": "", "features": ""}, "V-12": {"short_desc": "12 吋 內聯式管道通風風扇", "full_description": "", "features": ""}, "V-12M": {"short_desc": "12 吋 金屬內聯式管道通風風扇 Pro 型號", "full_description": "", "features": ""}, "HE-20": {"short_desc": "20 吋 高速風扇", "full_description": "", "features": ""}, "HE-20M": {"short_desc": "20 吋 高速風扇 Pro 型號", "full_description": "", "features": ""}, "AB-6": {"short_desc": "Aero-Fan 空氣增壓器（4吋（10.1厘米）縮徑器，適用於 V-6，2 個裝）", "full_description": "", "features": ""}, "AB-8": {"short_desc": "Aero-Fan 空氣增壓器（6吋（15.24厘米）縮徑器，適用於 V-8，2 個裝）", "full_description": "", "features": ""}, "PS-4": {"short_desc": "4吋（10.1厘米）Poly 空氣分配襪", "full_description": "", "features": ""}, "PS-6": {"short_desc": "6吋（15.2厘米）Poly 空氣分配襪", "full_description": "", "features": ""}}, "th": {"HCS-1": {"short_desc": "ตัวควบคุม Hydro-X พร้อมเซ็นเซอร์ 3-in-1 (อุณหภูมิ / ความชื้น / แสง) และสายเคเบิล แอปโทรศัพท์ฟรี", "full_description": "", "features": ""}, "HCS-2": {"short_desc": "ตัวควบคุม Hydro-X Pro พร้อมเซ็นเซอร์ 4-in-1 (อุณหภูมิ / ความชื้น / CO2 / แสง) และสายเคเบิล แอปโทรศัพท์ฟรี", "full_description": "", "features": ""}, "HCS-3": {"short_desc": "ตัวควบคุม Hydro-X Plus พร้อมเซ็นเซอร์ 4-in-1 (อุณหภูมิ / ความชื้น / CO2 / แสง) และสายเคเบิล แอปโทรศัพท์ฟรี", "full_description": "", "features": ""}, "NFS-1": {"short_desc": "ตัวควบคุม Aqua-X พร้อมชุดตรวจจับระดับน้ำ แอปสมาร์ทโฟนฟรี", "full_description": "", "features": ""}, "NFS-2": {"short_desc": "ตัวควบคุม Aqua-X Pro พร้อมแผงเซ็นเซอร์ AMP-3 แอปโทรศัพท์ฟรี", "full_description": "", "features": ""}, "NFS-3": {"short_desc": "ตัวควบคุม Aqua-X Plus พร้อมแผงเซ็นเซอร์ AMP-3 แอปโทรศัพท์ฟรี", "full_description": "", "features": ""}, "TCS-1": {"short_desc": "ตัวควบคุมหลัก Tent-X พร้อมเซ็นเซอร์ 3-in-1 (อุณหภูมิ / ความชื้น / แสง) และสายเคเบิล แอปโทรศัพท์ฟรี", "full_description": "", "features": ""}, "CDA-1": {"short_desc": "ตัวควบคุม Carbon-X พร้อมสายเคเบิล แอปสมาร์ทโฟนฟรี", "full_description": "", "features": ""}, "GCS-1": {"short_desc": "ตัวควบคุม Green-X พร้อมเซ็นเซอร์ 4-in-1 (อุณหภูมิ / ความชื้น / CO2 / แสง) และสายเคเบิล แอปโทรศัพท์ฟรี", "full_description": "", "features": ""}, "MBS-TH": {"short_desc": "เซ็นเซอร์สำรอง อุณหภูมิ / ความชื้น / แสง สำหรับ Hydro-X", "full_description": "", "features": ""}, "MBS-S8": {"short_desc": "เซ็นเซอร์ CO2 สำหรับ Hydro-X พร้อมสายเคเบิล", "full_description": "", "features": ""}, "MBS-PRO": {"short_desc": "เซ็นเซอร์ 4-in-1 (อุณหภูมิ/ความชื้น/CO2/แสง) สำหรับ Hydro-X Pro และ Hydro-X Plus", "full_description": "", "features": ""}, "MBS-SD": {"short_desc": "ตัวตรวจจับควันสำหรับ Hydro-X พร้อมสายเคเบิล", "full_description": "", "features": ""}, "MBS-PAR": {"short_desc": "เซ็นเซอร์ควอนตัมสเปกตรัมเต็ม", "full_description": "", "features": ""}, "MBS-K30": {"short_desc": "เซ็นเซอร์ CO2 สำหรับ Carbon-X พร้อมสายเคเบิล", "full_description": "", "features": ""}, "AMP-2": {"short_desc": "แผงเซ็นเซอร์สำหรับเชื่อมต่อเซ็นเซอร์กับตัวควบคุม", "full_description": "", "features": ""}, "AMP-3": {"short_desc": "แผงเซ็นเซอร์สำหรับเชื่อมต่อกับตัวควบคุม NFS-2 พร้อมจอ LCD สำหรับ Aqua-X Pro และ Tent-X", "full_description": "", "features": ""}, "PCT-1": {"short_desc": "เซ็นเซอร์ 2-in-1 EC + อุณหภูมิ สำหรับถังเก็บน้ำ", "full_description": "", "features": ""}, "PCT-2": {"short_desc": "เซ็นเซอร์ EC+อุณหภูมิแบบอินไลน์ รุ่นหนัก", "full_description": "", "features": ""}, "PCT-3": {"short_desc": "เซ็นเซอร์ EC+อุณหภูมิสารละลายธาตุ รุ่นหนัก ใช้แบบจุ่ม/อินไลน์ได้", "full_description": "", "features": ""}, "PPH-1": {"short_desc": "เซ็นเซอร์ pH สำหรับถังเก็บน้ำ", "full_description": "", "features": ""}, "PPH-2": {"short_desc": "เซ็นเซอร์ pH แบบอินไลน์ รุ่นหนัก", "full_description": "", "features": ""}, "PPH-3": {"short_desc": "เซ็นเซอร์ pH สารละลายธาตุ รุ่นหนัก ใช้แบบจุ่ม/อินไลน์ได้", "full_description": "", "features": ""}, "WCS-1": {"short_desc": "เซ็นเซอร์วัดปริมาณน้ำ พร้อมสายเคเบิล", "full_description": "", "features": ""}, "WCS-2": {"short_desc": "เซ็นเซอร์ 3-in-1 (ความชื้นดิน/อุณหภูมิ/EC) พร้อมสายเคเบิล", "full_description": "", "features": ""}, "WCS-3": {"short_desc": "เซ็นเซอร์วัดปริมาณน้ำ 3 พร้อมสายแยก", "full_description": "", "features": ""}, "WCS-9": {"short_desc": "ชุดเซ็นเซอร์ 3-in-1 (ความชื้นดิน/EC/อุณหภูมิ) สำหรับวัสดุเพาะปลูก", "full_description": "", "features": ""}, "WN-9": {"short_desc": "โหนดเซ็นเซอร์ 3-in-1 (ความชื้นดิน/EC/อุณหภูมิ) สำหรับวัสดุเพาะปลูก", "full_description": "", "features": ""}, "WD-1": {"short_desc": "ตัวตรวจจับน้ำ + Touch Spot สำหรับยืนยันการรดน้ำ", "full_description": "", "features": ""}, "DFM-1": {"short_desc": "", "full_description": "", "features": ""}, "DFM-2": {"short_desc": "มิเตอร์วัดการไหลแบบดิจิทัล 1.25 นิ้ว", "full_description": "", "features": ""}, "DFM-3": {"short_desc": "", "full_description": "", "features": ""}, "MBS-WS": {"short_desc": "เซ็นเซอร์สถานีอากาศ สำหรับตัวควบคุม Green-X", "full_description": "", "features": ""}, "MBS-GH": {"short_desc": "เซ็นเซอร์ 4-in-1 สำรอง สำหรับตัวควบคุม Green-X", "full_description": "", "features": ""}, "LMA-11": {"short_desc": "อะแดปเตอร์ควบคุมแสง P สำหรับควบคุมบัลลาสท์ Phantom", "full_description": "", "features": ""}, "LMA-12": {"short_desc": "อะแดปเตอร์ควบคุมแสง D สำหรับควบคุมบัลลาสท์ Dimlux", "full_description": "", "features": ""}, "LMA-13": {"short_desc": "อะแดปเตอร์ควบคุมแสง S สำหรับควบคุมบัลลาสท์ Sun System", "full_description": "", "features": ""}, "LMA-14": {"short_desc": "", "full_description": "", "features": ""}, "LMA-15": {"short_desc": "", "full_description": "", "features": ""}, "LMA-24": {"short_desc": "", "full_description": "", "features": ""}, "LMA-T": {"short_desc": "อะแดปเตอร์ควบคุมแสง T สำหรับควบคุม ThinkGrow LED", "full_description": "", "features": ""}, "LMA-G": {"short_desc": "อะแดปเตอร์ควบคุมแสงแบบกลุ่ม สำหรับจัดกลุ่ม ThinkGrow Model-I LED", "full_description": "", "features": ""}, "LMA-9": {"short_desc": "อะแดปเตอร์แสงแปลงสัญญาณ 0-10V เป็นสัญญาณดิจิทัล สำหรับควบคุม ThinkGrow LED", "full_description": "", "features": ""}, "LMA-14G": {"short_desc": "อะแดปเตอร์ควบคุมแสงแบบกลุ่ม สำหรับโปรโตคอล 0-10V", "full_description": "", "features": ""}, "TS-1": {"short_desc": "", "full_description": "", "features": ""}, "TS-2": {"short_desc": "สถานีเธอร์โมสตัท 2 สำหรับ HVAC ทุกประเภท (ฮีตปั๊มและแบบดั้งเดิม)", "full_description": "", "features": ""}, "TS-3": {"short_desc": "สถานีควบคุมรีฮีท", "full_description": "", "features": ""}, "ARS-1": {"short_desc": "สถานีรีโมท AC รีโมทสากล สำหรับแอร์ควบคุมระยะไกล เช่น ระบบแอร์มินิสปลิท", "full_description": "", "features": ""}, "ARS-2": {"short_desc": "สถานีรีโมท AC รีโมทสากล สำหรับแอร์ร้อน-เย็นควบคุมระยะไกล เช่น ระบบแอร์มินิสปลิท", "full_description": "", "features": ""}, "DST-1": {"short_desc": "สถานีอุปกรณ์อุณหภูมิ\nรีเลย์ควบคุมอุณหภูมิ แพ็คเดี่ยว พร้อมสายเคเบิล", "full_description": "", "features": ""}, "HS-1": {"short_desc": "สถานีฮิวมิดิสแตท สำหรับเครื่องลดความชื้นที่มีเทอร์มินัล 24V", "full_description": "", "features": ""}, "DSH-1": {"short_desc": "สถานีอุปกรณ์ความชื้น\nรีเลย์ควบคุมความชื้น แพ็คเดี่ยว พร้อมสายเคเบิล", "full_description": "", "features": ""}, "OA6-24": {"short_desc": "", "full_description": "", "features": ""}, "OAT-24": {"short_desc": "บอร์ดควบคุม 24V 12 เอาต์พุต", "full_description": "", "features": ""}, "OA6-110": {"short_desc": "", "full_description": "", "features": ""}, "DSC-1": {"short_desc": "สถานีอุปกรณ์ CO2\nรีเลย์ควบคุม CO2 แพ็คเดี่ยว พร้อมสายเคเบิล", "full_description": "", "features": ""}, "DSP-1": {"short_desc": "", "full_description": "", "features": ""}, "DSD-1": {"short_desc": "สถานี Dry Contact แพ็คเดี่ยว พร้อมสายเคเบิล", "full_description": "", "features": ""}, "DSD-3": {"short_desc": "สถานีควบคุม Dry Contact", "full_description": "", "features": ""}, "DSV-1": {"short_desc": "สถานีแรงดันต่ำ TrolMaster", "full_description": "", "features": ""}, "DCC-1": {"short_desc": "อะแดปเตอร์เงื่อนไขคู่ สำหรับระบบ Hydro-X", "full_description": "", "features": ""}, "DCC-2": {"short_desc": "อะแดปเตอร์ควบคุมระบบคู่", "full_description": "", "features": ""}, "4RS-1": {"short_desc": "", "full_description": "", "features": ""}, "4RS-2": {"short_desc": "ชุดสถานีอุปกรณ์ 4 เอาต์พุตควบคุม ประกอบด้วย 1x DST, 1x DSH และ 2x DSP (ใหม่)", "full_description": "", "features": ""}, "EFC-1": {"short_desc": "อะแดปเตอร์ควบคุมพัด EC สำหรับควบคุมความเร็วพัด EC แบบ PWM หรือ 0-10V", "full_description": "", "features": ""}, "VFD-1": {"short_desc": "", "full_description": "", "features": ""}, "Delta-1": {"short_desc": "", "full_description": "", "features": ""}, "TSH-1": {"short_desc": "สถานีอุณหภูมิ/ความชื้น TrolMaster พร้อมโปรโตคอล 0-10V", "full_description": "", "features": ""}, "OM-8": {"short_desc": "บอร์ด Dry Contact สำหรับ HCS-2/NFS-2 มี 8 จุดสัมผัสไฟฟ้าแยกอิสระ แต่ละจุดรับได้สูงสุด 12 แอมป์", "full_description": "", "features": ""}, "DSE-1": {"short_desc": "สถานีหยุดฉุกเฉิน พร้อมสายเคเบิล", "full_description": "", "features": ""}, "TC-1": {"short_desc": "กล้องเพาะปลูก TrolMaster", "full_description": "", "features": ""}, "TC-2": {"short_desc": "กล้องเพาะปลูก TrolMaster (รุ่นใหม่)", "full_description": "", "features": ""}, "DSR-1": {"short_desc": "สถานีอุปกรณ์รีเลย์ 25 แอมป์ (100-277V)", "full_description": "", "features": ""}, "DMC-1": {"short_desc": "ตัวควบคุมมอเตอร์ม้วนฟิล์มเรือนกระจก 24V DC", "full_description": "", "features": ""}, "AMC-1": {"short_desc": "ตัวควบคุมมอเตอร์ม่าน 1 เฟส/3 เฟส", "full_description": "", "features": ""}, "ECS-1": {"short_desc": "ชุดสายต่อ RJ12: 1x สาย RJ12 16 ฟุต; 1x สาย RJ12 4 ฟุต; 1x ตัวแยก RJ12 แบบ T", "full_description": "", "features": ""}, "ECS-2": {"short_desc": "", "full_description": "", "features": ""}, "ECS-3": {"short_desc": "1x สาย RJ12 16 ฟุต; 1x สาย RJ12 เป็น 3.5 แจ็ค 4 ฟุต; 1x ตัวแยกแบบ T; 1x ตัวเชื่อม 3.5mm ตัวเมีย", "full_description": "", "features": ""}, "ECS-4": {"short_desc": "สายต่อ 16 ฟุต สำหรับแผงเซ็นเซอร์ AMP-2", "full_description": "", "features": ""}, "ECS-5": {"short_desc": "ชุดสายแปลง RJ12 เป็น M16 PushLock กันน้ำ สำหรับรุ่นใหม่ Fluence", "full_description": "", "features": ""}, "ECS-6": {"short_desc": "สายต่อกันน้ำ 4 ขา 16 ฟุต", "full_description": "", "features": ""}, "ECS-8": {"short_desc": "สายต่อ 32 ฟุต สำหรับตัวส่ง IR ใน ARS-1 และ Beta-1", "full_description": "", "features": ""}, "ECS-9": {"short_desc": "", "full_description": "", "features": ""}, "ECS-10": {"short_desc": "สายสื่อสาร RJ12 แบบม้วน 25 ฟุต", "full_description": "", "features": ""}, "ECS-12": {"short_desc": "สายแยกกันน้ำ 4 ขา TrolMaster", "full_description": "", "features": ""}, "ECS-500": {"short_desc": "สาย RJ12 ม้วน 500 ฟุต", "full_description": "", "features": ""}, "ECW-1": {"short_desc": "ตัวเชื่อมต่อตรงกันน้ำ RJ12 แบบอินไลน์", "full_description": "", "features": ""}, "MC-1": {"short_desc": "คริมเปอร์อเนกประสงค์", "full_description": "", "features": ""}, "SPH-1": {"short_desc": "", "full_description": "", "features": ""}, "BM-1": {"short_desc": "", "full_description": "", "features": ""}, "TSB-1": {"short_desc": "แบร็กเก็ตเซ็นเซอร์ TrolMaster (2 ชิ้น)", "full_description": "", "features": ""}, "TSS-1": {"short_desc": "Touch Spot + สายต่อแยกแบบ T", "full_description": "", "features": ""}, "TSS-2": {"short_desc": "สายต่อ Touch Spot 16 ฟุต", "full_description": "", "features": ""}, "AS-1": {"short_desc": "สถานีสัญญาณเตือน CO2 (เสียง/ภาพ) พร้อมสายเคเบิล", "full_description": "", "features": ""}, "AS-2": {"short_desc": "สถานีสัญญาณเตือน CO2 (เสียง/ภาพ) พร้อมตัวบอกสถานะ LED และสายเคเบิล", "full_description": "", "features": ""}, "AS-3": {"short_desc": "สถานีสัญญาณเตือน CO2 (ไฟสีเหลือง)", "full_description": "", "features": ""}, "AS-4": {"short_desc": "สถานีสัญญาณเตือน CO2 (ไฟสีน้ำเงิน)", "full_description": "", "features": ""}, "AS-5": {"short_desc": "สถานีสัญญาณเตือน", "full_description": "", "features": ""}, "SCC-1": {"short_desc": "", "full_description": "", "features": ""}, "SCC-2": {"short_desc": "ตู้ควบคุมขนาดใหญ่ 35 นิ้ว สำหรับ Hydro-X Pro / Aqua-X Pro", "full_description": "", "features": ""}, "SCC-3": {"short_desc": "", "full_description": "", "features": ""}, "SCC-D": {"short_desc": "ประตูตู้ควบคุม ไม่มีหน้าต่างตัดล่วงหน้า", "full_description": "", "features": ""}, "SCC-D2": {"short_desc": "ประตูตู้ควบคุม ไม่มีหน้าต่างตัดล่วงหน้า สำหรับ SCC-2", "full_description": "", "features": ""}, "SCC-4": {"short_desc": "", "full_description": "", "features": ""}, "CM-1": {"short_desc": "มอนิเตอร์และตัวบันทึก Hawkeye 3-in-1 พร้อมเซ็นเซอร์ 3-in-1 (อุณหภูมิ/ความชื้น/CO2) อะแดปเตอร์อีเทอร์เน็ต แอปสมาร์ทโฟนฟรี", "full_description": "", "features": ""}, "Beta-1": {"short_desc": "", "full_description": "", "features": ""}, "Beta-2": {"short_desc": "", "full_description": "", "features": ""}, "Beta-4": {"short_desc": "ตัวควบคุมอุณหภูมิกลางวัน/กลางคืนแบบดิจิทัล", "full_description": "", "features": ""}, "Beta-6": {"short_desc": "ตัวควบคุมความชื้นกลางวัน/กลางคืน 110V แบบดิจิทัล", "full_description": "", "features": ""}, "Beta-8": {"short_desc": "ตัวควบคุม CO2 PPM แบบดิจิทัล สำหรับรีกูเลเตอร์และเครื่องกำเนิด CO2", "full_description": "", "features": ""}, "Model-H": {"short_desc": "ไฟเพาะปลูก LED ThinkGrow Model-H", "full_description": "", "features": ""}, "Model-H Plus": {"short_desc": "ไฟเพาะปลูก LED ThinkGrow Model-H Plus", "full_description": "", "features": ""}, "Model-W": {"short_desc": "ไฟเพาะปลูก LED ThinkGrow Model-W", "full_description": "", "features": ""}, "Model-V": {"short_desc": "ไฟเพาะปลูก LED ThinkGrow Model-V", "full_description": "", "features": ""}, "Model-H Plus 4'": {"short_desc": "", "full_description": "", "features": ""}, "Model-H Plus 5'": {"short_desc": "", "full_description": "", "features": ""}, "Model-I": {"short_desc": "ไฟเพาะปลูก LED ThinkGrow Model-I", "full_description": "", "features": ""}, "Model-I plus": {"short_desc": "ไฟเพาะปลูก LED ThinkGrow Model-I Plus", "full_description": "", "features": ""}, "ICL-300": {"short_desc": "LED ในชั้นพุ่ม 120W มุมแสง 300° (4 สเปกตรัม)", "full_description": "", "features": ""}, "ICL-150": {"short_desc": "LED อเนกประสงค์ 120W มุมแสง 150° (4 สเปกตรัม)", "full_description": "", "features": ""}, "ICL-120": {"short_desc": "LED ใต้ชั้นพุ่ม 120W มุมแสง 120° (4 ชิ้น/แพ็ค)", "full_description": "", "features": ""}, "ICL-120 (2)": {"short_desc": "LED ใต้ชั้นพุ่ม 120W มุมแสง 120° (2 ชิ้น/แพ็ค)", "full_description": "", "features": ""}, "TSD-1": {"short_desc": "ขาตั้ง LED ThinkGrow ปรับความสูงได้ สำหรับ ICL-300 (1 ชิ้น)", "full_description": "", "features": ""}, "TSD-3": {"short_desc": "ขาตั้ง LED แนวตั้ง ThinkGrow สำหรับ ICL-120 และ ICL-150 (2 ชิ้น/แพ็ค)", "full_description": "", "features": ""}, "Model-C": {"short_desc": "LED โคลน 18W 1 ช่องสเปกตรัม (2 ชิ้น/แพ็ค)", "full_description": "", "features": ""}, "TLD-2": {"short_desc": "ไดรเวอร์ LED ThinkGrow Model One 90W พร้อม 2 ช่องควบคุมสเปกตรัม", "full_description": "", "features": ""}, "TLD-4": {"short_desc": "ไดรเวอร์ LED ThinkGrow Model One 90W พร้อม 4 ช่องควบคุมสเปกตรัม", "full_description": "", "features": ""}, "DR-1": {"short_desc": "แท่ง LED 4 ฟุต 2 ช่องสเปกตรัม (สเปกตรัมเต็ม + แดงเข้ม) สำหรับระบบ Model One", "full_description": "", "features": ""}, "FR-1": {"short_desc": "แท่ง LED 4 ฟุต 2 ช่องสเปกตรัม (สเปกตรัมเต็ม + แดงไกล) สำหรับระบบ LED Model One", "full_description": "", "features": ""}, "TLB-1": {"short_desc": "แท่ง LED 4 ฟุต 4 ช่องสเปกตรัม (ขาว+แดงเข้ม+แดงไกล+UV) สำหรับระบบ LED Model One", "full_description": "", "features": ""}, "TLB-2": {"short_desc": "แท่ง LED 5 ฟุต 4 ช่องสเปกตรัม (ขาว+แดงเข้ม+แดงไกล+UV) สำหรับระบบ LED Model One", "full_description": "", "features": ""}, "TLB-3": {"short_desc": "แท่ง LED 2.5 ฟุต 4 ช่องสเปกตรัม (ขาว+แดงเข้ม+UV+แดงไกล)", "full_description": "", "features": ""}, "MB-4": {"short_desc": "แท่งติดตั้งแบบถอดเร็ว สำหรับ 4 ไดรเวอร์ (360W)", "full_description": "", "features": ""}, "MB-7": {"short_desc": "แท่งติดตั้งแบบถอดเร็ว สำหรับ 7 ไดรเวอร์ (630W)", "full_description": "", "features": ""}, "MB-8": {"short_desc": "แท่งติดตั้งแบบถอดเร็ว สำหรับ 8 ไดรเวอร์ (720W)", "full_description": "", "features": ""}, "MB-9": {"short_desc": "แท่งติดตั้งแบบถอดเร็ว สำหรับ 9 ไดรเวอร์ (810W)", "full_description": "", "features": ""}, "TDC-1": {"short_desc": "สายไฟแยก AWG #18 สำหรับระบบ LED Model One", "full_description": "", "features": ""}, "TDC-2": {"short_desc": "สายเดซี่เชน AWG #18 1 ฟุต สำหรับระบบ LED Model One", "full_description": "", "features": ""}, "TDC-3": {"short_desc": "สายเดซี่เชน AWG #18 2 ฟุต สำหรับระบบ LED Model One", "full_description": "", "features": ""}, "TDC-4": {"short_desc": "สายเดซี่เชน AWG #18 5 ฟุต สำหรับระบบ LED Model One", "full_description": "", "features": ""}, "TDC-120": {"short_desc": "สายไฟแยก 7 ฟุต AWG #18 พร้อมปลั๊ก NEMA 5-15 สำหรับระบบ LED Model One", "full_description": "", "features": ""}, "LLT-2": {"short_desc": "ระบบยกไฟอัจฉริยะ ThinkGrow", "full_description": "", "features": ""}, "LLT-3": {"short_desc": "ระบบยกไฟอัจฉริยะขนาดเล็ก ThinkGrow", "full_description": "", "features": ""}, "LRC-1": {"short_desc": "รีโมทระบบยกอัจฉริยะ", "full_description": "", "features": ""}, "RC-1": {"short_desc": "ชุดสายรั้งระบบยก", "full_description": "", "features": ""}, "TDC-5": {"short_desc": "", "full_description": "", "features": ""}, "OPA-1": {"short_desc": "กล่องจunctionอัจฉริยะ 100-277V", "full_description": "", "features": ""}, "OPA-2": {"short_desc": "กล่องจunctionอัจฉริยะ 100-277V", "full_description": "", "features": ""}, "DCA-10": {"short_desc": "สายไฟเดซี่เชน ThinkGrow AWG#10 30A 5 ฟุต", "full_description": "", "features": ""}, "DCA-12": {"short_desc": "สายไฟเดซี่เชน ThinkGrow AWG#12 20A 5 ฟุต", "full_description": "", "features": ""}, "DCA-14": {"short_desc": "สายไฟเดซี่เชน ThinkGrow AWG#14 15A 5 ฟุต", "full_description": "", "features": ""}, "DEA-10": {"short_desc": "สายไฟต่อ ThinkGrow AWG#10 30A 3 ฟุต", "full_description": "", "features": ""}, "DEA-12": {"short_desc": "สายไฟต่อ ThinkGrow AWG#12 20A 3 ฟุต", "full_description": "", "features": ""}, "DEA-14": {"short_desc": "สายไฟต่อ ThinkGrow AWG#14 15A 3 ฟุต", "full_description": "", "features": ""}, "DEA-10L": {"short_desc": "สายไฟต่อเดซี่เชน 10 ฟุต", "full_description": "", "features": ""}, "DPA-10": {"short_desc": "สายไฟฮาร์ดไวร์ ThinkGrow AWG#10 30A", "full_description": "", "features": ""}, "DOA-10": {"short_desc": "สายไฟฮาร์ดไวร์ ThinkGrow AWG#10 30A สำหรับเอาต์พุต OPA-2", "full_description": "", "features": ""}, "ECS-7": {"short_desc": "", "full_description": "", "features": ""}, "UV-1": {"short_desc": "แท่งไฟ UV สำหรับ Model-H/W", "full_description": "", "features": ""}, "UH-1": {"short_desc": "", "full_description": "", "features": ""}, "UH-2": {"short_desc": "แขวน Unit-Strut สำหรับ Model-I & Plus", "full_description": "", "features": ""}, "EC-12": {"short_desc": "", "full_description": "", "features": ""}, "PA-1": {"short_desc": "อะแดปเตอร์ปลั๊ก ThinkGrow 240V เป็น 120V สำหรับสหรัฐอเมริกา", "full_description": "", "features": ""}, "FRC-1": {"short_desc": "รีโมทพัดอัจฉริยะ พร้อมโฟโตเซลล์ในตัว สำหรับตั้งค่ากลางวัน/กลางคืน", "full_description": "", "features": ""}, "FRC-2": {"short_desc": "ตัวหรี่ความเร็วพัดแบบง่าย", "full_description": "", "features": ""}, "V-6": {"short_desc": "พัดระบายอากาศท่ออินไลน์ 6 นิ้ว", "full_description": "", "features": ""}, "V-8": {"short_desc": "พัดระบายอากาศท่ออินไลน์ 8 นิ้ว", "full_description": "", "features": ""}, "V-10": {"short_desc": "พัดระบายอากาศท่ออินไลน์ 10 นิ้ว", "full_description": "", "features": ""}, "V-10M": {"short_desc": "พัดระบายอากาศท่ออินไลน์โลหะ 10 นิ้ว รุ่น Pro", "full_description": "", "features": ""}, "V-12": {"short_desc": "พัดระบายอากาศท่ออินไลน์ 12 นิ้ว", "full_description": "", "features": ""}, "V-12M": {"short_desc": "พัดระบายอากาศท่ออินไลน์โลหะ 12 นิ้ว รุ่น Pro", "full_description": "", "features": ""}, "HE-20": {"short_desc": "พัดความเร็วสูง 20 นิ้ว", "full_description": "", "features": ""}, "HE-20M": {"short_desc": "พัดความเร็วสูง 20 นิ้ว รุ่น Pro", "full_description": "", "features": ""}, "AB-6": {"short_desc": "ตัวเพิ่มแรงลม Aero-Fan (ตัวลดขนาด 4 นิ้ว/10.1ซม. สำหรับ V-6, 2 ชิ้น/แพ็ค)", "full_description": "", "features": ""}, "AB-8": {"short_desc": "ตัวเพิ่มแรงลม Aero-Fan (ตัวลดขนาด 6 นิ้ว/15.24ซม. สำหรับ V-8, 2 ชิ้น/แพ็ค)", "full_description": "", "features": ""}, "PS-4": {"short_desc": "ถุงลม Poly 4 นิ้ว (10.1 ซม.)", "full_description": "", "features": ""}, "PS-6": {"short_desc": "ถุงลม Poly 6 นิ้ว (15.2 ซม.)", "full_description": "", "features": ""}}};
@@ -1591,7 +1529,7 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
       switchCurrency(LANG_CURRENCY[lang]);
     }
     // Notify pages that language/currency changed
-    if (typeof window.onPageLangChange === 'function') window.onPageLangChange();
+    notifyPageLangChange();
   }
 
   // ─── Currency ───────────────────────────────────────────────────────────
@@ -1785,14 +1723,32 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     closeMenu();
   };
 
-  // Pages register their onDataReady handler here
-  let _pageDataReady = null;
-  window.registerPageDataReady = function (fn) { _pageDataReady = fn; };
+  // Pages register their onDataReady/onLangChange handlers here (supports multiple pages)
+  let _pageDataReadyCallbacks = [];
+  let _pageLangChangeCallbacks = [];
+  window.registerPageDataReady = function (fn) { _pageDataReadyCallbacks.push(fn); };
+  window.registerPageLangChange = function (fn) { _pageLangChangeCallbacks.push(fn); };
+
   function onDataReady() {
+    // Legacy single-handler support
     if (typeof window.onPageDataReady === 'function') {
       window.onPageDataReady();
     }
-    if (typeof _pageDataReady === 'function') _pageDataReady();
+    // Multi-page callback support
+    _pageDataReadyCallbacks.forEach(fn => {
+      try { fn(); } catch(e) { console.warn('[Shell] PageDataReady callback error:', e); }
+    });
+  }
+
+  function notifyPageLangChange() {
+    // Legacy single-handler support
+    if (typeof window.onPageLangChange === 'function') {
+      window.onPageLangChange();
+    }
+    // Multi-page callback support
+    _pageLangChangeCallbacks.forEach(fn => {
+      try { fn(); } catch(e) { console.warn('[Shell] PageLangChange callback error:', e); }
+    });
   }
 
   // ─── Escape HTML ────────────────────────────────────────────────────────
@@ -2172,18 +2128,18 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
   }
 
   // ─── Data Ready Hook ──────────────────────────────────
-  window.onPageDataReady = function () {
+  window.registerPageDataReady(function () {
     renderPopularTags();
     initProductSearchPage();
-  };
+  });
 
   // ─── Lang Change Hook ─────────────────────────────────
-  window.onPageLangChange = function () {
+  window.registerPageLangChange(function () {
     // Re-render search results if data loaded and there's a query
     if (window.TM_DataLoaded && lastQuery) {
       window.doSearch();
     }
-  };
+  });
 
 })();
 
@@ -2200,9 +2156,9 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
   'use strict';
 
   var oeItems = [];
-  var tbody = null;
+  var listEl = null;
 
-  var formatPrice  = window.formatPrice  || function () { return '—'; };
+  var formatPrice  = window.formatPrice  || function () { return '\u2014'; };
   var t            = window.t            || function (k) { return k; };
   var escHtml      = window.escHtml      || function (s) { return s || ''; };
 
@@ -2212,17 +2168,67 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
   }
 
   window.onOEPriceTypeChange = function () {
-    if (oeItems.length > 0) rerenderOETable();
+    if (oeItems.length > 0) rerenderOE();
   };
 
-  window.addOEItem = function () {
-    oeItems.push({ model: '', qty: 1 });
-    rerenderOETable();
+  window.addOEItem = function (model) {
+    var newItem = { model: model || '', qty: 1 };
+    // If model provided, try to find the product
+    if (model && window.TM_ProductData) {
+      var val = model.trim().toUpperCase();
+      for (var i = 0; i < window.TM_ProductData.length; i++) {
+        if (window.TM_ProductData[i].model.toUpperCase() === val) {
+          newItem._product = window.TM_ProductData[i];
+          break;
+        }
+      }
+    }
+    oeItems.push(newItem);
+    rerenderOE();
+    // Focus the new model input (if no model provided)
+    if (!model) {
+      setTimeout(function () {
+        var inputs = document.querySelectorAll('.oe-model-input');
+        if (inputs.length > 0) inputs[inputs.length - 1].focus();
+      }, 50);
+    }
+  };
+
+  window.addOEModelFromTag = function (model) {
+    // Check if already in the list
+    for (var i = 0; i < oeItems.length; i++) {
+      if (oeItems[i].model.toUpperCase() === model.toUpperCase()) {
+        // Increment qty instead of adding duplicate
+        oeItems[i].qty = (parseInt(oeItems[i].qty) || 0) + 1;
+        rerenderOE();
+        return;
+      }
+    }
+    // Find first empty row and fill it
+    for (var j = 0; j < oeItems.length; j++) {
+      if (!oeItems[j].model || oeItems[j].model.trim() === '') {
+        oeItems[j].model = model;
+        // Try to find the product
+        if (window.TM_ProductData) {
+          var val = model.trim().toUpperCase();
+          for (var k = 0; k < window.TM_ProductData.length; k++) {
+            if (window.TM_ProductData[k].model.toUpperCase() === val) {
+              oeItems[j]._product = window.TM_ProductData[k];
+              break;
+            }
+          }
+        }
+        rerenderOE();
+        return;
+      }
+    }
+    // No empty row, add new item
+    window.addOEItem(model);
   };
 
   window.removeOEItem = function (idx) {
     oeItems.splice(idx, 1);
-    rerenderOETable();
+    rerenderOE();
   };
 
   window.updateOEItem = function (idx, field, value) {
@@ -2231,8 +2237,9 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     if (field === 'model') {
       var found = null;
       if (window.TM_ProductData) {
+        var val = value.trim().toUpperCase();
         for (var i = 0; i < window.TM_ProductData.length; i++) {
-          if (window.TM_ProductData[i].model.toUpperCase() === value.trim().toUpperCase()) {
+          if (window.TM_ProductData[i].model.toUpperCase() === val) {
             found = window.TM_ProductData[i];
             break;
           }
@@ -2244,88 +2251,94 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
         delete oeItems[idx]._product;
       }
     }
-    rerenderOETable();
+    rerenderOE();
   };
 
-  function getStockInfo(model) {
-    var key = (model || '').trim().toUpperCase();
-    var inv = window.TM_InventoryData ? window.TM_InventoryData[key] : null;
-    if (!inv) return { level: '', qty: '', badgeClass: 'unknown', badgeKey: 'unknown' };
+  function rerenderOE() {
+    listEl = document.getElementById('oeList');
+    var summaryEl = document.getElementById('oeSummary');
+    if (!listEl) return;
 
-    var canSale     = parseFloat(String(inv.stock_can_sale || '0').replace(/[^0-9.\-]/g, '')) || 0;
-    var stockLevel = parseFloat(String(inv.stock_level    || '0').replace(/[^0-9.\-]/g, '')) || 0;
+    var priceType = getOEPriceType();
+    var totalItems = 0;
+    var totalQty = 0;
+    var subtotal = 0;
+    var html = '';
 
-    var badgeClass = 'in-stock';
-    var badgeKey   = 'in_stock';
-    if (canSale <= 0) {
-      badgeClass = 'no-stock'; badgeKey = 'out_of_stock';
-    } else if (canSale <= 5) {
-      badgeClass = 'low-stock'; badgeKey = 'low_stock';
-    }
-
-    return { level: stockLevel, qty: canSale, badgeClass: badgeClass, badgeKey: badgeKey };
-  }
-
-  function rerenderOETable() {
-    tbody = document.getElementById('oeItemsBody');
-    var summary = document.getElementById('oeSummary');
-    if (!tbody) return;
+    // Table header
+    html += '<div class="oe-list-header">' +
+      '<span>#</span>' +
+      '<span data-i18n="col_model">' + t('col_model') + '</span>' +
+      '<span data-i18n="col_qty">' + t('col_qty') + '</span>' +
+      '<span style="text-align:right" data-i18n="oe_unit_price">' + t('oe_unit_price') + '</span>' +
+      '<span style="text-align:right" data-i18n="oe_line_total">' + t('oe_line_total') + '</span>' +
+      '<span></span>' +
+    '</div>';
 
     if (oeItems.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="7">' + t('oe_empty_msg') + '</td></tr>';
-      if (summary) summary.style.display = 'none';
+      // Still show header, no items
+      listEl.innerHTML = html;
+      if (summaryEl) summaryEl.style.display = 'none';
       return;
     }
-
-    var priceType   = getOEPriceType();
-    var totalItems  = 0;
-    var totalQty    = 0;
-    var subtotal    = 0;
-    var html = '';
 
     for (var i = 0; i < oeItems.length; i++) {
       var item = oeItems[i];
       var p = item._product;
       var priceField = priceType === 'msrp' ? 'msrp' : priceType === 'ws5' ? 'wholesale_plus5' : 'wholesale';
       var unitPrice = p ? parseFloat(String(p[priceField] || '0').replace(/[^0-9.]/g, '')) : 0;
-      var qty       = parseInt(item.qty) || 0;
+      var qty = parseInt(item.qty) || 0;
       var lineTotal = unitPrice * qty;
       if (p) { totalItems++; totalQty += qty; subtotal += lineTotal; }
 
-      var stock     = p ? getStockInfo(p.model) : null;
-      var stockBadge = stock
-        ? '<span class="oe-stock-badge ' + stock.badgeClass + '">' + t(stock.badgeKey) + (stock.qty ? ' (' + stock.qty + ')' : '') + '</span>'
-        : '';
-
-      html += '<tr data-idx="' + i + '">' +
-        '<td>' + (i + 1) + '</td>' +
-        '<td><input type="text" class="oe-model-input" value="' + escHtml(item.model) + '" data-idx="' + i + '" style="width:120px;padding:4px;border:1px solid #ddd;border-radius:4px;"></td>' +
-        '<td><input type="number" class="oe-qty-input" value="' + qty + '" min="0" data-idx="' + i + '" style="width:60px;padding:4px;border:1px solid #ddd;border-radius:4px;"></td>' +
-        '<td>' + (p ? formatPrice(p[priceField]) : '—') + '</td>' +
-        '<td>' + (p ? formatPrice(lineTotal) : '—') + '</td>' +
-        '<td>' + stockBadge + '</td>' +
-        '<td><button class="oe-del-btn" data-idx="' + i + '" style="background:none;border:none;color:#dc3545;cursor:pointer;font-size:16px;">✕</button></td>' +
-      '</tr>';
+      html += '<div class="oe-item" data-idx="' + i + '">' +
+        '<span class="oe-item-num">' + (i + 1) + '</span>' +
+        '<input type="text" class="oe-model-input" value="' + escHtml(item.model) + '" data-idx="' + i + '" placeholder="Model #' + (i + 1) + '">' +
+        '<input type="number" class="oe-qty-input" value="' + qty + '" min="0" data-idx="' + i + '">' +
+        '<span class="oe-item-price">' + (p ? formatPrice(p[priceField]) : '<span class="oe-item-notfound">\u2014</span>') + '</span>' +
+        '<span class="oe-item-total">' + (p ? formatPrice(lineTotal) : '<span class="oe-item-notfound">\u2014</span>') + '</span>' +
+        '<button class="oe-del-btn" data-idx="' + i + '" title="Remove">\u2715</button>' +
+      '</div>';
     }
 
-    tbody.innerHTML = html;
+    listEl.innerHTML = html;
 
-    if (summary && totalItems > 0) {
-      summary.style.display = 'block';
-      document.getElementById('oeSumItemsVal').textContent   = totalItems;
-      document.getElementById('oeSumQtyVal').textContent     = totalQty;
-      document.getElementById('oeSumSubtotalVal').textContent = formatPrice(subtotal);
-    } else if (summary) {
-      summary.style.display = 'none';
+    // Update summary
+    if (summaryEl) {
+      if (totalItems > 0) {
+        summaryEl.style.display = 'flex';
+        document.getElementById('oeSumItemsVal').textContent = totalItems;
+        document.getElementById('oeSumQtyVal').textContent = totalQty;
+        document.getElementById('oeSumSubtotalVal').textContent = formatPrice(subtotal);
+      } else {
+        summaryEl.style.display = 'none';
+      }
     }
   }
 
-  function initOrderEstPage() {
-    tbody = document.getElementById('oeItemsBody');
-    if (!tbody) return;
+  function renderQuickTags() {
+    var tagsEl = document.getElementById('oeQuickTags');
+    if (!tagsEl) return;
+    var models = window.TM_PopularModels || [];
+    tagsEl.innerHTML = models.map(function (m) {
+      return '<span class="oe-qa-tag" data-model="' + escHtml(m) + '">' + escHtml(m) + '</span>';
+    }).join('');
+  }
 
-    // Use event delegation - single listener for all dynamic content
-    tbody.addEventListener('change', function(e) {
+  function initOrderEstPage() {
+    listEl = document.getElementById('oeList');
+    if (!listEl) return;
+
+    // Pre-populate 3 empty rows
+    oeItems = [
+      { model: '', qty: 1 },
+      { model: '', qty: 1 },
+      { model: '', qty: 1 }
+    ];
+    rerenderOE();
+
+    // Event delegation for list
+    listEl.addEventListener('change', function (e) {
       var target = e.target;
       if (target.classList.contains('oe-model-input')) {
         var idx1 = parseInt(target.getAttribute('data-idx'));
@@ -2336,25 +2349,45 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
       }
     });
 
-    tbody.addEventListener('click', function(e) {
+    // Immediate feedback on typing qty
+    listEl.addEventListener('input', function (e) {
+      var target = e.target;
+      if (target.classList.contains('oe-qty-input')) {
+        var idx = parseInt(target.getAttribute('data-idx'));
+        window.updateOEItem(idx, 'qty', target.value);
+      }
+    });
+
+    listEl.addEventListener('click', function (e) {
       if (e.target.classList.contains('oe-del-btn')) {
         var idx3 = parseInt(e.target.getAttribute('data-idx'));
         window.removeOEItem(idx3);
       }
     });
+
+    // Quick-add tags delegation
+    var tagsContainer = document.getElementById('oeQuickTags');
+    if (tagsContainer) {
+      tagsContainer.addEventListener('click', function (e) {
+        if (e.target.classList.contains('oe-qa-tag')) {
+          var model = e.target.getAttribute('data-model');
+          if (model) window.addOEModelFromTag(model);
+        }
+      });
+    }
+
+    // Render quick tags
+    renderQuickTags();
   }
 
-  window.recalcOESummary = function () {
-    rerenderOETable();
-  };
-
-  window.onPageDataReady = function () {
+  window.registerPageDataReady(function () {
     initOrderEstPage();
-  };
+  });
 
-  window.onPageLangChange = function () {
-    if (oeItems.length > 0) rerenderOETable();
-  };
+  window.registerPageLangChange(function () {
+    renderQuickTags();
+    if (oeItems.length > 0) rerenderOE();
+  });
 
 })();
 
