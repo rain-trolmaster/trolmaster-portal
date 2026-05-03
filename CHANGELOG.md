@@ -2,6 +2,25 @@
 
 All notable changes to the TrolMaster Product Search App will be documented in this file.
 
+## [1.0.25] - 2026-05-03
+
+### Added
+- **Footer Disclaimer 免責聲明**：
+  - 添加免責聲明文字：「價格僅供參考，最終價格以 TrolMaster 確認為準」
+  - 三語支持：EN / 繁體中文 / 泰文
+  - 位置：Footer 最底部
+  - CSS 樣式：`.footer-disclaimer`（灰色小字）
+
+### Technical Details
+- 修改 `src/i18n/en.json` - 添加 `disclaimer` 翻譯
+- 修改 `src/i18n/zh-Hant.json` - 添加 `disclaimer` 翻譯
+- 修改 `src/i18n/th.json` - 添加 `disclaimer` 翻譯
+- 修改 `src/templates/index.html.template` - Footer 添加免責聲明行
+- 修改 `src/static/styles.css` - 添加 `.footer-disclaimer` 樣式
+
+### Deployment
+- ✅ 已部署到 GitHub Pages: https://rain-trolmaster.github.io/trolmaster-portal/
+
 ## [1.0.24] - 2026-05-03
 
 ### Changed

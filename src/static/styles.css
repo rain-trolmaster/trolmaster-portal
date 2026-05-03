@@ -661,6 +661,13 @@ a:hover { text-decoration: underline; }
   margin-top: 16px;
 }
 
+.footer-disclaimer {
+  margin-top: 8px;
+  font-size: 10px;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
 /* ---- Stock Status Badge ---- */
 .stock-status {
   font-size: 11px;

@@ -104,3 +104,7 @@
 ## v1.0.24 — 2026-05-03
 - **Description**: UI优化：价格移至产品信息前，手机端Header优化
 - **Snapshot**: `build/versions/2026-05-03/20260503_144509_v1.0.24_UI优化_价格移至产品信息前_手机端Header优化.html`
+
+## v1.0.25 — 2026-05-03
+- **Description**: 添加Footer Disclaimer免責聲明
+- **Snapshot**: `build/versions/2026-05-03/20260503_145607_v1.0.25_添加Footer_Disclaimer免責聲明.html`

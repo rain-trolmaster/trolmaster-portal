@@ -124,6 +124,7 @@
   <span id="stockStatusBottom" class="stock-status loading">⏳ Loading stock...</span>
   &nbsp;&middot;&nbsp;
   &copy; 2026 <span data-i18n="company_name">TrolMaster Asia Co., Ltd.</span>
+  <div class="footer-disclaimer" data-i18n="disclaimer">Prices shown are for reference only. Final pricing is subject to confirmation by TrolMaster.</div>
 </div>
 
 <!-- ══════════════════════════════════════════
