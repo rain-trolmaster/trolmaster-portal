@@ -1239,6 +1239,79 @@ a:hover { text-decoration: underline; }
   margin-top: 8px;
 }
 
+/* ── Autocomplete Dropdown ── */
+.oe-search-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.oe-search-wrap input.oe-model-input {
+  width: 100%;
+}
+
+.oe-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-surface, #fff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-md, 10px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: 200;
+  margin-top: 2px;
+}
+
+.oe-dropdown.show {
+  display: block;
+}
+
+.oe-dd-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-border-light, #f0f4f8);
+  transition: background 0.15s;
+}
+
+.oe-dd-item:last-child {
+  border-bottom: none;
+}
+
+.oe-dd-item:hover {
+  background: var(--color-bg, #f5f5f5);
+}
+
+.oe-dd-item .dd-model {
+  font-weight: 600;
+  color: var(--color-primary, #0d1b3e);
+  font-size: 13px;
+}
+
+.oe-dd-item .dd-desc {
+  font-size: 11px;
+  color: var(--color-text-muted, #718096);
+  margin-top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.oe-dd-item .dd-price {
+  font-size: 11px;
+  color: var(--color-text-secondary, #2d3748);
+  margin-top: 1px;
+}
+
+.oe-dd-empty {
+  padding: 16px;
+  text-align: center;
+  color: var(--color-text-faint, #a0aec0);
+  font-size: 12px;
+}
+
 /* ── Responsive: narrow screens ── */
 @media (max-width: 520px) {
   .oe-list {
@@ -2146,6 +2219,11 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
   var oeItems = [];
   var listEl = null;
 
+  // ── Autocomplete state ──
+  var activeDropdown = null;
+  var activeInputIdx = -1;
+  var searchTimer = null;
+
   var formatPrice  = window.formatPrice  || function () { return '\u2014'; };
   var t            = window.t            || function (k) { return k; };
   var escHtml      = window.escHtml      || function (s) { return s || ''; };
@@ -2153,6 +2231,106 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
   function getOEPriceType() {
     var checked = document.querySelector('input[name="oePriceType"]:checked');
     return checked ? checked.value : 'msrp';
+  }
+
+  // ── Autocomplete: lightweight product search ──
+  function searchOEProducts(query) {
+    if (!query || !window.TM_ProductData) return [];
+    var q = query.trim();
+    var qNorm = q.replace(/[-_\s]/g, '').toLowerCase();
+    var qLow = q.toLowerCase();
+    var results = [];
+    for (var i = 0; i < window.TM_ProductData.length; i++) {
+      var p = window.TM_ProductData[i];
+      if (!p.model) continue;
+      var modelNorm = p.model.replace(/[-_\s]/g, '').toLowerCase();
+      var score = 0;
+      if (modelNorm === qNorm) score = 2000;
+      else if (modelNorm.startsWith(qNorm)) score = 1000;
+      else if (modelNorm.indexOf(qNorm) >= 0) score = 500;
+      else if (q.length >= 2 && p.short_desc && p.short_desc.toLowerCase().indexOf(qLow) >= 0) score = 200;
+      if (score > 0) results.push({ product: p, score: score });
+    }
+    results.sort(function (a, b) {
+      if (b.score !== a.score) return b.score - a.score;
+      return (a.product.model || '').localeCompare(b.product.model || '');
+    });
+    return results.slice(0, 8).map(function (r) { return r.product; });
+  }
+
+  function showAutocomplete(inputEl, idx) {
+    var query = (inputEl.value || '').trim();
+    if (!query) {
+      hideAutocomplete();
+      return;
+    }
+
+    var results = searchOEProducts(query);
+
+    // Find or create the wrapper
+    var wrapEl = inputEl.closest('.oe-search-wrap');
+    if (!wrapEl) {
+      wrapEl = document.createElement('div');
+      wrapEl.className = 'oe-search-wrap';
+      inputEl.parentNode.insertBefore(wrapEl, inputEl);
+      wrapEl.appendChild(inputEl);
+    }
+
+    // Find or create the dropdown
+    var dropdown = wrapEl.querySelector('.oe-dropdown');
+    if (!dropdown) {
+      dropdown = document.createElement('div');
+      dropdown.className = 'oe-dropdown';
+      wrapEl.appendChild(dropdown);
+    }
+
+    // Render dropdown content
+    var priceType = getOEPriceType();
+    var priceField = priceType === 'msrp' ? 'msrp' : priceType === 'ws5' ? 'wholesale_plus5' : 'wholesale';
+
+    if (results.length === 0) {
+      dropdown.innerHTML = '<div class="oe-dd-empty">' + t('no_results').replace('{q}', escHtml(query)) + '</div>';
+    } else {
+      dropdown.innerHTML = results.map(function (p) {
+        var price = p[priceField] ? formatPrice(p[priceField]) : '\u2014';
+        return '<div class="oe-dd-item" data-model="' + escHtml(p.model) + '">' +
+          '<div class="dd-model">' + escHtml(p.model) + '</div>' +
+          '<div class="dd-desc">' + escHtml(p.short_desc || '') + '</div>' +
+          '<div class="dd-price">' + price + '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    dropdown.classList.add('show');
+    activeDropdown = dropdown;
+    activeInputIdx = idx;
+
+    // Bind click events on dropdown items (using event delegation on the dropdown)
+    dropdown.onclick = function (ev) {
+      var item = ev.target.closest ? ev.target.closest('.oe-dd-item') : null;
+      if (!item) {
+        // Fallback for older browsers
+        item = ev.target;
+        while (item && !item.classList.contains('oe-dd-item')) item = item.parentElement;
+      }
+      if (item) {
+        var model = item.getAttribute('data-model');
+        if (model) {
+          inputEl.value = model;
+          window.updateOEItem(idx, 'model', model);
+          hideAutocomplete();
+        }
+      }
+    };
+  }
+
+  function hideAutocomplete() {
+    if (activeDropdown) {
+      activeDropdown.classList.remove('show');
+      activeDropdown.onclick = null;
+      activeDropdown = null;
+      activeInputIdx = -1;
+    }
   }
 
   window.onOEPriceTypeChange = function () {
@@ -2247,6 +2425,9 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     var summaryEl = document.getElementById('oeSummary');
     if (!listEl) return;
 
+    // Hide autocomplete before re-rendering
+    hideAutocomplete();
+
     var priceType = getOEPriceType();
     var totalItems = 0;
     var totalQty = 0;
@@ -2281,7 +2462,9 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
 
       html += '<div class="oe-item" data-idx="' + i + '">' +
         '<span class="oe-item-num">' + (i + 1) + '</span>' +
-        '<input type="text" class="oe-model-input" value="' + escHtml(item.model) + '" data-idx="' + i + '" placeholder="Model #' + (i + 1) + '">' +
+        '<div class="oe-search-wrap">' +
+          '<input type="text" class="oe-model-input" value="' + escHtml(item.model) + '" data-idx="' + i + '" placeholder="Model #' + (i + 1) + '" autocomplete="off">' +
+        '</div>' +
         '<input type="number" class="oe-qty-input" value="' + qty + '" min="0" data-idx="' + i + '">' +
         '<span class="oe-item-price">' + (p ? formatPrice(p[priceField]) : '<span class="oe-item-notfound">\u2014</span>') + '</span>' +
         '<span class="oe-item-total">' + (p ? formatPrice(lineTotal) : '<span class="oe-item-notfound">\u2014</span>') + '</span>' +
@@ -2337,12 +2520,33 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
       }
     });
 
-    // Immediate feedback on typing qty
+    // Input events: qty real-time update + model autocomplete
     listEl.addEventListener('input', function (e) {
       var target = e.target;
       if (target.classList.contains('oe-qty-input')) {
         var idx = parseInt(target.getAttribute('data-idx'));
         window.updateOEItem(idx, 'qty', target.value);
+      } else if (target.classList.contains('oe-model-input')) {
+        var mIdx = parseInt(target.getAttribute('data-idx'));
+        // Debounce autocomplete search
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(function () {
+          showAutocomplete(target, mIdx);
+        }, 200);
+      }
+    });
+
+    // Focus on model input: show autocomplete if has value
+    listEl.addEventListener('focusin', function (e) {
+      if (e.target.classList.contains('oe-model-input')) {
+        var val = (e.target.value || '').trim();
+        if (val) {
+          var fIdx = parseInt(e.target.getAttribute('data-idx'));
+          clearTimeout(searchTimer);
+          searchTimer = setTimeout(function () {
+            showAutocomplete(e.target, fIdx);
+          }, 150);
+        }
       }
     });
 
@@ -2350,6 +2554,23 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
       if (e.target.classList.contains('oe-del-btn')) {
         var idx3 = parseInt(e.target.getAttribute('data-idx'));
         window.removeOEItem(idx3);
+      }
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function (e) {
+      if (activeDropdown) {
+        var wrap = e.target.closest ? e.target.closest('.oe-search-wrap') : null;
+        if (!wrap) {
+          hideAutocomplete();
+        }
+      }
+    });
+
+    // ESC key to close dropdown
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && activeDropdown) {
+        hideAutocomplete();
       }
     });
 
