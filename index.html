@@ -1139,109 +1139,18 @@ a:hover { text-decoration: underline; }
   background: #f8f9fa;
 }
 
-/* Column Widths */
-.num-col { width: 40px; text-align: center; }
-.model-col { min-width: 180px; }
-.desc-col { min-width: 200px; }
-.qty-col { width: 80px; }
-.price-col { width: 100px; text-align: right; }
-.total-col { width: 120px; text-align: right; font-weight: 600; }
-.stock-col { width: 120px; text-align: center; }
-.action-col { width: 40px; text-align: center; }
-
-/* Model Search */
-.oe-search-wrap {
-  position: relative;
-}
-
-.oe-search-input {
-  width: 100%;
-  padding: 6px 8px;
+.oe-table input[type="text"],
+.oe-table input[type="number"] {
+  padding: 4px 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 13px;
-  box-sizing: border-box;
 }
 
-.oe-search-input:focus {
+.oe-table input[type="text"]:focus,
+.oe-table input[type="number"]:focus {
   border-color: #0d1b3e;
   outline: none;
-}
-
-.oe-dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  max-height: 250px;
-  overflow-y: auto;
-  z-index: 1000;
-}
-
-.oe-dropdown.show {
-  display: block;
-}
-
-.oe-dd-item {
-  padding: 10px;
-  cursor: pointer;
-  border-bottom: 1px solid #f0f0f0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.oe-dd-item:hover {
-  background: #f0f4ff;
-}
-
-.oe-dd-item:last-child {
-  border-bottom: none;
-}
-
-.dd-model {
-  font-weight: 600;
-  color: #0d1b3e;
-  font-size: 13px;
-}
-
-.dd-desc {
-  color: #666;
-  font-size: 12px;
-  flex: 1;
-  margin: 0 10px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.dd-price {
-  color: #28a745;
-  font-weight: 600;
-  font-size: 13px;
-  white-space: nowrap;
-}
-
-.oe-dd-empty {
-  padding: 15px;
-  text-align: center;
-  color: #999;
-  font-size: 13px;
-}
-
-/* Qty Input */
-.qty-col input[type="number"] {
-  width: 60px;
-  padding: 4px 6px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  text-align: center;
-  font-size: 13px;
 }
 
 /* Stock Badge */
@@ -1313,6 +1222,7 @@ a:hover { text-decoration: underline; }
   padding: 25px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
 }
 
 .oe-summary h3 {
@@ -1325,6 +1235,7 @@ a:hover { text-decoration: underline; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
+  margin-bottom: 20px;
 }
 
 .oe-sum-item {
@@ -1347,23 +1258,39 @@ a:hover { text-decoration: underline; }
   font-size: 14px;
 }
 
-.oe-grand-total {
-  background: #0d1b3e !important;
-}
-
-.oe-grand-total .oe-sum-label,
-.oe-grand-total .oe-sum-value {
-  color: white !important;
-  font-size: 16px !important;
-}
-
-#oeShipInput {
-  width: 80px;
-  padding: 4px 6px;
-  border: 1px solid #ddd;
+/* Disclaimer */
+.oe-disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 20px;
+  background: #fff3cd;
+  border-left: 4px solid #ffc107;
   border-radius: 4px;
+  margin-top: 20px;
+}
+
+.oe-disclaimer-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.oe-disclaimer-text {
+  flex: 1;
+}
+
+.oe-disclaimer-text strong {
+  display: block;
+  color: #856404;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.oe-disclaimer-text p {
+  color: #856404;
   font-size: 13px;
-  display: inline-block;
+  line-height: 1.5;
+  margin: 0;
 }
 
 /* Coming Soon (if needed) */
@@ -1480,17 +1407,17 @@ a:hover { text-decoration: underline; }
 </div>
 
 
-<!-- ═════════════════════════════════════════
+<!-- ═════════════════════════════════════
      PAGE: ORDER ESTIMATION
-═════════════════════════════════════════ -->
+═════════════════════════════════════ -->
 <div class="page" id="page-order-est">
   <div class="oe-page">
     <div class="oe-header">
       <h1 data-i18n="nav_orders_estimation">Order Estimation</h1>
-      <p class="oe-subtitle" data-i18n="oe_subtitle">Estimate your order total with real-time pricing and stock info</p>
+      <p class="oe-subtitle" data-i18n="oe_subtitle">Quick price calculation for your order</p>
     </div>
 
-    <!-- Price Type Selector -->
+    <!-- Price Type -->
     <div class="oe-price-type">
       <label data-i18n="oe_price_type">Price Type:</label>
       <label class="radio-label">
@@ -1507,14 +1434,13 @@ a:hover { text-decoration: underline; }
       </label>
     </div>
 
-    <!-- Order Items Table -->
+    <!-- Order Items -->
     <div class="oe-table-wrap">
       <table class="oe-table">
         <thead>
           <tr>
             <th class="num-col">#</th>
             <th class="model-col" data-i18n="col_model">Model</th>
-            <th class="desc-col" data-i18n="col_description">Description</th>
             <th class="qty-col" data-i18n="col_qty">Qty</th>
             <th class="price-col" data-i18n="col_unit_price">Unit Price</th>
             <th class="total-col" data-i18n="col_line_total">Line Total</th>
@@ -1524,7 +1450,7 @@ a:hover { text-decoration: underline; }
         </thead>
         <tbody id="oeItemsBody">
           <tr>
-            <td colspan="8" class="oe-dd-empty" data-i18n="oe_empty_msg">Click "Add Item" to start building your order</td>
+            <td colspan="7" class="oe-dd-empty" data-i18n="oe_empty_msg">Click "Add Item" to start building your order</td>
           </tr>
         </tbody>
       </table>
@@ -1549,19 +1475,14 @@ a:hover { text-decoration: underline; }
           <span class="oe-sum-label" data-i18n="oe_sum_subtotal">Subtotal:</span>
           <span class="oe-sum-value" id="oeSumSubtotalVal">$0.00</span>
         </div>
-        <div class="oe-sum-item">
-          <span class="oe-sum-label" data-i18n="oe_sum_vat">VAT (7%):</span>
-          <span class="oe-sum-value" id="oeSumVatVal">$0.00</span>
-        </div>
-        <div class="oe-sum-item">
-          <span class="oe-sum-label" data-i18n="oe_sum_shipping">Shipping:</span>
-          <span class="oe-sum-value">
-            <input type="number" id="oeShipInput" value="0" min="0" step="0.01" onchange="recalcOESummary()" style="width:80px;display:inline-block;"> / <span id="oeShipCurrency"></span>
-          </span>
-        </div>
-        <div class="oe-sum-item oe-grand-total">
-          <span class="oe-sum-label" data-i18n="oe_sum_grand">Grand Total:</span>
-          <span class="oe-sum-value" id="oeSumGrandVal">$0.00</span>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="oe-disclaimer">
+        <div class="oe-disclaimer-icon">⚠️</div>
+        <div class="oe-disclaimer-text">
+          <strong data-i18n="oe_disclaimer_title">Price Reference Only</strong>
+          <p data-i18n="oe_disclaimer_text">All prices shown are for reference only. VAT and shipping costs may vary by region. Final pricing and availability are subject to confirmation by TrolMaster.</p>
         </div>
       </div>
     </div>
@@ -2278,17 +2199,15 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
 (function () {
   'use strict';
 
-  // ─── State ────────────────────────────────────────────────
-  let oeItems = [];
+  var oeItems = [];
+  var tbody = null;
 
-  // ─── Helpers (from shell.js via window) ─────────────────
-  const formatPrice  = window.formatPrice  || function () { return '—'; };
-  const t            = window.t            || function (k) { return k; };
-  const escHtml      = window.escHtml      || function (s) { return s || ''; };
+  var formatPrice  = window.formatPrice  || function () { return '—'; };
+  var t            = window.t            || function (k) { return k; };
+  var escHtml      = window.escHtml      || function (s) { return s || ''; };
 
-  // ─── Price Type ──────────────────────────────────────────
   function getOEPriceType() {
-    const checked = document.querySelector('input[name="oePriceType"]:checked');
+    var checked = document.querySelector('input[name="oePriceType"]:checked');
     return checked ? checked.value : 'msrp';
   }
 
@@ -2296,7 +2215,6 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     if (oeItems.length > 0) rerenderOETable();
   };
 
-  // ─── Add/Remove/Update Items ────────────────────────────
   window.addOEItem = function () {
     oeItems.push({ model: '', qty: 1 });
     rerenderOETable();
@@ -2311,9 +2229,15 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     if (!oeItems[idx]) return;
     oeItems[idx][field] = value;
     if (field === 'model') {
-      const found = window.TM_ProductData
-        ? window.TM_ProductData.find(function(p) { return p.model.toUpperCase() === value.trim().toUpperCase(); })
-        : null;
+      var found = null;
+      if (window.TM_ProductData) {
+        for (var i = 0; i < window.TM_ProductData.length; i++) {
+          if (window.TM_ProductData[i].model.toUpperCase() === value.trim().toUpperCase()) {
+            found = window.TM_ProductData[i];
+            break;
+          }
+        }
+      }
       if (found) {
         oeItems[idx]._product = found;
       } else {
@@ -2323,93 +2247,6 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     rerenderOETable();
   };
 
-  // ─── Search Products ────────────────────────────────────
-  function buildSearchRegex(query, strict) {
-    var segments = query.match(/[a-zA-Z0-9]+/g);
-    if (!segments || segments.length === 0) return null;
-    var pattern = segments
-      .map(function(seg) { return seg.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); })
-      .join('[\\s\\-_]*');
-    var fullPattern;
-    if (strict) {
-      fullPattern = '(?<![a-zA-Z0-9])' + pattern + '(?![a-zA-Z0-9])';
-    } else {
-      fullPattern = '(?<![a-zA-Z0-9])' + pattern;
-    }
-    try {
-      return new RegExp(fullPattern, 'i');
-    } catch (e) {
-      return null;
-    }
-  }
-
-  function productRelevanceScore(p, q) {
-    if (!p.model) return 0;
-    var strictRegex = buildSearchRegex(q, true);
-    var looseRegex  = buildSearchRegex(q, false);
-    if (!strictRegex && !looseRegex) return 0;
-
-    var qNorm = q.replace(/[-_\s]/g, '').toLowerCase();
-    var modelNorm = (p.model || '').replace(/[-_\s]/g, '').toLowerCase();
-    var score = 0;
-
-    if (modelNorm === qNorm) {
-      score += 2000;
-    } else if (modelNorm.startsWith(qNorm)) {
-      score += 1000;
-    } else if (strictRegex && strictRegex.test(p.model)) {
-      score += 500;
-    }
-
-    if (looseRegex && p.short_desc) {
-      if (p.short_desc.toLowerCase().startsWith(q.toLowerCase())) {
-        score += 300;
-      } else if (looseRegex.test(p.short_desc)) {
-        score += 200;
-      }
-    }
-
-    return score;
-  }
-
-  window.searchOEProduct = function (idx, val) {
-    var dd = document.getElementById('oedd-' + idx);
-    if (!dd) return;
-    if (!val.trim()) { dd.classList.remove('show'); return; }
-
-    var matches = window.TM_ProductData
-      ? window.TM_ProductData
-        .map(function(p) { return { product: p, score: productRelevanceScore(p, val) }; })
-        .filter(function(item) { return item.score > 0; })
-        .sort(function(a, b) { return b.score - a.score || (a.product.model || '').localeCompare(b.product.model || ''); })
-        .slice(0, 10)
-        .map(function(item) { return item.product; })
-      : [];
-
-    if (matches.length === 0) {
-      dd.innerHTML = '<div class="oe-dd-empty">' + t('no_results').replace('{q}', escHtml(val)) + '</div>';
-    } else {
-      var priceType = getOEPriceType();
-      var priceField = priceType === 'msrp' ? 'msrp' : priceType === 'ws5' ? 'wholesale_plus5' : 'wholesale';
-      dd.innerHTML = matches.map(function(p) {
-        var modelEscaped = escHtml(p.model);
-        return '<div class="oe-dd-item" onclick="selectOEProduct(' + idx + ',\'' + modelEscaped + '\')">' +
-          '<div class="dd-model">' + modelEscaped + '</div>' +
-          '<div class="dd-desc">' + escHtml(p.short_desc || '') + '</div>' +
-          '<div class="dd-price">' + formatPrice(p[priceField]) + '</div>' +
-        '</div>';
-      }).join('');
-    }
-    dd.classList.add('show');
-  };
-
-  window.selectOEProduct = function (idx, model) {
-    updateOEItem(idx, 'model', model);
-    var dd = document.getElementById('oedd-' + idx);
-    if (dd) dd.classList.remove('show');
-  };
-
-  // ─── Stock Info ─────────────────────────────────────────
   function getStockInfo(model) {
     var key = (model || '').trim().toUpperCase();
     var inv = window.TM_InventoryData ? window.TM_InventoryData[key] : null;
@@ -2429,25 +2266,25 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
     return { level: stockLevel, qty: canSale, badgeClass: badgeClass, badgeKey: badgeKey };
   }
 
-  // ─── Render Table ───────────────────────────────────────
   function rerenderOETable() {
-    var tbody   = document.getElementById('oeItemsBody');
+    tbody = document.getElementById('oeItemsBody');
     var summary = document.getElementById('oeSummary');
     if (!tbody) return;
 
     if (oeItems.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="8" class="oe-dd-empty" data-i18n="oe_empty_msg">' + t('oe_empty_msg') + '</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="7">' + t('oe_empty_msg') + '</td></tr>';
       if (summary) summary.style.display = 'none';
       return;
     }
 
     var priceType   = getOEPriceType();
-    var totalItems   = 0;
-    var totalQty     = 0;
-    var subtotal     = 0;
+    var totalItems  = 0;
+    var totalQty    = 0;
+    var subtotal    = 0;
     var html = '';
 
-    oeItems.forEach(function(item, idx) {
+    for (var i = 0; i < oeItems.length; i++) {
+      var item = oeItems[i];
       var p = item._product;
       var priceField = priceType === 'msrp' ? 'msrp' : priceType === 'ws5' ? 'wholesale_plus5' : 'wholesale';
       var unitPrice = p ? parseFloat(String(p[priceField] || '0').replace(/[^0-9.]/g, '')) : 0;
@@ -2460,90 +2297,63 @@ window.__TM_INVENTORY__ = [{"model": "Model No.", "description": "Description", 
         ? '<span class="oe-stock-badge ' + stock.badgeClass + '">' + t(stock.badgeKey) + (stock.qty ? ' (' + stock.qty + ')' : '') + '</span>'
         : '';
 
-      var modelEscaped = escHtml(item.model);
-      html += '<tr>' +
-        '<td class="num-col">' + (idx + 1) + '</td>' +
-        '<td class="model-col">' +
-          '<div class="oe-search-wrap">' +
-            '<input type="text" class="oe-search-input" value="' + modelEscaped + '"' +
-                   ' placeholder="Model..." oninput="searchOEProduct(' + idx + ', this.value)"' +
-                   ' onfocus="searchOEProduct(' + idx + ', this.value)">' +
-            '<div class="oe-dropdown" id="oedd-' + idx + '"></div>' +
-          '</div>' +
-        '</td>' +
-        '<td class="desc-col">' + escHtml(p ? (p.full_description || p.short_desc || '') : '') + '</td>' +
-        '<td class="qty-col"><input type="number" value="' + qty + '" min="0" onchange="updateOEItem(' + idx + ',\'qty\',this.value)"></td>' +
-        '<td class="price-col">' + (p ? formatPrice(p[priceField]) : '—') + '</td>' +
-        '<td class="total-col">' + (p ? formatPrice(lineTotal) : '—') + '</td>' +
-        '<td class="stock-col">' + stockBadge + '</td>' +
-        '<td class="action-col"><button class="oe-del-btn" onclick="removeOEItem(' + idx + ')">✕</button></td>' +
+      html += '<tr data-idx="' + i + '">' +
+        '<td>' + (i + 1) + '</td>' +
+        '<td><input type="text" class="oe-model-input" value="' + escHtml(item.model) + '" data-idx="' + i + '" style="width:120px;padding:4px;border:1px solid #ddd;border-radius:4px;"></td>' +
+        '<td><input type="number" class="oe-qty-input" value="' + qty + '" min="0" data-idx="' + i + '" style="width:60px;padding:4px;border:1px solid #ddd;border-radius:4px;"></td>' +
+        '<td>' + (p ? formatPrice(p[priceField]) : '—') + '</td>' +
+        '<td>' + (p ? formatPrice(lineTotal) : '—') + '</td>' +
+        '<td>' + stockBadge + '</td>' +
+        '<td><button class="oe-del-btn" data-idx="' + i + '" style="background:none;border:none;color:#dc3545;cursor:pointer;font-size:16px;">✕</button></td>' +
       '</tr>';
-    });
+    }
 
     tbody.innerHTML = html;
 
-    // Update summary
     if (summary && totalItems > 0) {
       summary.style.display = 'block';
-      var vat        = subtotal * 0.07;
-      var shipping   = parseFloat(document.getElementById('oeShipInput').value) || 0;
-      var grandTotal = subtotal + vat + shipping;
-
       document.getElementById('oeSumItemsVal').textContent   = totalItems;
       document.getElementById('oeSumQtyVal').textContent     = totalQty;
       document.getElementById('oeSumSubtotalVal').textContent = formatPrice(subtotal);
-      document.getElementById('oeSumVatVal').textContent     = formatPrice(vat);
-      document.getElementById('oeSumGrandVal').textContent   = formatPrice(grandTotal);
-
-      // Update shipping currency label
-      var shipCurrency = document.getElementById('oeShipCurrency');
-      if (shipCurrency) {
-        var symbol = window.CURRENCY_SYMBOL ? (window.CURRENCY_SYMBOL[window.TM_CurrentCurrency] || window.TM_CurrentCurrency) : '';
-        shipCurrency.textContent = symbol || '$';
-      }
     } else if (summary) {
       summary.style.display = 'none';
     }
+  }
+
+  function initOrderEstPage() {
+    tbody = document.getElementById('oeItemsBody');
+    if (!tbody) return;
+
+    // Use event delegation - single listener for all dynamic content
+    tbody.addEventListener('change', function(e) {
+      var target = e.target;
+      if (target.classList.contains('oe-model-input')) {
+        var idx1 = parseInt(target.getAttribute('data-idx'));
+        window.updateOEItem(idx1, 'model', target.value);
+      } else if (target.classList.contains('oe-qty-input')) {
+        var idx2 = parseInt(target.getAttribute('data-idx'));
+        window.updateOEItem(idx2, 'qty', target.value);
+      }
+    });
+
+    tbody.addEventListener('click', function(e) {
+      if (e.target.classList.contains('oe-del-btn')) {
+        var idx3 = parseInt(e.target.getAttribute('data-idx'));
+        window.removeOEItem(idx3);
+      }
+    });
   }
 
   window.recalcOESummary = function () {
     rerenderOETable();
   };
 
-  // ─── Page Init ─────────────────────────────────────────
-  function initOrderEstPage() {
-    // Close all dropdowns when clicking outside
-    document.addEventListener('click', function (e) {
-      if (!e.target.closest('.oe-search-wrap')) {
-        document.querySelectorAll('.oe-dropdown').forEach(function(dd) { dd.classList.remove('show'); });
-      }
-    });
-
-    // Initialize shipping currency label
-    var shipCurrency = document.getElementById('oeShipCurrency');
-    if (shipCurrency) {
-      var symbol = window.CURRENCY_SYMBOL ? (window.CURRENCY_SYMBOL[window.TM_CurrentCurrency] || window.TM_CurrentCurrency) : '';
-      shipCurrency.textContent = symbol || '$';
-    }
-  }
-
-  // ─── Data Ready Hook ──────────────────────────────────
   window.onPageDataReady = function () {
     initOrderEstPage();
   };
 
-  // ─── Lang Change Hook ─────────────────────────────────
   window.onPageLangChange = function () {
-    // Re-render table if there are items (prices may change due to currency)
-    if (oeItems.length > 0) {
-      rerenderOETable();
-    }
-    // Update shipping currency label
-    var shipCurrency = document.getElementById('oeShipCurrency');
-    if (shipCurrency) {
-      var symbol = window.CURRENCY_SYMBOL ? (window.CURRENCY_SYMBOL[window.TM_CurrentCurrency] || window.TM_CurrentCurrency) : '';
-      shipCurrency.textContent = symbol || '$';
-    }
+    if (oeItems.length > 0) rerenderOETable();
   };
 
 })();
